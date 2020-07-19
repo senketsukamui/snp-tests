@@ -1,0 +1,21 @@
+@use '~styles/variables' as *;
+
+body {
+  font-family: 'Merriweather', 'Helvetica-Light', Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 400;
+  src: url('../../assets/fonts/Merriweather-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-weight: 700;
+  src: url('../../assets/fonts/Merriweather-Bold.ttf');
+}
+
+.app {
+  height: 100%;
+}
