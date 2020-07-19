@@ -18,11 +18,22 @@ const usersSlice = createSlice({
       state.loading = true;
     },
     userLoginSuccess: (state, { payload }) => {
-      console.log(payload);
       state.loading = false;
       state.isAuthorized = true;
       state.isAdmin = payload.isAdmin;
       state.username = payload.username;
+    },
+    currentSession: state => {
+      state.loading = true;
+    },
+    currentSessionSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.isAuthorized = true;
+      state.isAdmin = payload.isAdmin;
+      state.username = payload.username;
+    },
+    currentSessionFailed: state => {
+      state.loading = false;
     },
   },
 });

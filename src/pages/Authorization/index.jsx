@@ -1,12 +1,18 @@
 import React from 'react';
 import styles from './index.scss';
 import { actions } from 'models/users/slice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { isAuthorizedSelector } from '../../models/users/selectors';
+import { useHistory } from 'react-router-dom';
 
 const { userLogin } = actions;
 
 const Authorization = () => {
   const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const isAuthorized = useSelector(isAuthorizedSelector);
 
   const [formState, setFormState] = React.useState({
     username: '',
@@ -17,16 +23,20 @@ const Authorization = () => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleLoginClick = () => {
+  const handleFormSubmit = () => {
     dispatch(userLogin(formState));
   };
+
+  if (isAuthorized) {
+    history.push('/');
+  }
 
   return (
     <div className={styles.auth}>
       <div className={styles.auth_window}>
         <div className={styles.form}>
           <div className={styles.title}>Login page</div>
-          <form className={styles.login}>
+          <form className={styles.login} onSubmit={handleFormSubmit}>
             <label htmlFor="usrn" className={styles.form_label}>
               Username
             </label>
@@ -42,7 +52,7 @@ const Authorization = () => {
             </label>
             <input
               className={styles.password}
-              type="text"
+              type="password"
               id="pswd"
               name="password"
               onChange={handleFormChange}
@@ -50,7 +60,7 @@ const Authorization = () => {
           </form>
         </div>
         <div className={styles.buttons}>
-          <button className={styles.login_button} onClick={handleLoginClick}>
+          <button className={styles.login_button} onClick={handleFormSubmit}>
             Login
           </button>
         </div>
