@@ -1,13 +1,18 @@
 import axios from 'axios';
 import config from 'config';
 
-const BASE_URL = '/api';
+const BASE_URL = 'https://snp-tests.herokuapp.com/api/v1/';
 const STUB_DELAY = 1000;
 const METHODS = ['GET', 'DELETE', 'HEAD', 'POST', 'PUT', 'PATCH'];
 
 const sidedRequest = opts => {
+  const headers = {
+    'scope-key': "_v6ds5LLB(^&Q'}y",
+    'Content-Type': 'application/json',
+  };
+
   if (RUNTIME_ENV === 'client') {
-    return axios({ baseURL: BASE_URL, ...opts });
+    return axios({ baseURL: BASE_URL, ...opts, headers });
   }
 
   return axios({ baseURL: config.remoteApiUrl, ...opts });
