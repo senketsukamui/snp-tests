@@ -23,6 +23,15 @@ const usersSlice = createSlice({
       state.isAdmin = payload.isAdmin;
       state.username = payload.username;
     },
+    userLogout: state => {
+      state.loading = true;
+    },
+    userLogoutSuccess: state => {
+      state.loading = false;
+      state.isAdmin = null;
+      state.username = '';
+      state.isAuthorized = false;
+    },
     currentSession: state => {
       state.loading = true;
     },

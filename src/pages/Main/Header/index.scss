@@ -1,0 +1,29 @@
+.header {
+  font-family: 'Merriweather', sans-serif;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #a8dadc;
+}
+
+.username {
+  font-size: 1.5rem;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.logout {
+  font-size: 1.5rem;
+  padding: 7px;
+  background-color: #e63946;
+  color: #f1faee;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #f1faee;
+    color: black;
+  }
+}

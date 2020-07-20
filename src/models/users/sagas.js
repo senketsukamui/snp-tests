@@ -19,7 +19,6 @@ export function* userLogin({ payload }) {
 
 export function* currentSession() {
   try {
-    console.log('saga');
     const response = yield call(api.currentSession);
     yield put({
       type: actions.currentSessionSuccess.type,
@@ -35,7 +34,19 @@ export function* currentSession() {
   }
 }
 
+export function* userLogout() {
+  try {
+    const response = yield call(api.userLogout);
+    if (response.data.success === true) {
+      yield put({ type: actions.userLogoutSuccess.type });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([takeLatest(actions.userLogin, userLogin)]);
   yield all([takeLatest(actions.currentSession, currentSession)]);
+  yield all([takeLatest(actions.userLogout, userLogout)]);
 }

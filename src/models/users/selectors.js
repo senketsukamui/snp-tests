@@ -11,3 +11,8 @@ export const isAuthorizedSelector = createSelector(
   usersSelector,
   ({ isAuthorized }) => isAuthorized
 );
+
+export const usernameSelector = createSelector(
+  usersSelector,
+  ({ username }) => username
+);

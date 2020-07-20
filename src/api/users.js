@@ -10,6 +10,12 @@ export const userLogin = ({ username, password }) => {
   });
 };
 
+export const userLogout = () => {
+  return request.DELETE({
+    url: '/logout',
+  });
+};
+
 export const currentSession = () => {
   return request.GET({
     url: '/users/current',
