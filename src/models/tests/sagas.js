@@ -5,7 +5,6 @@ import { actions } from './slice';
 export function* getTests() {
   try {
     const response = yield call(api.getTests);
-    console.log(response);
     yield put({
       type: actions.getTestsSuccess.type,
       payload: response.data.tests,
@@ -15,6 +14,23 @@ export function* getTests() {
   }
 }
 
+export function* createTest({ payload }) {
+  try {
+    console.log(payload);
+    const response = yield call(api.createTest, payload);
+    console.log(response);
+    yield put({
+      type: actions.createTestSuccess.type,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
-  yield all([takeLatest(actions.getTests, getTests)]);
+  yield all([
+    takeLatest(actions.getTests, getTests),
+    takeLatest(actions.createTest, createTest),
+  ]);
 }

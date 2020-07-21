@@ -1,3 +1,32 @@
 .list {
   font-family: 'Merriweather', sans-serif;
+  background-color: #a8dadc;
+  margin-top: 1rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.create {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  width: 30%;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+
+  &_label {
+    font-size: 0.8rem;
+  }
+}
+
+.submit_button {
+  background-color: #457b9d;
+  padding: 8px;
+  border-radius: 5px;
 }

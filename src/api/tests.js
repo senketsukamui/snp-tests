@@ -5,3 +5,12 @@ export const getTests = () => {
     url: '/tests',
   });
 };
+
+export const createTest = ({ title }) => {
+  return request.POST({
+    url: '/tests',
+    data: {
+      title,
+    },
+  });
+};

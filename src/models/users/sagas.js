@@ -48,7 +48,9 @@ export function* userLogout() {
 }
 
 export default function*() {
-  yield all([takeLatest(actions.userLogin, userLogin)]);
-  yield all([takeLatest(actions.currentSession, currentSession)]);
-  yield all([takeLatest(actions.userLogout, userLogout)]);
+  yield all([
+    takeLatest(actions.userLogin, userLogin),
+    takeLatest(actions.currentSession, currentSession),
+    takeLatest(actions.userLogout, userLogout),
+  ]);
 }
