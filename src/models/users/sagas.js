@@ -5,13 +5,15 @@ import { actions } from './slice';
 export function* userLogin({ payload }) {
   try {
     const response = yield call(api.userLogin, payload);
-    yield put({
-      type: actions.userLoginSuccess.type,
-      payload: {
-        isAdmin: response.data.is_admin,
-        username: response.data.username,
-      },
-    });
+    if (response.status === 200) {
+      yield put({
+        type: actions.userLoginSuccess.type,
+        payload: {
+          isAdmin: response.data.is_admin,
+          username: response.data.username,
+        },
+      });
+    }
   } catch (error) {
     console.error(error);
   }

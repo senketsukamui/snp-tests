@@ -1,6 +1,8 @@
 import axios from 'axios';
 import config from 'config';
 
+axios.defaults.withCredentials = true;
+
 const BASE_URL = 'https://snp-tests.herokuapp.com/api/v1/';
 const STUB_DELAY = 1000;
 const METHODS = ['GET', 'DELETE', 'HEAD', 'POST', 'PUT', 'PATCH'];
