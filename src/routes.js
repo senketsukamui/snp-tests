@@ -1,5 +1,6 @@
 import Main from 'pages/Main';
-import Authorization from './pages/Authorization';
+import Authorization from 'pages/Authorization';
+import TestWindow from 'pages/TestWindow';
 
 export default [
   {
@@ -17,5 +18,13 @@ export default [
     component: Authorization,
     sagasToRun: [],
     title: 'Auth',
+  },
+  {
+    path: '/test/:id',
+    exact: false,
+    cache: false,
+    component: TestWindow,
+    sagasToRun: [],
+    title: 'Test Window',
   },
 ];

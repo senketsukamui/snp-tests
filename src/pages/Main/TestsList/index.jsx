@@ -19,7 +19,7 @@ const TestsList = () => {
 
   const tests = useSelector(testsListSelector);
 
-  const testsToRender = tests.map(test => (
+  const testsToRender = Object.values(tests).map(test => (
     <TestListItem {...test} key={test.id} />
   ));
 
@@ -31,7 +31,6 @@ const TestsList = () => {
         }}
         onSubmit={values => {
           onCreateTest(values);
-          console.log('formik');
         }}
       >
         <Form className={styles.create}>

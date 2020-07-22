@@ -2,9 +2,10 @@
 
 import { createSlice } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
+import { normalize } from '../../utils/normalizeById';
 
 const initialState = {
-  tests: [],
+  tests: {},
   testsLoading: false,
 };
 
@@ -17,18 +18,20 @@ const testsSlice = createSlice({
     },
     getTestsSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state.tests = payload;
+      state.tests = normalize(payload);
     },
     createTest: state => {
       state.testsLoading = true;
     },
     createTestSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state.tests.push(payload);
+      state[payload.id] = payload;
     },
   },
 });
 
 export const actions = actionTypes(testsSlice.actions);
+
+export const tests = testsSlice;
 
 export default testsSlice.reducer;
