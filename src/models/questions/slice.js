@@ -19,10 +19,7 @@ const questionsSlice = createSlice({
   },
   extraReducers: {
     [tests.actions.getTestsSuccess]: (state, action) => {
-      state.questions = action.payload.reduce((acc, value) => {
-        acc[value.id] = value.questions;
-        return acc;
-      }, {});
+      state.questions = action.payload.questions;
     },
   },
 });

@@ -18,7 +18,7 @@ const testsSlice = createSlice({
     },
     getTestsSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state.tests = normalize(payload);
+      state.tests = payload.tests;
     },
     createTest: state => {
       state.testsLoading = true;
