@@ -12,5 +12,13 @@ const answersSlice = createSlice({
   name: 'answersSlice',
   initialState,
   reducers: {},
-  extraReducers: {},
+  extraReducers: {
+    [tests.actions.getTestsSuccess]: (state, action) => {
+      state.answers = action.payload.answers;
+    },
+  },
 });
+
+export const actions = actionTypes(answersSlice.actions);
+
+export default answersSlice.reducer;

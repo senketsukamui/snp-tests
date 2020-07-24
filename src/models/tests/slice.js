@@ -2,7 +2,6 @@
 
 import { createSlice } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
-import { normalize } from '../../utils/normalizeById';
 
 const initialState = {
   tests: {},

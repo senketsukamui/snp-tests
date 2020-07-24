@@ -7,7 +7,10 @@ const TestListItem = props => {
   const history = useHistory();
 
   const handleTestClick = () => {
-    history.push(`/test/${props.id}`);
+    history.push({
+      pathname: `/test/${props.id}`,
+      state: { questions: props.questions },
+    });
   };
   return (
     <div className={styles.item} onClick={handleTestClick}>
@@ -21,12 +24,14 @@ TestListItem.propTypes = {
   title: PropTypes.string,
   created_at: PropTypes.string,
   id: PropTypes.number,
+  questions: PropTypes.array,
 };
 
 TestListItem.defaultProps = {
   title: 'Test',
   created_at: '',
   id: 1,
+  questions: [],
 };
 
 export default TestListItem;

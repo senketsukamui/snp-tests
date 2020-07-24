@@ -11,11 +11,14 @@ import testsSagas from './tests/sagas';
 
 import questionsReducer from './questions/slice';
 
+import answersReducer from './answers/slice';
+
 export const createRootReducer = history => ({
   router: connectRouter(history),
   users: usersReducer,
   tests: testsReducer,
   questions: questionsReducer,
+  answers: answersReducer,
 });
 
 export const rootSaga = function* rootSaga() {
