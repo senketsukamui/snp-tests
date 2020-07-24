@@ -12,12 +12,13 @@ const { currentSession } = actions;
 const Main = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const isAuthorized = useSelector(isAuthorizedSelector);
 
   React.useEffect(() => {
-    dispatch(currentSession());
+    if (!isAuthorized) {
+      dispatch(currentSession());
+    }
   }, [dispatch]);
-
-  const isAuthorized = useSelector(isAuthorizedSelector);
 
   if (!isAuthorized) {
     history.push('/auth');
