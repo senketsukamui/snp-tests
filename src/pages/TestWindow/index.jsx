@@ -4,6 +4,7 @@ import { questionsListSelector } from '../../models/questions/selectors';
 import Question from './Question';
 import PropTypes from 'prop-types';
 import styles from './index.scss';
+import { useHistory } from 'react-router-dom';
 
 const TestWindow = props => {
   const questionIds = props.location.state.questions;

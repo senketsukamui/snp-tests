@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { answersListSelector } from '../../../models/answers/selectors';
 import Answer from './Answer';
+import styles from './index.scss';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
@@ -10,11 +11,11 @@ const Question = props => {
     <Answer {...answersList[answer]} key={answer} />
   ));
   return (
-    <div>
-      <div>{props.title}</div>
-      <div>
-        <h1>Answers</h1>
-        <div>{renderedAnswers}</div>
+    <div className={styles.question}>
+      <div className={styles.title}>{props.title}</div>
+      <div className={styles.answers}>
+        <div className={styles.answers_list}>{renderedAnswers}</div>
+        <button className={styles.create}>Create new</button>
       </div>
     </div>
   );
