@@ -10,12 +10,7 @@ import useAction from 'hooks/useAction';
 const { getTests, createTest } = actions;
 
 const TestsList = () => {
-  const onGetTests = useAction(getTests.type);
   const onCreateTest = useAction(createTest.type);
-
-  React.useEffect(() => {
-    onGetTests();
-  }, [onGetTests]);
 
   const tests = useSelector(testsListSelector);
 

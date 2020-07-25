@@ -2,6 +2,7 @@
 
 import { createSlice } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
+import { questions } from 'models/questions/slice';
 
 const initialState = {
   tests: {},
@@ -27,9 +28,15 @@ const testsSlice = createSlice({
       state[payload.id] = payload;
     },
   },
+  // extraReducers: {
+  //   [questions.actions.createQuestionSuccess]: (state, { payload }) => {
+  //     state.tests[payload.testId].questions.push(payload.question.id);
+  //   },
+  // },
 });
 
 export const actions = actionTypes(testsSlice.actions);
+export const getTests = testsSlice.actions.getTests;
 
 export const tests = testsSlice;
 

@@ -13,9 +13,13 @@ const questionsSlice = createSlice({
   name: 'questionsSlice',
   initialState,
   reducers: {
-    getQuestions: state => {
-      state.questionsLoading = true;
-    },
+    // createQuestion: state => {
+    //   state.questionsLoading = true;
+    // },
+    // createQuestionSuccess: (state, { payload }) => {
+    //   state.questions[payload.question.id] = payload.question;
+    //   state.questionsLoading = false;
+    // },
   },
   extraReducers: {
     [tests.actions.getTestsSuccess]: (state, action) => {
@@ -25,5 +29,9 @@ const questionsSlice = createSlice({
 });
 
 export const actions = actionTypes(questionsSlice.actions);
+
+export const createQuestion = questionsSlice.actions.createQuestion;
+
+export const questions = questionsSlice;
 
 export default questionsSlice.reducer;

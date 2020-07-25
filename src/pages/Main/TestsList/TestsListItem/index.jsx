@@ -9,7 +9,7 @@ const TestListItem = props => {
   const handleTestClick = () => {
     history.push({
       pathname: `/test/${props.id}`,
-      state: { questions: props.questions },
+      state: { questions: props.questions, title: props.title },
     });
   };
   return (
