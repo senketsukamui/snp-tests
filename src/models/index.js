@@ -5,9 +5,9 @@ import usersReducer from './users/slice';
 
 import usersSagas from './users/sagas';
 
-import testsReducer from './tests/slice';
+import testsReducer from './testsq/slice';
 
-import testsSagas from './tests/sagas';
+import testsSagas from './testsq/sagas';
 
 import questionsReducer from './questions/slice';
 
@@ -24,5 +24,5 @@ export const createRootReducer = history => ({
 });
 
 export const rootSaga = function* rootSaga() {
-  yield all([usersSagas(), testsSagas(), questionsSagas()]);
+  yield all([testsSagas(), usersSagas(), questionsSagas()]);
 };

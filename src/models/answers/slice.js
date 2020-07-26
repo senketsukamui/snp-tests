@@ -1,8 +1,12 @@
 /* eslint-disable no-param-reassign */
-
-import { createSlice } from 'redux-starter-kit';
+import { actions as testsActions } from 'models/testsq/slice';
+import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
-import { tests } from 'models/tests/slice';
+import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
+
+const actionGetTestsSuccess = createAction(
+  constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)
+);
 
 const initialState = {
   answers: {},
@@ -13,7 +17,7 @@ const answersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [tests.actions.getTestsSuccess]: (state, action) => {
+    [actionGetTestsSuccess]: (state, action) => {
       state.answers = action.payload.answers;
     },
   },

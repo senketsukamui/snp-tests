@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './index.scss';
 import { useSelector } from 'react-redux';
-import { actions } from 'models/tests/slice';
-import { testsListSelector } from '../../../models/tests/selectors';
+import { actions } from 'models/testsq/slice';
+import { testsListSelector } from '../../../models/testsq/selectors';
 import TestListItem from './TestsListItem';
 import { Formik, Field, Form } from 'formik';
 import useAction from 'hooks/useAction';

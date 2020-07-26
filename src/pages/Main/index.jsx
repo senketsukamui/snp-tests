@@ -7,7 +7,7 @@ import Header from 'pages/Main/Header';
 import TestsList from 'pages/Main/TestsList';
 import { useHistory } from 'react-router-dom';
 import useAction from 'hooks/useAction';
-import { getTests } from 'models/tests/slice';
+import { getTests } from 'models/testsq/slice';
 
 const { currentSession } = actions;
 
@@ -21,7 +21,7 @@ const Main = () => {
     if (!isAuthorized) {
       dispatch(currentSession());
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthorized]);
 
   if (!isAuthorized) {
     history.push('/auth');
