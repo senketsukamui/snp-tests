@@ -3,9 +3,10 @@
 import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
 import { actions as questionsActions } from 'models/questions/slice';
+import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
 
 const actionCreateQuestionSuccess = createAction(
-  constructAction('createQuestionSuccess')
+  constructAction('createQuestionSuccess', ACTION_PREFIXES.questionPrefix)
 );
 
 const initialState = {
@@ -34,7 +35,8 @@ const testsSlice = createSlice({
   },
   extraReducers: {
     [actionCreateQuestionSuccess]: (state, { payload }) => {
-      state.tests[payload.testId].questions.push(payload.question.id);
+      console.log(payload);
+      state.tests[payload.id].questions.push(payload.question.id);
     },
   },
 });

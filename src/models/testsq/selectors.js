@@ -9,3 +9,9 @@ export const testsListSelector = createSelector(
   testsSelector,
   ({ tests }) => tests
 );
+
+export const testsListSelectorById = id =>
+  createSelector(
+    testsSelector,
+    ({ tests }) => tests[id]
+  );

@@ -4,13 +4,12 @@ import { takeLatest, all, put, call } from 'redux-saga/effects';
 import * as api from 'api';
 import { actions } from './slice';
 
+console.log(api);
+
 export function* createQuestion({ payload }) {
   try {
-    const response = yield call(
-      api.createTest,
-      payload.testId,
-      payload.questionTitle
-    );
+    console.log(payload);
+    const response = yield call(api.createQuestion, payload);
     if (response.status === 200) {
       yield put({
         type: actions.createQuestionSuccess.type,

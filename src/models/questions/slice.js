@@ -21,6 +21,7 @@ const questionsSlice = createSlice({
       state.questionsLoading = true;
     },
     createQuestionSuccess: (state, { payload }) => {
+      console.log(payload);
       state.questions[payload.question.id] = payload.question;
       state.questionsLoading = false;
     },
@@ -33,7 +34,5 @@ const questionsSlice = createSlice({
 });
 
 export const actions = actionTypes(questionsSlice.actions);
-
-export const createQuestion = questionsSlice.actions.createQuestion;
 
 export default questionsSlice.reducer;
