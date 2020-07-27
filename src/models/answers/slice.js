@@ -8,15 +8,23 @@ const actionGetTestsSuccess = createAction(
   constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)
 );
 
-
 const initialState = {
   answers: {},
+  answersLoading: false,
 };
 
 const answersSlice = createSlice({
   name: 'answersSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    createAnswer: state => {
+      state.answersLoading = true;
+    },
+    createAnswerSuccess: (state, { payload }) => {
+      state.answersLoading = false;
+      state.answers[payload.answer.id] = payload.answer;
+    },
+  },
   extraReducers: {
     [actionGetTestsSuccess]: (state, action) => {
       state.answers = action.payload.answers;

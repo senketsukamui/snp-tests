@@ -15,6 +15,8 @@ import questionsSagas from './questions/sagas';
 
 import answersReducer from './answers/slice';
 
+import answersSagas from './answers/sagas';
+
 export const createRootReducer = history => ({
   router: connectRouter(history),
   users: usersReducer,
@@ -24,5 +26,5 @@ export const createRootReducer = history => ({
 });
 
 export const rootSaga = function* rootSaga() {
-  yield all([testsSagas(), usersSagas(), questionsSagas()]);
+  yield all([testsSagas(), usersSagas(), questionsSagas(), answersSagas()]);
 };

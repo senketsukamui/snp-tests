@@ -4,7 +4,6 @@ import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
 import { actions as questionsActions } from 'models/questions/slice';
 import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
-import store from 'store';
 
 const actionCreateQuestionSuccess = createAction(
   constructAction('createQuestionSuccess', ACTION_PREFIXES.questionPrefix)

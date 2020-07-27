@@ -8,6 +8,10 @@ const actionGetTestsSuccess = createAction(
   constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)
 );
 
+const actionCreateAnswerSuccess = createAction(
+  constructAction('createAnswerSuccess', ACTION_PREFIXES.answersPrefix)
+);
+
 const initialState = {
   questions: {},
   questionsLoading: false,
@@ -35,6 +39,9 @@ const questionsSlice = createSlice({
   extraReducers: {
     [actionGetTestsSuccess]: (state, { payload }) => {
       state.questions = payload.questions;
+    },
+    [actionCreateAnswerSuccess]: (state, { payload }) => {
+      state.questions[payload.questionId].answers.push(payload.answer.id);
     },
   },
 });

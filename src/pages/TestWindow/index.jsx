@@ -55,8 +55,11 @@ const TestWindow = props => {
       ) : (
         <div className={styles.no_questions}>No questions here</div>
       )}
-      {showInput ? '' : <button onClick={handleCreateInputShow}>Create</button>}
-      {showInput ? newQuestionInput : ''}
+      {showInput ? (
+        newQuestionInput
+      ) : (
+        <button onClick={handleCreateInputShow}>Create</button>
+      )}
     </div>
   );
 };
