@@ -10,3 +10,9 @@ export const createQuestion = ({ testId, questionTitle }) => {
     },
   });
 };
+
+export const deleteQuestion = questionId => {
+  return request.DELETE({
+    url: `/questions/${questionId}`,
+  });
+};

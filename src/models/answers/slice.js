@@ -8,6 +8,7 @@ const actionGetTestsSuccess = createAction(
   constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)
 );
 
+
 const initialState = {
   answers: {},
 };

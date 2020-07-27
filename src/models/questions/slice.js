@@ -21,8 +21,14 @@ const questionsSlice = createSlice({
       state.questionsLoading = true;
     },
     createQuestionSuccess: (state, { payload }) => {
-      console.log(payload);
       state.questions[payload.question.id] = payload.question;
+      state.questionsLoading = false;
+    },
+    deleteQuestion: state => {
+      state.questionsLoading = true;
+    },
+    deleteQuestionSuccess: (state, { payload }) => {
+      delete state.questions[payload.questionId];
       state.questionsLoading = false;
     },
   },

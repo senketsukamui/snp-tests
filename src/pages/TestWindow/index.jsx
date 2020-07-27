@@ -18,7 +18,7 @@ const TestWindow = props => {
   const onQuestionCreate = useAction(questionsActions.createQuestion.type);
 
   const renderedQuestions = questionIds.map((id, index) => (
-    <Question {...questionList[id]} key={id} index={index} />
+    <Question {...questionList[id]} key={id} index={index} testId={testId} />
   ));
 
   const [showInput, changeShowInputState] = React.useState(false);
