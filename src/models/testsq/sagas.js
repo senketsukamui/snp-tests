@@ -2,6 +2,7 @@ import { takeLatest, all, put, call } from 'redux-saga/effects';
 import * as api from 'api';
 import { actions } from './slice';
 import { normalize, schema } from 'normalizr';
+import { pullAllBy } from 'lodash';
 
 export function* getTests() {
   try {
@@ -40,9 +41,22 @@ export function* createTest({ payload }) {
   }
 }
 
+export function* editTest({ payload }) {
+  try {
+    const response = yield call(api.editTest, payload);
+    yield put({
+      type: actions.editTestSuccess.type,
+      payload: response.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.getTests, getTests),
     takeLatest(actions.createTest, createTest),
+    takeLatest(actions.editTest, editTest),
   ]);
 }

@@ -14,3 +14,12 @@ export const createTest = ({ title }) => {
     },
   });
 };
+
+export const editTest = ({id, title}) => {
+  return request.PATCH({
+    url: `/tests/${id}`,
+    data: {
+      title,
+    },
+  });
+};

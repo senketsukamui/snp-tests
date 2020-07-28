@@ -5,6 +5,7 @@ import Question from './Question';
 import PropTypes from 'prop-types';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
+import { actions as testsActions } from 'models/testsq/slice';
 import useAction from 'hooks/useAction';
 import { testsListSelectorById } from '../../models/testsq/selectors';
 
@@ -15,6 +16,7 @@ const TestWindow = props => {
   const testTitle = testById.title;
   const questionList = useSelector(questionsListSelector);
   const onQuestionCreate = useAction(questionsActions.createQuestion.type);
+  const onTestTitleEdit = useAction(testsActions.editTest.type);
 
   const renderedQuestions = questionIds.map((id, index) => (
     <Question {...questionList[id]} key={id} index={index} testId={testId} />
@@ -22,6 +24,7 @@ const TestWindow = props => {
 
   const [showInput, changeShowInputState] = React.useState(false);
   const [questionState, changeQuestionState] = React.useState('');
+  const [testTitleState, changeTestTitleState] = React.useState(testTitle);
 
   const handleQuestionInputChange = e => {
     changeQuestionState(e.target.value);
@@ -38,6 +41,17 @@ const TestWindow = props => {
     });
   };
 
+  const handleTestEdit = () => {
+    onTestTitleEdit({
+      id: testId,
+      title: testTitleState,
+    });
+  };
+
+  const handleTestTitleChange = e => {
+    changeTestTitleState(e.target.value);
+  };
+
   const newQuestionInput = (
     <div>
       <div>Question title:</div>
@@ -48,7 +62,13 @@ const TestWindow = props => {
 
   return (
     <div className={styles.test}>
-      <h1 className={styles.test_title}>{testTitle}</h1>
+      <input
+        type="text"
+        className={styles.test_title}
+        value={testTitleState}
+        onChange={handleTestTitleChange}
+      />
+      <button onClick={handleTestEdit}>Edit test</button>
       {renderedQuestions.length ? (
         renderedQuestions
       ) : (
