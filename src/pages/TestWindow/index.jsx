@@ -4,7 +4,6 @@ import { questionsListSelector } from '../../models/questions/selectors';
 import Question from './Question';
 import PropTypes from 'prop-types';
 import styles from './index.scss';
-import add from 'assets/images/plus.png';
 import { actions as questionsActions } from 'models/questions/slice';
 import useAction from 'hooks/useAction';
 import { testsListSelectorById } from '../../models/testsq/selectors';
@@ -34,7 +33,7 @@ const TestWindow = props => {
 
   const handleQuestionCreate = () => {
     onQuestionCreate({
-      testId: testId,
+      testId,
       questionTitle: questionState,
     });
   };
@@ -65,11 +64,11 @@ const TestWindow = props => {
 };
 
 TestWindow.propTypes = {
-  location: PropTypes.object,
+  match: PropTypes.object,
 };
 
 TestWindow.defaultProps = {
-  location: {},
+  match: {},
 };
 
 export default TestWindow;

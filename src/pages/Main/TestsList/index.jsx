@@ -7,7 +7,7 @@ import TestListItem from './TestsListItem';
 import { Formik, Field, Form } from 'formik';
 import useAction from 'hooks/useAction';
 
-const { getTests, createTest } = actions;
+const { createTest } = actions;
 
 const TestsList = () => {
   const onCreateTest = useAction(createTest.type);

@@ -2,7 +2,6 @@
 
 import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
-import { actions as questionsActions } from 'models/questions/slice';
 import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
 
 const actionCreateQuestionSuccess = createAction(
@@ -54,6 +53,6 @@ const testsSlice = createSlice({
 
 export const actions = actionTypes(testsSlice.actions);
 
-export const getTests = testsSlice.actions.getTests;
+export const { getTests } = testsSlice.actions;
 
 export default testsSlice.reducer;

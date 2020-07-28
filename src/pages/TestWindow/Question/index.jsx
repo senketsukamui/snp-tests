@@ -6,6 +6,7 @@ import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
 import { actions as answersActions } from 'models/answers/slice';
 import useAction from 'hooks/useAction';
+import PropTypes from 'prop-types';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
@@ -72,6 +73,26 @@ const Question = props => {
       <button onClick={handleDeleteButtonClick}>Delete question</button>
     </div>
   );
+};
+
+Question.propTypes = {
+  id: PropTypes.number,
+  testId: PropTypes.number,
+  index: PropTypes.number,
+  title: PropTypes.string,
+  question_type: PropTypes.string,
+  answers: PropTypes.array,
+  answer: PropTypes.number,
+};
+
+Question.defaultProps = {
+  id: 1,
+  testId: 1,
+  index: 1,
+  title: 'something went wrong',
+  question_type: 'single',
+  answers: [],
+  answer: 1,
 };
 
 export default Question;

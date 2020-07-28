@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-import { actions as testsActions } from 'models/testsq/slice';
 import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
 import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';

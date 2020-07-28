@@ -1,6 +1,7 @@
 import React from 'react';
 import Checkbox from 'components/Checkbox';
 import styles from './index.scss';
+import PropTypes from 'prop-types';
 
 const Answer = props => {
   return (
@@ -9,6 +10,16 @@ const Answer = props => {
       {props.text}
     </div>
   );
+};
+
+Answer.propTypes = {
+  is_right: PropTypes.bool,
+  text: PropTypes.string,
+};
+
+Answer.defaultProps = {
+  is_right: false,
+  text: '',
 };
 
 export default Answer;
