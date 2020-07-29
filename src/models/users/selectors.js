@@ -14,3 +14,8 @@ export const usernameSelector = createSelector(
   usersSelector,
   ({ username }) => username
 );
+
+export const isAdminSelector = createSelector(
+  usersSelector,
+  ({ isAdmin }) => isAdmin
+);

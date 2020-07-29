@@ -8,13 +8,21 @@ import { actions as questionsActions } from 'models/questions/slice';
 import { actions as testsActions } from 'models/testsq/slice';
 import useAction from 'hooks/useAction';
 import { testsListSelectorById } from '../../models/testsq/selectors';
+import { isAdminSelector } from '../../models/users/selectors';
+import { useHistory } from 'react-router-dom';
 
 const TestWindow = props => {
+  const history = useHistory();
+  const questionList = useSelector(questionsListSelector);
+  const isAdmin = useSelector(isAdminSelector);
+  if (!isAdmin) {
+    history.push('/');
+  }
+  console.log('test', props);
   const testId = props.match.params.id;
   const testById = useSelector(testsListSelectorById(testId));
-  const questionIds = testById.questions;
   const testTitle = testById.title;
-  const questionList = useSelector(questionsListSelector);
+  const questionIds = testById.questions;
   const onQuestionCreate = useAction(questionsActions.createQuestion.type);
   const onTestTitleEdit = useAction(testsActions.editTest.type);
 
@@ -95,4 +103,4 @@ TestWindow.defaultProps = {
   match: {},
 };
 
-export default TestWindow;
+export default React.memo(TestWindow);
