@@ -9,3 +9,12 @@ export const createAnswer = (questionId, title) => {
     },
   });
 };
+
+export const editAnswer = payload => {
+  return request.PATCH({
+    url: `/answers/${payload.id}`,
+    data: {
+      ...payload,
+    },
+  });
+};

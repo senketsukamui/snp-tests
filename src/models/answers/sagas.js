@@ -23,6 +23,26 @@ export function* createAnswer({ payload }) {
   }
 }
 
+export function* editAnswer({ payload }) {
+  try {
+    console.log(payload);
+    const response = yield call(api.editAnswer, payload);
+    if (response.status === 200) {
+      yield put({
+        type: actions.editAnswerSuccess.type,
+        payload: {
+          ...response.data,
+        },
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
-  yield all([takeLatest(actions.createAnswer, createAnswer)]);
+  yield all([
+    takeLatest(actions.createAnswer, createAnswer),
+    takeLatest(actions.editAnswer, editAnswer),
+  ]);
 }

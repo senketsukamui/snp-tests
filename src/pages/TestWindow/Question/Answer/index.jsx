@@ -6,7 +6,12 @@ import PropTypes from 'prop-types';
 const Answer = props => {
   return (
     <div className={styles.answer}>
-      <Checkbox checked={props.is_right} className={styles.answer_checkbox} />
+      <Checkbox
+        checked={props.is_right}
+        className={styles.answer_checkbox}
+        id={props.id}
+        text={props.text}
+      />
       {props.text}
     </div>
   );

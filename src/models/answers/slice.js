@@ -23,6 +23,13 @@ const answersSlice = createSlice({
       state.answersLoading = false;
       state.answers[payload.answer.id] = payload.answer;
     },
+    editAnswer: state => {
+      state.answersLoading = true;
+    },
+    editAnswerSuccess: (state, { payload }) => {
+      state.answersLoading = false;
+      state.answers[payload.id] = payload;
+    },
   },
   extraReducers: {
     [actionGetTestsSuccess]: (state, action) => {

@@ -62,13 +62,17 @@ const TestWindow = props => {
 
   return (
     <div className={styles.test}>
-      <input
-        type="text"
-        className={styles.test_title}
-        value={testTitleState}
-        onChange={handleTestTitleChange}
-      />
-      <button onClick={handleTestEdit}>Edit test</button>
+      <div className={styles.header}>
+        <input
+          type="text"
+          className={styles.test_title}
+          value={testTitleState}
+          onChange={handleTestTitleChange}
+        />
+        <button onClick={handleTestEdit} className={styles.test_edit}>
+          Edit test
+        </button>
+      </div>
       {renderedQuestions.length ? (
         renderedQuestions
       ) : (

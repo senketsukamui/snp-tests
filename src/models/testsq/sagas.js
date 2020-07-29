@@ -2,7 +2,6 @@ import { takeLatest, all, put, call } from 'redux-saga/effects';
 import * as api from 'api';
 import { actions } from './slice';
 import { normalize, schema } from 'normalizr';
-import { pullAllBy } from 'lodash';
 
 export function* getTests() {
   try {
