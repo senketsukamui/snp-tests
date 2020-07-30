@@ -18,7 +18,6 @@ const TestWindow = props => {
   if (!isAdmin) {
     history.push('/');
   }
-  console.log('test', props);
   const testId = props.match.params.id;
   const testById = useSelector(testsListSelectorById(testId));
   const testTitle = testById.title;

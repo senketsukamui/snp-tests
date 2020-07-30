@@ -5,14 +5,29 @@
   font-size: 2rem;
   background-color: #a8dadc;
   border-radius: 20px;
+  &_header {
+    display: flex;
+  }
+}
+
+.type {
+  font-size: 1.2rem;
+  margin-left: 4rem;
+  background-color: #457b9d;
+  border-radius: 10px;
+  display: flex;
+  align-self: center;
+  padding: 10px;
+}
+
+.title {
+  margin-bottom: 15px;
+  display: flex;
+  align-self: center;
 }
 
 .answers {
   font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.title {
   margin-bottom: 15px;
 }
 

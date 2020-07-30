@@ -12,7 +12,7 @@ const Answer = props => {
         id={props.id}
         text={props.text}
       />
-      {props.text}
+      <div className={styles.text}>{props.text}</div>
     </div>
   );
 };

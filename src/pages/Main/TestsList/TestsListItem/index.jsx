@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './index.scss';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { format } from 'date-fns';
 
 const TestListItem = props => {
   const history = useHistory();
-
   const handleTestClick = () => {
     history.push({
       pathname: `/test/${props.id}`,
@@ -15,7 +15,9 @@ const TestListItem = props => {
   return (
     <div className={styles.item} onClick={handleTestClick}>
       <h1 className={styles.title}>{props.title}</h1>
-      <div className={styles.date}>{Date(props.created_at)}</div>
+      <div className={styles.date}>
+        {format(new Date(props.created_at), 'Pp')}
+      </div>
     </div>
   );
 };

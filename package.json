@@ -153,6 +153,7 @@
     "chalk": "^2.4.1",
     "compression": "^1.7.2",
     "connected-react-router": "^6.3.1",
+    "date-fns": "^2.15.0",
     "express": "^4.16.3",
     "express-formidable": "^1.2.0",
     "formik": "^2.1.5",

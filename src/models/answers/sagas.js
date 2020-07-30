@@ -25,7 +25,6 @@ export function* createAnswer({ payload }) {
 
 export function* editAnswer({ payload }) {
   try {
-    console.log(payload);
     const response = yield call(api.editAnswer, payload);
     if (response.status === 200) {
       yield put({

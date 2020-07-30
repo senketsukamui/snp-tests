@@ -45,7 +45,12 @@ const Question = props => {
 
   return (
     <div className={styles.question}>
-      <div className={styles.title}>{`${props.index + 1}. ${props.title}`}</div>
+      <div className={styles.question_header}>
+        <div className={styles.title}>{`${props.index + 1}. ${
+          props.title
+        }`}</div>
+        <div className={styles.type}>{props.question_type}</div>
+      </div>
       {props.question_type === 'single' ||
       props.question_type === 'multiple' ? (
         <div className={styles.answers}>

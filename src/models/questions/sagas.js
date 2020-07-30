@@ -23,7 +23,6 @@ export function* createQuestion({ payload }) {
 
 export function* deleteQuestion({ payload }) {
   try {
-    console.log(payload);
 
     const response = yield call(api.deleteQuestion, payload.questionId);
     if (response.status === 200) {
