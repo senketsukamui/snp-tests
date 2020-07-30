@@ -3,4 +3,17 @@
   display: flex;
   justify-content: space-between;
   padding: 8px;
+  &_info {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.date {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.edit {
+  cursor: pointer;
 }

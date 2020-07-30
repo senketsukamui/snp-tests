@@ -10,7 +10,6 @@
 
 .username {
   font-size: 1.5rem;
-  padding: 7px;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -27,4 +26,12 @@
     background-color: #f1faee;
     color: black;
   }
+}
+
+.user_info {
+  padding: 7px;
+}
+
+.admin {
+  margin-top: 5px;
 }

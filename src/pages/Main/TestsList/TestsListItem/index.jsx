@@ -3,6 +3,7 @@ import styles from './index.scss';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { format } from 'date-fns';
+import edit from 'assets/images/edit.png';
 
 const TestListItem = props => {
   const history = useHistory();
@@ -13,10 +14,17 @@ const TestListItem = props => {
     });
   };
   return (
-    <div className={styles.item} onClick={handleTestClick}>
-      <h1 className={styles.title}>{props.title}</h1>
-      <div className={styles.date}>
-        {format(new Date(props.created_at), 'Pp')}
+    <div className={styles.item}>
+      <div className={styles.item_info}>
+        <h1 className={styles.title}>{props.title}</h1>
+        <label className={styles.date}>
+          {format(new Date(props.created_at), 'Pp')}
+        </label>
+      </div>
+      <div className={styles.buttons}>
+        <button className={styles.edit} onClick={handleTestClick}>
+          <img src={edit} alt="" />
+        </button>
       </div>
     </div>
   );
