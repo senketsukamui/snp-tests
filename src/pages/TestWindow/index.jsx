@@ -10,6 +10,7 @@ import useAction from 'hooks/useAction';
 import { testsListSelectorById } from '../../models/testsq/selectors';
 import { isAdminSelector } from '../../models/users/selectors';
 import { useHistory } from 'react-router-dom';
+import Dropdown from 'components/Dropdown';
 
 const TestWindow = props => {
   const history = useHistory();
@@ -24,21 +25,16 @@ const TestWindow = props => {
   const questionIds = testById.questions;
   const onQuestionCreate = useAction(questionsActions.createQuestion.type);
   const onTestTitleEdit = useAction(testsActions.editTest.type);
-
+  const answerTypes = ['single', 'multiple', 'number'];
   const renderedQuestions = questionIds.map((id, index) => (
     <Question {...questionList[id]} key={id} index={index} testId={testId} />
   ));
 
-  const [showInput, changeShowInputState] = React.useState(false);
   const [questionState, changeQuestionState] = React.useState('');
   const [testTitleState, changeTestTitleState] = React.useState(testTitle);
 
   const handleQuestionInputChange = e => {
     changeQuestionState(e.target.value);
-  };
-
-  const handleCreateInputShow = () => {
-    changeShowInputState(!showInput);
   };
 
   const handleQuestionCreate = () => {
@@ -59,14 +55,6 @@ const TestWindow = props => {
     changeTestTitleState(e.target.value);
   };
 
-  const newQuestionInput = (
-    <div>
-      <div>Question title:</div>
-      <input type="text" onChange={handleQuestionInputChange} />
-      <button onClick={handleQuestionCreate}>Create</button>
-    </div>
-  );
-
   return (
     <div className={styles.test}>
       <div className={styles.header}>
@@ -80,15 +68,16 @@ const TestWindow = props => {
           Edit test
         </button>
       </div>
+      <div>
+        <div>Question title:</div>
+        <input type="text" onChange={handleQuestionInputChange} />
+        <button onClick={handleQuestionCreate}>Create</button>
+        <Dropdown items={answerTypes} />
+      </div>
       {renderedQuestions.length ? (
         renderedQuestions
       ) : (
         <div className={styles.no_questions}>No questions here</div>
-      )}
-      {showInput ? (
-        newQuestionInput
-      ) : (
-        <button onClick={handleCreateInputShow}>Create</button>
       )}
     </div>
   );
