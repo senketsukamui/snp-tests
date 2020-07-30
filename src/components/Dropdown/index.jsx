@@ -12,7 +12,7 @@ const Dropdown = props => {
     setOpen(!open);
   };
   return (
-    <div className={styles.dropdown_wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.selection} onClick={handleDropdownClick}>
         {selected}
       </div>
