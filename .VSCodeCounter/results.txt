@@ -1,0 +1,192 @@
+Date : 2020-07-30 20:56:04
+Directory : d:\snp\snp-tests
+Total : 121 files,  3100 codes, 258 comments, 584 blanks, all 3942 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JavaScript       |         83 |      1,783 |         50 |        339 |      2,172 |
+| JavaScript React |         14 |        563 |          0 |        100 |        663 |
+| SCSS             |         16 |        540 |          0 |        106 |        646 |
+| YAML             |          2 |         93 |          7 |         21 |        121 |
+| JSON             |          3 |         74 |        196 |          2 |        272 |
+| Markdown         |          1 |         27 |          0 |         11 |         38 |
+| EditorConfig     |          1 |         10 |          5 |          3 |         18 |
+| Django HTML      |          1 |         10 |          0 |          2 |         12 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                  |        121 |      3,100 |        258 |        584 |      3,942 |
+| src                                                                |         89 |      2,298 |         18 |        476 |      2,792 |
+| src\api                                                            |          6 |        117 |          0 |         28 |        145 |
+| src\components                                                     |         11 |        197 |          0 |         43 |        240 |
+| src\components\App                                                 |          3 |         43 |          0 |         14 |         57 |
+| src\components\AppRouter                                           |          2 |         22 |          0 |          6 |         28 |
+| src\components\Checkbox                                            |          2 |         40 |          0 |          7 |         47 |
+| src\components\Dropdown                                            |          2 |         56 |          0 |          7 |         63 |
+| src\components\Loading                                             |          2 |         36 |          0 |          9 |         45 |
+| src\config                                                         |          4 |         54 |          4 |          6 |         64 |
+| src\hocs                                                           |          1 |         18 |          0 |          3 |         21 |
+| src\hooks                                                          |          5 |         42 |          0 |         17 |         59 |
+| src\models                                                         |         13 |        436 |          5 |         81 |        522 |
+| src\models\answers                                                 |          3 |         90 |          1 |         13 |        104 |
+| src\models\questions                                               |          3 |         90 |          2 |         17 |        109 |
+| src\models\testsq                                                  |          3 |        121 |          1 |         24 |        146 |
+| src\models\users                                                   |          3 |        115 |          1 |         16 |        132 |
+| src\pages                                                          |         19 |        635 |          0 |        108 |        743 |
+| src\pages\Authorization                                            |          2 |        116 |          0 |         19 |        135 |
+| src\pages\Main                                                     |          8 |        227 |          0 |         43 |        270 |
+| src\pages\Main\Header                                              |          2 |         58 |          0 |         14 |         72 |
+| src\pages\Main\TestsList                                           |          4 |        129 |          0 |         20 |        149 |
+| src\pages\Main\TestsList\TestsListItem                             |          2 |         60 |          0 |          8 |         68 |
+| src\pages\NotFound                                                 |          3 |         14 |          0 |          6 |         20 |
+| src\pages\TestWindow                                               |          6 |        278 |          0 |         40 |        318 |
+| src\pages\TestWindow\Question                                      |          4 |        168 |          0 |         25 |        193 |
+| src\pages\TestWindow\Question\Answer                               |          2 |         40 |          0 |          7 |         47 |
+| src\server                                                         |         14 |        296 |          3 |         82 |        381 |
+| src\store                                                          |          1 |         19 |          0 |          6 |         25 |
+| src\styles                                                         |          4 |        275 |          0 |         59 |        334 |
+| src\styles\variables                                               |          3 |          7 |          0 |          3 |         10 |
+| src\utils                                                          |          9 |        137 |          3 |         29 |        169 |
+| tools                                                              |         10 |        212 |         31 |         43 |        286 |
+| tools\openBrowser                                                  |          1 |         84 |         29 |         14 |        127 |
+| tools\scripts                                                      |          3 |         31 |          1 |         10 |         42 |
+| tools\static-server                                                |          2 |         22 |          0 |          8 |         30 |
+| tools\sw                                                           |          3 |         43 |          1 |          7 |         51 |
+| tools\sw\pwa                                                       |          3 |         43 |          1 |          7 |         51 |
+| webpack                                                            |         12 |        292 |          0 |         24 |        316 |
+| webpack\loaders                                                    |          5 |        116 |          0 |         11 |        127 |
+| webpack\loaders\styles                                             |          4 |         80 |          0 |          9 |         89 |
++--------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                           | language         | code       | comment    | blank      | total      |
++--------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| d:\snp\snp-tests\.babelrc.js                                       | JavaScript       |         33 |          0 |          1 |         34 |
+| d:\snp\snp-tests\.editorconfig                                     | EditorConfig     |         10 |          5 |          3 |         18 |
+| d:\snp\snp-tests\.eslintrc.js                                      | JavaScript       |         62 |          0 |          2 |         64 |
+| d:\snp\snp-tests\.gitlab-ci.yml                                    | YAML             |         16 |          0 |          4 |         20 |
+| d:\snp\snp-tests\.prettierrc                                       | JSON             |          5 |          0 |          1 |          6 |
+| d:\snp\snp-tests\.stylelintrc.js                                   | JavaScript       |         18 |          0 |          0 |         18 |
+| d:\snp\snp-tests\README.md                                         | Markdown         |         27 |          0 |         11 |         38 |
+| d:\snp\snp-tests\deploy.yml                                        | YAML             |         77 |          7 |         17 |        101 |
+| d:\snp\snp-tests\package.json                                      | JSON             |         49 |        196 |          0 |        245 |
+| d:\snp\snp-tests\postcss.config.js                                 | JavaScript       |          1 |          1 |          2 |          4 |
+| d:\snp\snp-tests\src\api\answers.js                                | JavaScript       |         18 |          0 |          3 |         21 |
+| d:\snp\snp-tests\src\api\index.js                                  | JavaScript       |          4 |          0 |          1 |          5 |
+| d:\snp\snp-tests\src\api\questions.js                              | JavaScript       |         16 |          0 |          3 |         19 |
+| d:\snp\snp-tests\src\api\request.js                                | JavaScript       |         37 |          0 |         13 |         50 |
+| d:\snp\snp-tests\src\api\tests.js                                  | JavaScript       |         22 |          0 |          4 |         26 |
+| d:\snp\snp-tests\src\api\users.js                                  | JavaScript       |         20 |          0 |          4 |         24 |
+| d:\snp\snp-tests\src\client.js                                     | JavaScript       |         43 |          3 |         12 |         58 |
+| d:\snp\snp-tests\src\components\AppRouter\AppRouter.jsx            | JavaScript React |         21 |          0 |          5 |         26 |
+| d:\snp\snp-tests\src\components\AppRouter\index.js                 | JavaScript       |          1 |          0 |          1 |          2 |
+| d:\snp\snp-tests\src\components\App\App.jsx                        | JavaScript React |         24 |          0 |          8 |         32 |
+| d:\snp\snp-tests\src\components\App\App.scss                       | SCSS             |         18 |          0 |          5 |         23 |
+| d:\snp\snp-tests\src\components\App\index.js                       | JavaScript       |          1 |          0 |          1 |          2 |
+| d:\snp\snp-tests\src\components\Checkbox\index.jsx                 | JavaScript React |         32 |          0 |          5 |         37 |
+| d:\snp\snp-tests\src\components\Checkbox\index.scss                | SCSS             |          8 |          0 |          2 |         10 |
+| d:\snp\snp-tests\src\components\Dropdown\index.jsx                 | JavaScript React |         33 |          0 |          3 |         36 |
+| d:\snp\snp-tests\src\components\Dropdown\index.scss                | SCSS             |         23 |          0 |          4 |         27 |
+| d:\snp\snp-tests\src\components\Loading\Loading.jsx                | JavaScript React |         35 |          0 |          8 |         43 |
+| d:\snp\snp-tests\src\components\Loading\index.js                   | JavaScript       |          1 |          0 |          1 |          2 |
+| d:\snp\snp-tests\src\config\index.js                               | JavaScript       |         45 |          0 |          3 |         48 |
+| d:\snp\snp-tests\src\config\production.js                          | JavaScript       |          2 |          1 |          1 |          4 |
+| d:\snp\snp-tests\src\config\shared.js                              | JavaScript       |          5 |          2 |          1 |          8 |
+| d:\snp\snp-tests\src\config\staging.js                             | JavaScript       |          2 |          1 |          1 |          4 |
+| d:\snp\snp-tests\src\hocs\browser.js                               | JavaScript       |         18 |          0 |          3 |         21 |
+| d:\snp\snp-tests\src\hooks\useAction.js                            | JavaScript       |         10 |          0 |          4 |         14 |
+| d:\snp\snp-tests\src\hooks\useBrowser.js                           | JavaScript       |         13 |          0 |          3 |         16 |
+| d:\snp\snp-tests\src\hooks\useRendered.js                          | JavaScript       |          8 |          0 |          4 |         12 |
+| d:\snp\snp-tests\src\hooks\useSelector.js                          | JavaScript       |          2 |          0 |          2 |          4 |
+| d:\snp\snp-tests\src\hooks\useVariable.js                          | JavaScript       |          9 |          0 |          4 |         13 |
+| d:\snp\snp-tests\src\models\answers\sagas.js                       | JavaScript       |         44 |          0 |          4 |         48 |
+| d:\snp\snp-tests\src\models\answers\selectors.js                   | JavaScript       |          9 |          0 |          3 |         12 |
+| d:\snp\snp-tests\src\models\answers\slice.js                       | JavaScript       |         37 |          1 |          6 |         44 |
+| d:\snp\snp-tests\src\models\index.js                               | JavaScript       |         20 |          0 |         11 |         31 |
+| d:\snp\snp-tests\src\models\questions\sagas.js                     | JavaScript       |         38 |          1 |          6 |         45 |
+| d:\snp\snp-tests\src\models\questions\selectors.js                 | JavaScript       |          9 |          0 |          3 |         12 |
+| d:\snp\snp-tests\src\models\questions\slice.js                     | JavaScript       |         43 |          1 |          8 |         52 |
+| d:\snp\snp-tests\src\models\testsq\sagas.js                        | JavaScript       |         52 |          0 |         10 |         62 |
+| d:\snp\snp-tests\src\models\testsq\selectors.js                    | JavaScript       |         14 |          0 |          4 |         18 |
+| d:\snp\snp-tests\src\models\testsq\slice.js                        | JavaScript       |         55 |          1 |         10 |         66 |
+| d:\snp\snp-tests\src\models\users\sagas.js                         | JavaScript       |         52 |          0 |          5 |         57 |
+| d:\snp\snp-tests\src\models\users\selectors.js                     | JavaScript       |         17 |          0 |          5 |         22 |
+| d:\snp\snp-tests\src\models\users\slice.js                         | JavaScript       |         46 |          1 |          6 |         53 |
+| d:\snp\snp-tests\src\pages\Authorization\index.jsx                 | JavaScript React |         62 |          0 |         11 |         73 |
+| d:\snp\snp-tests\src\pages\Authorization\index.scss                | SCSS             |         54 |          0 |          8 |         62 |
+| d:\snp\snp-tests\src\pages\Main\Header\index.jsx                   | JavaScript React |         26 |          0 |          8 |         34 |
+| d:\snp\snp-tests\src\pages\Main\Header\index.scss                  | SCSS             |         32 |          0 |          6 |         38 |
+| d:\snp\snp-tests\src\pages\Main\TestsList\TestsListItem\index.jsx  | JavaScript React |         43 |          0 |          5 |         48 |
+| d:\snp\snp-tests\src\pages\Main\TestsList\TestsListItem\index.scss | SCSS             |         17 |          0 |          3 |         20 |
+| d:\snp\snp-tests\src\pages\Main\TestsList\index.jsx                | JavaScript React |         40 |          0 |          7 |         47 |
+| d:\snp\snp-tests\src\pages\Main\TestsList\index.scss               | SCSS             |         29 |          0 |          5 |         34 |
+| d:\snp\snp-tests\src\pages\Main\index.jsx                          | JavaScript React |         35 |          0 |          8 |         43 |
+| d:\snp\snp-tests\src\pages\Main\index.scss                         | SCSS             |          5 |          0 |          1 |          6 |
+| d:\snp\snp-tests\src\pages\NotFound\NotFound.jsx                   | JavaScript React |         10 |          0 |          4 |         14 |
+| d:\snp\snp-tests\src\pages\NotFound\NotFound.scss                  | SCSS             |          3 |          0 |          1 |          4 |
+| d:\snp\snp-tests\src\pages\NotFound\index.js                       | JavaScript       |          1 |          0 |          1 |          2 |
+| d:\snp\snp-tests\src\pages\TestWindow\Question\Answer\index.jsx    | JavaScript React |         26 |          0 |          5 |         31 |
+| d:\snp\snp-tests\src\pages\TestWindow\Question\Answer\index.scss   | SCSS             |         14 |          0 |          2 |         16 |
+| d:\snp\snp-tests\src\pages\TestWindow\Question\index.jsx           | JavaScript React |         92 |          0 |         12 |        104 |
+| d:\snp\snp-tests\src\pages\TestWindow\Question\index.scss          | SCSS             |         36 |          0 |          6 |         42 |
+| d:\snp\snp-tests\src\pages\TestWindow\index.jsx                    | JavaScript React |         84 |          0 |         11 |         95 |
+| d:\snp\snp-tests\src\pages\TestWindow\index.scss                   | SCSS             |         26 |          0 |          4 |         30 |
+| d:\snp\snp-tests\src\routes.js                                     | JavaScript       |         29 |          0 |          2 |         31 |
+| d:\snp\snp-tests\src\server\dev-spa.js                             | JavaScript       |          6 |          0 |          3 |          9 |
+| d:\snp\snp-tests\src\server\dev.js                                 | JavaScript       |         15 |          0 |          5 |         20 |
+| d:\snp\snp-tests\src\server\index.js                               | JavaScript       |          5 |          0 |          3 |          8 |
+| d:\snp\snp-tests\src\server\loadBranchData.js                      | JavaScript       |         15 |          0 |          4 |         19 |
+| d:\snp\snp-tests\src\server\logger.js                              | JavaScript       |          4 |          0 |          2 |          6 |
+| d:\snp\snp-tests\src\server\mailer.js                              | JavaScript       |         33 |          0 |          7 |         40 |
+| d:\snp\snp-tests\src\server\middlewares.js                         | JavaScript       |         13 |          0 |          2 |         15 |
+| d:\snp\snp-tests\src\server\render.js                              | JavaScript       |         78 |          3 |         22 |        103 |
+| d:\snp\snp-tests\src\server\router.js                              | JavaScript       |         41 |          0 |          8 |         49 |
+| d:\snp\snp-tests\src\server\server.js                              | JavaScript       |         21 |          0 |          6 |         27 |
+| d:\snp\snp-tests\src\server\spa-dev-server.js                      | JavaScript       |         18 |          0 |          7 |         25 |
+| d:\snp\snp-tests\src\server\spa-router.js                          | JavaScript       |          8 |          0 |          3 |         11 |
+| d:\snp\snp-tests\src\server\static-server.js                       | JavaScript       |         19 |          0 |          5 |         24 |
+| d:\snp\snp-tests\src\server\webpack-dev.js                         | JavaScript       |         20 |          0 |          5 |         25 |
+| d:\snp\snp-tests\src\store\index.js                                | JavaScript       |         19 |          0 |          6 |         25 |
+| d:\snp\snp-tests\src\styles\normalize.scss                         | SCSS             |        268 |          0 |         56 |        324 |
+| d:\snp\snp-tests\src\styles\variables\colors.scss                  | SCSS             |          3 |          0 |          1 |          4 |
+| d:\snp\snp-tests\src\styles\variables\fonts.scss                   | SCSS             |          2 |          0 |          1 |          3 |
+| d:\snp\snp-tests\src\styles\variables\index.scss                   | SCSS             |          2 |          0 |          1 |          3 |
+| d:\snp\snp-tests\src\utils\actionTypes.js                          | JavaScript       |          9 |          1 |          1 |         11 |
+| d:\snp\snp-tests\src\utils\constructAction.js                      | JavaScript       |          7 |          0 |          2 |          9 |
+| d:\snp\snp-tests\src\utils\createAction.js                         | JavaScript       |          1 |          0 |          1 |          2 |
+| d:\snp\snp-tests\src\utils\getBrowserInfo.js                       | JavaScript       |         11 |          0 |          3 |         14 |
+| d:\snp\snp-tests\src\utils\matchRoutes.js                          | JavaScript       |         14 |          0 |          3 |         17 |
+| d:\snp\snp-tests\src\utils\normalizeById.js                        | JavaScript       |         13 |          0 |          2 |         15 |
+| d:\snp\snp-tests\src\utils\renderHead.js                           | JavaScript       |         14 |          0 |          2 |         16 |
+| d:\snp\snp-tests\src\utils\renderHtml.js                           | JavaScript       |         51 |          2 |         10 |         63 |
+| d:\snp\snp-tests\src\utils\renderRootComponent.js                  | JavaScript       |         17 |          0 |          5 |         22 |
+| d:\snp\snp-tests\tools\hooks.js                                    | JavaScript       |         32 |          0 |          4 |         36 |
+| d:\snp\snp-tests\tools\openBrowser\index.js                        | JavaScript       |         84 |         29 |         14 |        127 |
+| d:\snp\snp-tests\tools\scripts\copy-to-public.js                   | JavaScript       |          9 |          1 |          3 |         13 |
+| d:\snp\snp-tests\tools\scripts\dev-manifest.js                     | JavaScript       |          9 |          0 |          3 |         12 |
+| d:\snp\snp-tests\tools\scripts\render-index.js                     | JavaScript       |         13 |          0 |          4 |         17 |
+| d:\snp\snp-tests\tools\static-server\index.js                      | JavaScript       |          2 |          0 |          2 |          4 |
+| d:\snp\snp-tests\tools\static-server\static-server.js              | JavaScript       |         20 |          0 |          6 |         26 |
+| d:\snp\snp-tests\tools\sw\pwa\manifest.json                        | JSON             |         20 |          0 |          1 |         21 |
+| d:\snp\snp-tests\tools\sw\pwa\offline.html                         | Django HTML      |         10 |          0 |          2 |         12 |
+| d:\snp\snp-tests\tools\sw\pwa\offline.sw.js                        | JavaScript       |         13 |          1 |          4 |         18 |
+| d:\snp\snp-tests\webpack\alias.js                                  | JavaScript       |         14 |          0 |          2 |         16 |
+| d:\snp\snp-tests\webpack\common.js                                 | JavaScript       |         56 |          0 |          3 |         59 |
+| d:\snp\snp-tests\webpack\development.js                            | JavaScript       |         20 |          0 |          2 |         22 |
+| d:\snp\snp-tests\webpack\index.js                                  | JavaScript       |          9 |          0 |          1 |         10 |
+| d:\snp\snp-tests\webpack\loaders\index.js                          | JavaScript       |         36 |          0 |          2 |         38 |
+| d:\snp\snp-tests\webpack\loaders\styles\common.js                  | JavaScript       |         11 |          0 |          2 |         13 |
+| d:\snp\snp-tests\webpack\loaders\styles\index.js                   | JavaScript       |          5 |          0 |          1 |          6 |
+| d:\snp\snp-tests\webpack\loaders\styles\node.js                    | JavaScript       |         30 |          0 |          2 |         32 |
+| d:\snp\snp-tests\webpack\loaders\styles\web.js                     | JavaScript       |         34 |          0 |          4 |         38 |
+| d:\snp\snp-tests\webpack\production.js                             | JavaScript       |         30 |          0 |          2 |         32 |
+| d:\snp\snp-tests\webpack\resolve.js                                | JavaScript       |          6 |          0 |          1 |          7 |
+| d:\snp\snp-tests\webpack\server.js                                 | JavaScript       |         41 |          0 |          2 |         43 |
+| Total                                                              |                  |      3,100 |        258 |        584 |      3,942 |
++--------------------------------------------------------------------+------------------+------------+------------+------------+------------+

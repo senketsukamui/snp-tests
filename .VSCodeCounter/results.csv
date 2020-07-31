@@ -1,0 +1,123 @@
+"filename", "language", "EditorConfig", "JSON", "YAML", "JavaScript", "Markdown", "SCSS", "JavaScript React", "Django HTML", "comment", "blank", "total"
+"d:\snp\snp-tests\.babelrc.js", "JavaScript", 0, 0, 0, 33, 0, 0, 0, 0, 0, 1, 34
+"d:\snp\snp-tests\.editorconfig", "EditorConfig", 10, 0, 0, 0, 0, 0, 0, 0, 5, 3, 18
+"d:\snp\snp-tests\.eslintrc.js", "JavaScript", 0, 0, 0, 62, 0, 0, 0, 0, 0, 2, 64
+"d:\snp\snp-tests\.gitlab-ci.yml", "YAML", 0, 0, 16, 0, 0, 0, 0, 0, 0, 4, 20
+"d:\snp\snp-tests\.prettierrc", "JSON", 0, 5, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"d:\snp\snp-tests\.stylelintrc.js", "JavaScript", 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 18
+"d:\snp\snp-tests\README.md", "Markdown", 0, 0, 0, 0, 27, 0, 0, 0, 0, 11, 38
+"d:\snp\snp-tests\deploy.yml", "YAML", 0, 0, 77, 0, 0, 0, 0, 0, 7, 17, 101
+"d:\snp\snp-tests\package.json", "JSON", 0, 49, 0, 0, 0, 0, 0, 0, 196, 0, 245
+"d:\snp\snp-tests\postcss.config.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 1, 2, 4
+"d:\snp\snp-tests\src\api\answers.js", "JavaScript", 0, 0, 0, 18, 0, 0, 0, 0, 0, 3, 21
+"d:\snp\snp-tests\src\api\index.js", "JavaScript", 0, 0, 0, 4, 0, 0, 0, 0, 0, 1, 5
+"d:\snp\snp-tests\src\api\questions.js", "JavaScript", 0, 0, 0, 16, 0, 0, 0, 0, 0, 3, 19
+"d:\snp\snp-tests\src\api\request.js", "JavaScript", 0, 0, 0, 37, 0, 0, 0, 0, 0, 13, 50
+"d:\snp\snp-tests\src\api\tests.js", "JavaScript", 0, 0, 0, 22, 0, 0, 0, 0, 0, 4, 26
+"d:\snp\snp-tests\src\api\users.js", "JavaScript", 0, 0, 0, 20, 0, 0, 0, 0, 0, 4, 24
+"d:\snp\snp-tests\src\client.js", "JavaScript", 0, 0, 0, 43, 0, 0, 0, 0, 3, 12, 58
+"d:\snp\snp-tests\src\components\AppRouter\AppRouter.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 21, 0, 0, 5, 26
+"d:\snp\snp-tests\src\components\AppRouter\index.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\snp\snp-tests\src\components\App\App.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 24, 0, 0, 8, 32
+"d:\snp\snp-tests\src\components\App\App.scss", "SCSS", 0, 0, 0, 0, 0, 18, 0, 0, 0, 5, 23
+"d:\snp\snp-tests\src\components\App\index.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\snp\snp-tests\src\components\Checkbox\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 32, 0, 0, 5, 37
+"d:\snp\snp-tests\src\components\Checkbox\index.scss", "SCSS", 0, 0, 0, 0, 0, 8, 0, 0, 0, 2, 10
+"d:\snp\snp-tests\src\components\Dropdown\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 33, 0, 0, 3, 36
+"d:\snp\snp-tests\src\components\Dropdown\index.scss", "SCSS", 0, 0, 0, 0, 0, 23, 0, 0, 0, 4, 27
+"d:\snp\snp-tests\src\components\Loading\Loading.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 35, 0, 0, 8, 43
+"d:\snp\snp-tests\src\components\Loading\index.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\snp\snp-tests\src\config\index.js", "JavaScript", 0, 0, 0, 45, 0, 0, 0, 0, 0, 3, 48
+"d:\snp\snp-tests\src\config\production.js", "JavaScript", 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 4
+"d:\snp\snp-tests\src\config\shared.js", "JavaScript", 0, 0, 0, 5, 0, 0, 0, 0, 2, 1, 8
+"d:\snp\snp-tests\src\config\staging.js", "JavaScript", 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 4
+"d:\snp\snp-tests\src\hocs\browser.js", "JavaScript", 0, 0, 0, 18, 0, 0, 0, 0, 0, 3, 21
+"d:\snp\snp-tests\src\hooks\useAction.js", "JavaScript", 0, 0, 0, 10, 0, 0, 0, 0, 0, 4, 14
+"d:\snp\snp-tests\src\hooks\useBrowser.js", "JavaScript", 0, 0, 0, 13, 0, 0, 0, 0, 0, 3, 16
+"d:\snp\snp-tests\src\hooks\useRendered.js", "JavaScript", 0, 0, 0, 8, 0, 0, 0, 0, 0, 4, 12
+"d:\snp\snp-tests\src\hooks\useSelector.js", "JavaScript", 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 4
+"d:\snp\snp-tests\src\hooks\useVariable.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 0, 4, 13
+"d:\snp\snp-tests\src\models\answers\sagas.js", "JavaScript", 0, 0, 0, 44, 0, 0, 0, 0, 0, 4, 48
+"d:\snp\snp-tests\src\models\answers\selectors.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"d:\snp\snp-tests\src\models\answers\slice.js", "JavaScript", 0, 0, 0, 37, 0, 0, 0, 0, 1, 6, 44
+"d:\snp\snp-tests\src\models\index.js", "JavaScript", 0, 0, 0, 20, 0, 0, 0, 0, 0, 11, 31
+"d:\snp\snp-tests\src\models\questions\sagas.js", "JavaScript", 0, 0, 0, 38, 0, 0, 0, 0, 1, 6, 45
+"d:\snp\snp-tests\src\models\questions\selectors.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"d:\snp\snp-tests\src\models\questions\slice.js", "JavaScript", 0, 0, 0, 43, 0, 0, 0, 0, 1, 8, 52
+"d:\snp\snp-tests\src\models\testsq\sagas.js", "JavaScript", 0, 0, 0, 52, 0, 0, 0, 0, 0, 10, 62
+"d:\snp\snp-tests\src\models\testsq\selectors.js", "JavaScript", 0, 0, 0, 14, 0, 0, 0, 0, 0, 4, 18
+"d:\snp\snp-tests\src\models\testsq\slice.js", "JavaScript", 0, 0, 0, 55, 0, 0, 0, 0, 1, 10, 66
+"d:\snp\snp-tests\src\models\users\sagas.js", "JavaScript", 0, 0, 0, 52, 0, 0, 0, 0, 0, 5, 57
+"d:\snp\snp-tests\src\models\users\selectors.js", "JavaScript", 0, 0, 0, 17, 0, 0, 0, 0, 0, 5, 22
+"d:\snp\snp-tests\src\models\users\slice.js", "JavaScript", 0, 0, 0, 46, 0, 0, 0, 0, 1, 6, 53
+"d:\snp\snp-tests\src\pages\Authorization\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 62, 0, 0, 11, 73
+"d:\snp\snp-tests\src\pages\Authorization\index.scss", "SCSS", 0, 0, 0, 0, 0, 54, 0, 0, 0, 8, 62
+"d:\snp\snp-tests\src\pages\Main\Header\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 26, 0, 0, 8, 34
+"d:\snp\snp-tests\src\pages\Main\Header\index.scss", "SCSS", 0, 0, 0, 0, 0, 32, 0, 0, 0, 6, 38
+"d:\snp\snp-tests\src\pages\Main\TestsList\TestsListItem\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 43, 0, 0, 5, 48
+"d:\snp\snp-tests\src\pages\Main\TestsList\TestsListItem\index.scss", "SCSS", 0, 0, 0, 0, 0, 17, 0, 0, 0, 3, 20
+"d:\snp\snp-tests\src\pages\Main\TestsList\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 40, 0, 0, 7, 47
+"d:\snp\snp-tests\src\pages\Main\TestsList\index.scss", "SCSS", 0, 0, 0, 0, 0, 29, 0, 0, 0, 5, 34
+"d:\snp\snp-tests\src\pages\Main\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 35, 0, 0, 8, 43
+"d:\snp\snp-tests\src\pages\Main\index.scss", "SCSS", 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 6
+"d:\snp\snp-tests\src\pages\NotFound\NotFound.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 10, 0, 0, 4, 14
+"d:\snp\snp-tests\src\pages\NotFound\NotFound.scss", "SCSS", 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 4
+"d:\snp\snp-tests\src\pages\NotFound\index.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\snp\snp-tests\src\pages\TestWindow\Question\Answer\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 26, 0, 0, 5, 31
+"d:\snp\snp-tests\src\pages\TestWindow\Question\Answer\index.scss", "SCSS", 0, 0, 0, 0, 0, 14, 0, 0, 0, 2, 16
+"d:\snp\snp-tests\src\pages\TestWindow\Question\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 92, 0, 0, 12, 104
+"d:\snp\snp-tests\src\pages\TestWindow\Question\index.scss", "SCSS", 0, 0, 0, 0, 0, 36, 0, 0, 0, 6, 42
+"d:\snp\snp-tests\src\pages\TestWindow\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 0, 84, 0, 0, 11, 95
+"d:\snp\snp-tests\src\pages\TestWindow\index.scss", "SCSS", 0, 0, 0, 0, 0, 26, 0, 0, 0, 4, 30
+"d:\snp\snp-tests\src\routes.js", "JavaScript", 0, 0, 0, 29, 0, 0, 0, 0, 0, 2, 31
+"d:\snp\snp-tests\src\server\dev-spa.js", "JavaScript", 0, 0, 0, 6, 0, 0, 0, 0, 0, 3, 9
+"d:\snp\snp-tests\src\server\dev.js", "JavaScript", 0, 0, 0, 15, 0, 0, 0, 0, 0, 5, 20
+"d:\snp\snp-tests\src\server\index.js", "JavaScript", 0, 0, 0, 5, 0, 0, 0, 0, 0, 3, 8
+"d:\snp\snp-tests\src\server\loadBranchData.js", "JavaScript", 0, 0, 0, 15, 0, 0, 0, 0, 0, 4, 19
+"d:\snp\snp-tests\src\server\logger.js", "JavaScript", 0, 0, 0, 4, 0, 0, 0, 0, 0, 2, 6
+"d:\snp\snp-tests\src\server\mailer.js", "JavaScript", 0, 0, 0, 33, 0, 0, 0, 0, 0, 7, 40
+"d:\snp\snp-tests\src\server\middlewares.js", "JavaScript", 0, 0, 0, 13, 0, 0, 0, 0, 0, 2, 15
+"d:\snp\snp-tests\src\server\render.js", "JavaScript", 0, 0, 0, 78, 0, 0, 0, 0, 3, 22, 103
+"d:\snp\snp-tests\src\server\router.js", "JavaScript", 0, 0, 0, 41, 0, 0, 0, 0, 0, 8, 49
+"d:\snp\snp-tests\src\server\server.js", "JavaScript", 0, 0, 0, 21, 0, 0, 0, 0, 0, 6, 27
+"d:\snp\snp-tests\src\server\spa-dev-server.js", "JavaScript", 0, 0, 0, 18, 0, 0, 0, 0, 0, 7, 25
+"d:\snp\snp-tests\src\server\spa-router.js", "JavaScript", 0, 0, 0, 8, 0, 0, 0, 0, 0, 3, 11
+"d:\snp\snp-tests\src\server\static-server.js", "JavaScript", 0, 0, 0, 19, 0, 0, 0, 0, 0, 5, 24
+"d:\snp\snp-tests\src\server\webpack-dev.js", "JavaScript", 0, 0, 0, 20, 0, 0, 0, 0, 0, 5, 25
+"d:\snp\snp-tests\src\store\index.js", "JavaScript", 0, 0, 0, 19, 0, 0, 0, 0, 0, 6, 25
+"d:\snp\snp-tests\src\styles\normalize.scss", "SCSS", 0, 0, 0, 0, 0, 268, 0, 0, 0, 56, 324
+"d:\snp\snp-tests\src\styles\variables\colors.scss", "SCSS", 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 4
+"d:\snp\snp-tests\src\styles\variables\fonts.scss", "SCSS", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"d:\snp\snp-tests\src\styles\variables\index.scss", "SCSS", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"d:\snp\snp-tests\src\utils\actionTypes.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 1, 1, 11
+"d:\snp\snp-tests\src\utils\constructAction.js", "JavaScript", 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 9
+"d:\snp\snp-tests\src\utils\createAction.js", "JavaScript", 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 2
+"d:\snp\snp-tests\src\utils\getBrowserInfo.js", "JavaScript", 0, 0, 0, 11, 0, 0, 0, 0, 0, 3, 14
+"d:\snp\snp-tests\src\utils\matchRoutes.js", "JavaScript", 0, 0, 0, 14, 0, 0, 0, 0, 0, 3, 17
+"d:\snp\snp-tests\src\utils\normalizeById.js", "JavaScript", 0, 0, 0, 13, 0, 0, 0, 0, 0, 2, 15
+"d:\snp\snp-tests\src\utils\renderHead.js", "JavaScript", 0, 0, 0, 14, 0, 0, 0, 0, 0, 2, 16
+"d:\snp\snp-tests\src\utils\renderHtml.js", "JavaScript", 0, 0, 0, 51, 0, 0, 0, 0, 2, 10, 63
+"d:\snp\snp-tests\src\utils\renderRootComponent.js", "JavaScript", 0, 0, 0, 17, 0, 0, 0, 0, 0, 5, 22
+"d:\snp\snp-tests\tools\hooks.js", "JavaScript", 0, 0, 0, 32, 0, 0, 0, 0, 0, 4, 36
+"d:\snp\snp-tests\tools\openBrowser\index.js", "JavaScript", 0, 0, 0, 84, 0, 0, 0, 0, 29, 14, 127
+"d:\snp\snp-tests\tools\scripts\copy-to-public.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 1, 3, 13
+"d:\snp\snp-tests\tools\scripts\dev-manifest.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"d:\snp\snp-tests\tools\scripts\render-index.js", "JavaScript", 0, 0, 0, 13, 0, 0, 0, 0, 0, 4, 17
+"d:\snp\snp-tests\tools\static-server\index.js", "JavaScript", 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 4
+"d:\snp\snp-tests\tools\static-server\static-server.js", "JavaScript", 0, 0, 0, 20, 0, 0, 0, 0, 0, 6, 26
+"d:\snp\snp-tests\tools\sw\pwa\manifest.json", "JSON", 0, 20, 0, 0, 0, 0, 0, 0, 0, 1, 21
+"d:\snp\snp-tests\tools\sw\pwa\offline.html", "Django HTML", 0, 0, 0, 0, 0, 0, 0, 10, 0, 2, 12
+"d:\snp\snp-tests\tools\sw\pwa\offline.sw.js", "JavaScript", 0, 0, 0, 13, 0, 0, 0, 0, 1, 4, 18
+"d:\snp\snp-tests\webpack\alias.js", "JavaScript", 0, 0, 0, 14, 0, 0, 0, 0, 0, 2, 16
+"d:\snp\snp-tests\webpack\common.js", "JavaScript", 0, 0, 0, 56, 0, 0, 0, 0, 0, 3, 59
+"d:\snp\snp-tests\webpack\development.js", "JavaScript", 0, 0, 0, 20, 0, 0, 0, 0, 0, 2, 22
+"d:\snp\snp-tests\webpack\index.js", "JavaScript", 0, 0, 0, 9, 0, 0, 0, 0, 0, 1, 10
+"d:\snp\snp-tests\webpack\loaders\index.js", "JavaScript", 0, 0, 0, 36, 0, 0, 0, 0, 0, 2, 38
+"d:\snp\snp-tests\webpack\loaders\styles\common.js", "JavaScript", 0, 0, 0, 11, 0, 0, 0, 0, 0, 2, 13
+"d:\snp\snp-tests\webpack\loaders\styles\index.js", "JavaScript", 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 6
+"d:\snp\snp-tests\webpack\loaders\styles\node.js", "JavaScript", 0, 0, 0, 30, 0, 0, 0, 0, 0, 2, 32
+"d:\snp\snp-tests\webpack\loaders\styles\web.js", "JavaScript", 0, 0, 0, 34, 0, 0, 0, 0, 0, 4, 38
+"d:\snp\snp-tests\webpack\production.js", "JavaScript", 0, 0, 0, 30, 0, 0, 0, 0, 0, 2, 32
+"d:\snp\snp-tests\webpack\resolve.js", "JavaScript", 0, 0, 0, 6, 0, 0, 0, 0, 0, 1, 7
+"d:\snp\snp-tests\webpack\server.js", "JavaScript", 0, 0, 0, 41, 0, 0, 0, 0, 0, 2, 43
+"Total", "-", 10, 74, 93, 1783, 27, 540, 563, 10, 258, 584, 3942

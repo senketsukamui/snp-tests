@@ -32,6 +32,11 @@ const TestWindow = props => {
 
   const [questionState, changeQuestionState] = React.useState('');
   const [testTitleState, changeTestTitleState] = React.useState(testTitle);
+  const [dropdownState, changeDropdownState] = React.useState(answerTypes[0]);
+
+  const handleDropdownChange = select => {
+    changeDropdownState(select);
+  };
 
   const handleQuestionInputChange = e => {
     changeQuestionState(e.target.value);
@@ -41,6 +46,7 @@ const TestWindow = props => {
     onQuestionCreate({
       testId,
       questionTitle: questionState,
+      question_type: dropdownState,
     });
   };
 
@@ -71,8 +77,9 @@ const TestWindow = props => {
       <div>
         <div>Question title:</div>
         <input type="text" onChange={handleQuestionInputChange} />
+        {dropdownState === 'number' ? <input type="text" /> : ''}
         <button onClick={handleQuestionCreate}>Create</button>
-        <Dropdown items={answerTypes} />
+        <Dropdown items={answerTypes} handleChange={handleDropdownChange} />
       </div>
       {renderedQuestions.length ? (
         renderedQuestions

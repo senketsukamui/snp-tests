@@ -6,6 +6,7 @@ const Dropdown = props => {
   const [selected, changeSelected] = React.useState(props.items[0]);
   const handleItemClick = e => {
     changeSelected(e.target.dataset.type);
+    props.handleChange(e.target.dataset.type);
     setOpen(false);
   };
   const handleDropdownClick = () => {
