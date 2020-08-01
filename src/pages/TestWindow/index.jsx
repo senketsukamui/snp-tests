@@ -29,8 +29,8 @@ const TestWindow = props => {
   const renderedQuestions = questionIds.map((id, index) => (
     <Question {...questionList[id]} key={id} index={index} testId={testId} />
   ));
-
   const [questionState, changeQuestionState] = React.useState('');
+  const [showTestEdit, changeShowTestEdit] = React.useState(false);
   const [testTitleState, changeTestTitleState] = React.useState(testTitle);
   const [dropdownState, changeDropdownState] = React.useState(answerTypes[0]);
   const [numberAnswerState, changeNumberAnswerState] = React.useState('');
@@ -70,34 +70,37 @@ const TestWindow = props => {
   };
 
   return (
-    <div className={styles.test}>
-      <div className={styles.header}>
-        <input
-          type="text"
-          className={styles.test_title}
-          value={testTitleState}
-          onChange={handleTestTitleChange}
-        />
-        <button onClick={handleTestEdit} className={styles.test_edit}>
-          Edit test
-        </button>
-      </div>
-      <div>
-        <div>Question title:</div>
-        <input type="text" onChange={handleQuestionInputChange} />
-        {dropdownState === 'number' ? (
-          <input type="text" onChange={handleNumberAnswerState} />
+    <div className={styles.wrapper}>
+      <div className={styles.test}>
+        <div className={styles.header}>
+          <input
+            type="text"
+            className={styles.test_title}
+            value={testTitleState}
+            onChange={handleTestTitleChange}
+            
+          />
+          <button onClick={handleTestEdit} className={styles.test_edit}>
+            Edit test
+          </button>
+        </div>
+        <div>
+          <div>Question title:</div>
+          <input type="text" onChange={handleQuestionInputChange} />
+          {dropdownState === 'number' ? (
+            <input type="text" onChange={handleNumberAnswerState} />
+          ) : (
+            ''
+          )}
+          <button onClick={handleQuestionCreate}>Create</button>
+          <Dropdown items={answerTypes} handleChange={handleDropdownChange} />
+        </div>
+        {renderedQuestions.length ? (
+          renderedQuestions
         ) : (
-          ''
+          <div className={styles.no_questions}>No questions here</div>
         )}
-        <button onClick={handleQuestionCreate}>Create</button>
-        <Dropdown items={answerTypes} handleChange={handleDropdownChange} />
       </div>
-      {renderedQuestions.length ? (
-        renderedQuestions
-      ) : (
-        <div className={styles.no_questions}>No questions here</div>
-      )}
     </div>
   );
 };

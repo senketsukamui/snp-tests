@@ -5,9 +5,13 @@ import PropTypes from 'prop-types';
 import trash from 'assets/images/trash.png';
 import useAction from 'hooks/useAction';
 import { actions as answersActions } from 'models/answers/slice';
+import LoadingButton from 'components/LoadingButton';
+import { useSelector } from 'react-redux';
+import { answersLoadingSelector } from '../../../../models/answers/selectors';
 
 const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
+  const isLoading = useSelector(answersLoadingSelector);
 
   const handleDeleteClick = () => {
     onAnswerDelete({
@@ -27,9 +31,9 @@ const Answer = props => {
         <div className={styles.text}>{props.text}</div>
       </div>
       <div className={styles.buttons}>
-        <button onClick={handleDeleteClick}>
+        <LoadingButton loading={isLoading} action={handleDeleteClick}>
           <img src={trash} alt="" />
-        </button>
+        </LoadingButton>
       </div>
     </div>
   );
