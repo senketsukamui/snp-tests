@@ -11,6 +11,7 @@ import { testsListSelectorById } from 'models/testsq/selectors';
 import { isAdminSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
+import edit from 'assets/images/edit.png';
 
 const TestWindow = props => {
   const history = useHistory();
@@ -59,6 +60,7 @@ const TestWindow = props => {
       id: testId,
       title: testTitleState,
     });
+    changeShowTestEdit(false);
   };
 
   const handleTestTitleChange = e => {
@@ -69,22 +71,37 @@ const TestWindow = props => {
     changeNumberAnswerState(e.target.value);
   };
 
+  const handleEditTestClick = () => {
+    changeShowTestEdit(!showTestEdit);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.test}>
         <div className={styles.header}>
-          <input
-            type="text"
-            className={styles.test_title}
-            value={testTitleState}
-            onChange={handleTestTitleChange}
-            
-          />
-          <button onClick={handleTestEdit} className={styles.test_edit}>
-            Edit test
-          </button>
+          <div className={styles.test_edit}>
+            <input
+              type="text"
+              className={styles.test_title}
+              value={testTitleState}
+              onChange={handleTestTitleChange}
+              disabled={!showTestEdit}
+            />
+            {showTestEdit ? (
+              <button onClick={handleTestEdit} className={styles.test_button}>
+                Save
+              </button>
+            ) : (
+              <button
+                onClick={handleEditTestClick}
+                className={styles.test_button}
+              >
+                <img src={edit} alt="" />
+              </button>
+            )}
+          </div>
         </div>
-        <div>
+        <div className={styles.question_create}>
           <div>Question title:</div>
           <input type="text" onChange={handleQuestionInputChange} />
           {dropdownState === 'number' ? (

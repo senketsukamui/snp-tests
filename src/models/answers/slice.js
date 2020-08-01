@@ -10,6 +10,7 @@ const actionGetTestsSuccess = createAction(
 const initialState = {
   answers: {},
   answersLoading: false,
+  
 };
 
 const answersSlice = createSlice({
