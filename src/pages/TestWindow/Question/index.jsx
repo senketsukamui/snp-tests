@@ -57,7 +57,11 @@ const Question = props => {
           <div className={styles.answers_list}>
             {props.answers.length
               ? props.answers.map(answer => (
-                  <Answer {...answersList[answer]} key={answer} />
+                  <Answer
+                    {...answersList[answer]}
+                    key={answer}
+                    questionId={props.id}
+                  />
                 ))
               : ''}
           </div>

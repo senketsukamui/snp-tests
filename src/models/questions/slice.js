@@ -12,6 +12,10 @@ const actionCreateAnswerSuccess = createAction(
   constructAction('createAnswerSuccess', ACTION_PREFIXES.answersPrefix)
 );
 
+const actionDeleteAnswerSuccess = createAction(
+  constructAction('deleteAnswerSuccess', ACTION_PREFIXES.answersPrefix)
+);
+
 const initialState = {
   questions: {},
   questionsLoading: false,
@@ -42,6 +46,13 @@ const questionsSlice = createSlice({
     },
     [actionCreateAnswerSuccess]: (state, { payload }) => {
       state.questions[payload.questionId].answers.push(payload.answer.id);
+    },
+    [actionDeleteAnswerSuccess]: (state, { payload }) => {
+      state.questions[payload.questionId].answers = state.questions[
+        payload.questionId
+      ].answers.filter(answer => {
+        return answer !== payload.id;
+      });
     },
   },
 });

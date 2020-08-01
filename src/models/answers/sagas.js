@@ -39,9 +39,22 @@ export function* editAnswer({ payload }) {
   }
 }
 
+export function* deleteAnswer({ payload }) {
+  try {
+    yield call(api.deleteAnswer, payload);
+    yield put({
+      type: actions.deleteAnswerSuccess.type,
+      payload,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.createAnswer, createAnswer),
     takeLatest(actions.editAnswer, editAnswer),
+    takeLatest(actions.deleteAnswer, deleteAnswer),
   ]);
 }

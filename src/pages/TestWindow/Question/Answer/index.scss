@@ -1,5 +1,6 @@
 .answer {
   display: flex;
+  justify-content: space-between;
   &_checkbox {
     margin-right: 5px;
   }
@@ -12,4 +13,8 @@
   display: flex;
   flex-direction: column;
   align-self: center;
+}
+
+.info {
+  display: flex;
 }

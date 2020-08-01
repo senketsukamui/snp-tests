@@ -30,6 +30,13 @@ const answersSlice = createSlice({
       state.answersLoading = false;
       state.answers[payload.id] = payload;
     },
+    deleteAnswer: state => {
+      state.answersLoading = true;
+    },
+    deleteAnswerSuccess: (state, { payload }) => {
+      state.answersLoading = false;
+      delete state.answers[payload.id];
+    },
   },
   extraReducers: {
     [actionGetTestsSuccess]: (state, action) => {

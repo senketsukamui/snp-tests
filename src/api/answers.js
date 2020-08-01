@@ -18,3 +18,9 @@ export const editAnswer = payload => {
     },
   });
 };
+
+export const deleteAnswer = ({ id }) => {
+  return request.DELETE({
+    url: `/answers/${id}`,
+  });
+};
