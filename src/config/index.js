@@ -25,7 +25,7 @@ export default {
   },
   app: {
     htmlAttributes: { lang: 'en' },
-    title: 'React Starter Boilerplate',
+    title: 'SNP Tests',
     link: [
       {
         rel: 'shortcut icon',
