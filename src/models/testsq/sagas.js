@@ -52,10 +52,23 @@ export function* editTest({ payload }) {
   }
 }
 
+export function* deleteTest({ payload }) {
+  try {
+    yield call(api.deleteTest, payload);
+    yield put({
+      type: actions.deleteTestSuccess.type,
+      payload,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.getTests, getTests),
     takeLatest(actions.createTest, createTest),
     takeLatest(actions.editTest, editTest),
+    takeLatest(actions.deleteTest, deleteTest),
   ]);
 }

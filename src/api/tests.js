@@ -15,11 +15,17 @@ export const createTest = ({ title }) => {
   });
 };
 
-export const editTest = ({id, title}) => {
+export const editTest = ({ id, title }) => {
   return request.PATCH({
     url: `/tests/${id}`,
     data: {
       title,
     },
+  });
+};
+
+export const deleteTest = ({id}) => {
+  return request.DELETE({
+    url: `/tests/${id}`,
   });
 };

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { questionsListSelector } from '../../models/questions/selectors';
+import { questionsListSelector } from 'models/questions/selectors';
 import Question from './Question';
 import PropTypes from 'prop-types';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
 import { actions as testsActions } from 'models/testsq/slice';
 import useAction from 'hooks/useAction';
-import { testsListSelectorById } from '../../models/testsq/selectors';
-import { isAdminSelector } from '../../models/users/selectors';
+import { testsListSelectorById } from 'models/testsq/selectors';
+import { isAdminSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 
@@ -33,6 +33,7 @@ const TestWindow = props => {
   const [questionState, changeQuestionState] = React.useState('');
   const [testTitleState, changeTestTitleState] = React.useState(testTitle);
   const [dropdownState, changeDropdownState] = React.useState(answerTypes[0]);
+  const [numberAnswerState, changeNumberAnswerState] = React.useState('');
 
   const handleDropdownChange = select => {
     changeDropdownState(select);
@@ -47,7 +48,10 @@ const TestWindow = props => {
       testId,
       questionTitle: questionState,
       question_type: dropdownState,
+      answer: numberAnswerState,
     });
+    changeQuestionState('');
+    changeNumberAnswerState('');
   };
 
   const handleTestEdit = () => {
@@ -59,6 +63,10 @@ const TestWindow = props => {
 
   const handleTestTitleChange = e => {
     changeTestTitleState(e.target.value);
+  };
+
+  const handleNumberAnswerState = e => {
+    changeNumberAnswerState(e.target.value);
   };
 
   return (
@@ -77,7 +85,11 @@ const TestWindow = props => {
       <div>
         <div>Question title:</div>
         <input type="text" onChange={handleQuestionInputChange} />
-        {dropdownState === 'number' ? <input type="text" /> : ''}
+        {dropdownState === 'number' ? (
+          <input type="text" onChange={handleNumberAnswerState} />
+        ) : (
+          ''
+        )}
         <button onClick={handleQuestionCreate}>Create</button>
         <Dropdown items={answerTypes} handleChange={handleDropdownChange} />
       </div>

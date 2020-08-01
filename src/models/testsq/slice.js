@@ -42,6 +42,13 @@ const testsSlice = createSlice({
       state.testsLoading = false;
       state.tests[payload.id].title = payload.title;
     },
+    deleteTest: state => {
+      state.testsLoading = true;
+    },
+    deleteTestSuccess: (state, { payload }) => {
+      state.testsLoading = false;
+      delete state.tests[payload.id];
+    },
   },
   extraReducers: {
     [actionCreateQuestionSuccess]: (state, { payload }) => {

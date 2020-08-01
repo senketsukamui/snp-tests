@@ -1,12 +1,17 @@
 import request from './request';
 
-export const createQuestion = ({ testId, questionTitle, question_type }) => {
+export const createQuestion = ({
+  testId,
+  questionTitle,
+  question_type,
+  answer,
+}) => {
   return request.POST({
     url: `/tests/${testId}/questions`,
     data: {
       title: questionTitle,
-      answer: 1,
       question_type,
+      answer: answer || 0,
     },
   });
 };
