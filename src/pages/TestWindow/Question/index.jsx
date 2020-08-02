@@ -7,6 +7,7 @@ import { actions as questionsActions } from 'models/questions/slice';
 import { actions as answersActions } from 'models/answers/slice';
 import useAction from 'hooks/useAction';
 import PropTypes from 'prop-types';
+import Modal from '../../../components/Modal';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
@@ -16,9 +17,32 @@ const Question = props => {
   const handleDeleteButtonClick = () => {
     onQuestionDelete({ questionId: props.id, testId: props.testId });
   };
-
   const [showInput, changeShowInputState] = React.useState(false);
   const [answerState, changeAnswerState] = React.useState('');
+  const [
+    questionValidationState,
+    changeQuestionValidationState,
+  ] = React.useState(false);
+  const [modalState, changeModalState] = React.useState(false);
+
+  // React.useEffect(() => {
+  //   const trueAnswers = props.answers.reduce((acc, value) => {
+  //     if (answersList[value].is_right === true) {
+  //       return acc + 1;
+  //     }
+  //     return acc;
+  //   }, 0);
+  //   if (
+  //     props.question_type === 'single' &&
+  //     (trueAnswers > 1 || props.answers.length < 2)
+  //   ) {
+  //     changeQuestionValidationState(true);
+  //     console.log(props.index, questionValidationState);
+  //   } else if (props.question_type === 'multiple' && props.answers.length < 2) {
+  //     changeQuestionValidationState(true);
+  //   }
+  //   changeQuestionValidationState(false);
+  // });
 
   const handleAnswerInputChange = e => {
     changeAnswerState(e.target.value);
@@ -35,6 +59,10 @@ const Question = props => {
     });
   };
 
+  const toggleModal = () => {
+    changeModalState(!modalState);
+  };
+
   const newAnswerInput = (
     <div>
       <div>Answer title:</div>
@@ -46,9 +74,12 @@ const Question = props => {
   return (
     <div className={styles.question}>
       <div className={styles.question_header}>
-        <div className={styles.title}>{`${props.index + 1}. ${
-          props.title
-        }`}</div>
+        <div className={styles.question_info}>
+          <div className={styles.title}>{`${props.index + 1}. ${
+            props.title
+          }`}</div>
+          {questionValidationState ? <div>Error</div> : ''}
+        </div>
         <div className={styles.type}>{props.question_type}</div>
       </div>
       {props.question_type === 'single' ||
@@ -79,7 +110,12 @@ const Question = props => {
           <button>Save</button>
         </div>
       )}
-      <button onClick={handleDeleteButtonClick}>Delete question</button>
+      <button onClick={toggleModal}>Delete question</button>
+      {modalState && (
+        <Modal toggle={toggleModal}>
+          <Modal.Header>Are you sure?</Modal.Header>
+        </Modal>
+      )}
     </div>
   );
 };

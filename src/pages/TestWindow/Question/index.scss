@@ -8,6 +8,10 @@
   &_header {
     display: flex;
   }
+  &_info {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .type {
