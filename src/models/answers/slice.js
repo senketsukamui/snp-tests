@@ -10,7 +10,6 @@ const actionGetTestsSuccess = createAction(
 const initialState = {
   answers: {},
   answersLoading: false,
-  
 };
 
 const answersSlice = createSlice({
@@ -40,8 +39,8 @@ const answersSlice = createSlice({
     },
   },
   extraReducers: {
-    [actionGetTestsSuccess]: (state, action) => {
-      state.answers = action.payload.answers;
+    [actionGetTestsSuccess]: (state, { payload }) => {
+      state.answers = payload.entities.answers;
     },
   },
 });

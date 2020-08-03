@@ -14,6 +14,7 @@ const actionDeleteQuestionSuccess = createAction(
 
 const initialState = {
   tests: {},
+  meta: {},
   testsLoading: false,
 };
 
@@ -26,7 +27,8 @@ const testsSlice = createSlice({
     },
     getTestsSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state.tests = payload.tests;
+      state.tests = payload.entities.tests;
+      state.meta = payload.meta;
     },
     createTest: state => {
       state.testsLoading = true;
