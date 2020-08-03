@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './index.scss';
 import { createPortal } from 'react-dom';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 const Modal = props => {
+  const body = document.querySelector('body');
   React.useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    disableBodyScroll(body);
     return () => {
-      document.body.style.overflow = 'unset';
+      enableBodyScroll(body);
     };
   });
 
