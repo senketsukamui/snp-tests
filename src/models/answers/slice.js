@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
-import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
+import { constructAction, ACTION_PREFIXES } from 'utils/constructAction';
 
 const actionGetTestsSuccess = createAction(
   constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)

@@ -16,6 +16,15 @@ export const createQuestion = ({
   });
 };
 
+export const editQuestion = payload => {
+  return request.PATCH({
+    url: `/questions/${payload.questionId}`,
+    data: {
+      ...payload,
+    },
+  });
+};
+
 export const deleteQuestion = questionId => {
   return request.DELETE({
     url: `/questions/${questionId}`,

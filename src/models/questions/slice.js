@@ -2,7 +2,7 @@
 
 import { createSlice, createAction } from 'redux-starter-kit';
 import { actionTypes } from 'utils/actionTypes';
-import { constructAction, ACTION_PREFIXES } from '../../utils/constructAction';
+import { constructAction, ACTION_PREFIXES } from 'utils/constructAction';
 
 const actionGetTestsSuccess = createAction(
   constructAction('getTestsSuccess', ACTION_PREFIXES.testsPrefix)
@@ -31,6 +31,13 @@ const questionsSlice = createSlice({
     createQuestionSuccess: (state, { payload }) => {
       state.questions[payload.question.id] = payload.question;
       state.questionsLoading = false;
+    },
+    editQuestion: state => {
+      state.questionsLoading = true;
+    },
+    editQuestionSuccess: (state, { payload }) => {
+      state.questionsLoading = false;
+      state.questions[payload.id] = payload;
     },
     deleteQuestion: state => {
       state.questionsLoading = true;

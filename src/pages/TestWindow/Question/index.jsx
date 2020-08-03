@@ -110,7 +110,7 @@ const Question = props => {
           <button>Save</button>
         </div>
       )}
-      <button onClick={toggleModal}>Delete question</button>
+      <button onClick={handleDeleteButtonClick}>Delete question</button>
       {modalState && (
         <Modal toggle={toggleModal}>
           <Modal.Header>Are you sure?</Modal.Header>

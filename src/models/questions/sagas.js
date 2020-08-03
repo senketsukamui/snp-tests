@@ -23,7 +23,6 @@ export function* createQuestion({ payload }) {
 
 export function* deleteQuestion({ payload }) {
   try {
-
     const response = yield call(api.deleteQuestion, payload.questionId);
     if (response.status === 200) {
       yield put({
@@ -36,9 +35,24 @@ export function* deleteQuestion({ payload }) {
   }
 }
 
+export function* editQuestion({ payload }) {
+  try {
+    const response = yield call(api.editQuestion, payload);
+    if (response.status === 200) {
+      yield put({
+        type: actions.editQuestionSuccess.type,
+        payload: response.data,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.createQuestion, createQuestion),
     takeLatest(actions.deleteQuestion, deleteQuestion),
+    takeLatest(actions.editQuestion, editQuestion),
   ]);
 }
