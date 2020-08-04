@@ -46,6 +46,16 @@ const questionsSlice = createSlice({
       delete state.questions[payload.questionId];
       state.questionsLoading = false;
     },
+    swapAnswers: (state, { payload }) => {
+      const draggableAnswers = state.questions[payload.questionId].answers;
+      [
+        draggableAnswers[payload.dragIndex],
+        draggableAnswers[payload.hoverIndex],
+      ] = [
+        draggableAnswers[payload.hoverIndex],
+        draggableAnswers[payload.dragIndex],
+      ];
+    },
   },
   extraReducers: {
     [actionGetTestsSuccess]: (state, { payload }) => {
