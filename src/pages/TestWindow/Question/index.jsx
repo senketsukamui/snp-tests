@@ -64,11 +64,12 @@ const Question = props => {
     });
   };
 
-  const swapAnswer = (dragIndex, hoverIndex) => {
+  const swapAnswer = (dragIndex, hoverIndex, firstId, secondId) => {
     onAnswerMove({
       questionId: props.id,
       dragIndex,
       hoverIndex,
+      firstId,
     });
   };
 

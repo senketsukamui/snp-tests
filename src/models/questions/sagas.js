@@ -49,10 +49,19 @@ export function* editQuestion({ payload }) {
   }
 }
 
+export function* swapAnswers({ payload }) {
+  try {
+    yield call(api.swapAnswers, payload);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.createQuestion, createQuestion),
     takeLatest(actions.deleteQuestion, deleteQuestion),
     takeLatest(actions.editQuestion, editQuestion),
+    takeLatest(actions.swapAnswers, swapAnswers),
   ]);
 }

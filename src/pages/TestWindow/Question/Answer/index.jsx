@@ -56,7 +56,7 @@ const Answer = props => {
       if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
         return;
       }
-      props.swapAnswer(dragIndex, hoverIndex);
+      props.swapAnswer(dragIndex, hoverIndex, item.answer);
       item.index = hoverIndex;
     },
   });

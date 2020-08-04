@@ -30,3 +30,9 @@ export const deleteQuestion = questionId => {
     url: `/questions/${questionId}`,
   });
 };
+
+export const swapAnswers = ({ firstId, hoverIndex }) => {
+  return request.PATCH({
+    url: `/answers/${firstId}/insert_at/${hoverIndex}`,
+  });
+};
