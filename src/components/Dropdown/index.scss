@@ -19,8 +19,13 @@
   padding: 10px;
   text-align: center;
   cursor: pointer;
+  display: flex;
 }
 
 .wrapper {
   font-size: 1.2rem;
+}
+
+.down_arrow {
+  margin-left: 5px;
 }

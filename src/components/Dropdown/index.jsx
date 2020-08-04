@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.scss';
+import down_arrow from 'assets/images/down_arrow.png';
 
 const Dropdown = props => {
   const [open, setOpen] = React.useState(false);
@@ -16,6 +17,7 @@ const Dropdown = props => {
     <div className={styles.wrapper}>
       <div className={styles.selection} onClick={handleDropdownClick}>
         {selected}
+        {!open && <img src={down_arrow} alt="" className={styles.down_arrow} />}
       </div>
       <ul className={styles.items}>
         {open &&

@@ -8,6 +8,8 @@ import { actions as answersActions } from 'models/answers/slice';
 import useAction from 'hooks/useAction';
 import PropTypes from 'prop-types';
 import Modal from 'components/Modal';
+import trash from 'assets/images/trash.png';
+import plus from 'assets/images/plus.png';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
@@ -81,6 +83,9 @@ const Question = props => {
           {questionValidationState ? <div>Error</div> : ''}
         </div>
         <div className={styles.type}>{props.question_type}</div>
+        <button onClick={toggleModal}>
+          <img src={trash} alt="" />
+        </button>
       </div>
       {props.question_type === 'single' ||
       props.question_type === 'multiple' ? (
@@ -100,7 +105,7 @@ const Question = props => {
             newAnswerInput
           ) : (
             <button className={styles.create} onClick={handleCreateInputShow}>
-              Create new
+              <img src={plus} alt="" />
             </button>
           )}
         </div>
@@ -110,7 +115,7 @@ const Question = props => {
           <button>Save</button>
         </div>
       )}
-      <button onClick={toggleModal}>Delete question</button>
+
       {modalState && (
         <Modal toggle={toggleModal} action={handleDeleteButtonClick}>
           <Modal.Header>Are you sure?</Modal.Header>
