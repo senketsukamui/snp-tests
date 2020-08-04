@@ -15,4 +15,8 @@ export const testsListSelectorById = id =>
     testsSelector,
     ({ tests }) => tests[id]
   );
-    
+
+export const metaSelector = createSelector(
+  testsSelector,
+  ({ meta }) => meta
+);

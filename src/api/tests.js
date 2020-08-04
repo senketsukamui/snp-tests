@@ -1,8 +1,8 @@
 import request from './request';
 
-export const getTests = () => {
+export const getTests = ({ page, order, search }) => {
   return request.GET({
-    url: '/tests',
+    url: `/tests?page=${page}&per=10&sort=${order}&search=${search || ''}`,
   });
 };
 
@@ -24,7 +24,7 @@ export const editTest = ({ id, title }) => {
   });
 };
 
-export const deleteTest = ({id}) => {
+export const deleteTest = ({ id }) => {
   return request.DELETE({
     url: `/tests/${id}`,
   });

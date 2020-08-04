@@ -3,9 +3,9 @@ import * as api from 'api';
 import { actions } from './slice';
 import { normalize, schema } from 'normalizr';
 
-export function* getTests() {
+export function* getTests({ payload }) {
   try {
-    const response = yield call(api.getTests);
+    const response = yield call(api.getTests, payload);
 
     const answer = new schema.Entity('answers');
 

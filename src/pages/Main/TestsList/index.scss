@@ -30,3 +30,15 @@
   padding: 8px;
   border-radius: 5px;
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.page {
+  margin: 0 20px;
+  font-size: 1.4rem;
+}

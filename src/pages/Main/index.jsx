@@ -16,7 +16,7 @@ const Main = () => {
   const dispatch = useDispatch();
   const isAuthorized = useSelector(isAuthorizedSelector);
   const onGetTests = useAction(getTests.type);
-
+  const [currentPage, changeCurrentPage] = React.useState(1);
   React.useEffect(() => {
     if (!isAuthorized) {
       dispatch(currentSession());
@@ -27,14 +27,30 @@ const Main = () => {
     history.push('/auth');
   }
 
-  React.useEffect(() => {
-    onGetTests();
-  }, [onGetTests]);
+  const handlePageChange = direction => e => {
+    if (direction === 'left') {
+      changeCurrentPage(currentPage - 1);
+    } else if (direction === 'right') {
+      changeCurrentPage(currentPage + 1);
+    }
+  };
 
+  React.useEffect(() => {
+    onGetTests({
+      page: currentPage,
+      order: 'created_at_desc',
+      search: '',
+    });
+  }, [onGetTests, currentPage]);
+
+  console.log(currentPage);
   return (
     <div className={styles.main}>
       <Header />
-      <TestsList />
+      <TestsList
+        changeCurrentPage={handlePageChange}
+        currentPage={currentPage}
+      />
     </div>
   );
 };
