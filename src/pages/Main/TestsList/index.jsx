@@ -11,6 +11,8 @@ import { Formik, Field, Form } from 'formik';
 import useAction from 'hooks/useAction';
 import left_arrow from 'assets/images/left_arrow.png';
 import right_arrow from 'assets/images/right_arrow.png';
+import asc from 'assets/images/asc.png';
+import desc from 'assets/images/desc.png';
 
 const { createTest } = actions;
 
@@ -19,12 +21,18 @@ const TestsList = props => {
 
   const tests = useSelector(testsListSelector);
 
-  const testsToRender = Object.values(tests).map(test => (
-    <TestListItem {...test} key={test.id} />
-  ));
-
+  const testsToRender = tests
+    ? Object.values(tests).map(test => <TestListItem {...test} key={test.id} />)
+    : [];
+  const [testTitleState, changeTestTitleState] = React.useState('');
   const meta = useSelector(metaSelector);
   const totalPages = meta.total_pages;
+  const handleTestTitleChange = e => {
+    changeTestTitleState(e.target.value);
+  };
+  const handleCreateTest = () => {
+    onCreateTest(testTitleState);
+  };
 
   return (
     <div className={styles.list}>
@@ -36,15 +44,40 @@ const TestsList = props => {
           onCreateTest(values);
         }}
       >
-        <Form className={styles.create}>
-          <div className={styles.input}>
-            <label className={styles.input_label}>Enter the test title</label>
-            <Field name="title" />
+        <div className={styles.create}>
+          <div className={styles.header}>
+            <form className={styles.test_create} onSubmit={handleCreateTest}>
+              <div className={styles.input}>
+                <label className={styles.input_label}>
+                  Enter the test title
+                </label>
+                <input
+                  value={testTitleState}
+                  onChange={handleTestTitleChange}
+                />
+              </div>
+              <button type="submit" className={styles.submit_button}>
+                Create
+              </button>
+            </form>
+            <div className={styles.search}>
+              <input
+                type="text"
+                value={props.currentSearch}
+                onChange={props.changeCurrentSearch}
+                placeholder="Search"
+              />
+            </div>
+            <div className={styles.sorts}>
+              <button onClick={props.changeCurrentSort('created_at_asc')}>
+                <img src={asc} alt="" />
+              </button>
+              <button onClick={props.changeCurrentSort('created_at_desc')}>
+                <img src={desc} alt="" />
+              </button>
+            </div>
           </div>
-          <button type="submit" className={styles.submit_button}>
-            Create
-          </button>
-        </Form>
+        </div>
       </Formik>
       {testsToRender}
       <div className={styles.pagination}>

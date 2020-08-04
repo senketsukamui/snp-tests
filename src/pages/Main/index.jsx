@@ -17,6 +17,8 @@ const Main = () => {
   const isAuthorized = useSelector(isAuthorizedSelector);
   const onGetTests = useAction(getTests.type);
   const [currentPage, changeCurrentPage] = React.useState(1);
+  const [currentSearch, changeCurrentSearch] = React.useState('');
+  const [currentSort, changeCurrentSort] = React.useState('created_at_desc');
   React.useEffect(() => {
     if (!isAuthorized) {
       dispatch(currentSession());
@@ -35,21 +37,29 @@ const Main = () => {
     }
   };
 
+  const handleSearchChange = e => {
+    changeCurrentSearch(e.target.value);
+  };
+
+  const handleSortChange = sort => () => {
+    changeCurrentSort(sort);
+  };
   React.useEffect(() => {
     onGetTests({
       page: currentPage,
-      order: 'created_at_desc',
-      search: '',
+      order: currentSort,
+      search: currentSearch,
     });
-  }, [onGetTests, currentPage]);
-
-  console.log(currentPage);
+  }, [onGetTests, currentPage, currentSearch, currentSort]);
   return (
     <div className={styles.main}>
       <Header />
       <TestsList
         changeCurrentPage={handlePageChange}
         currentPage={currentPage}
+        currentSearch={currentSearch}
+        changeCurrentSearch={handleSearchChange}
+        changeCurrentSort={handleSortChange}
       />
     </div>
   );
