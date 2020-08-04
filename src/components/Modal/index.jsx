@@ -17,7 +17,9 @@ const Modal = props => {
       <div className={styles.modal}>
         {props.children}
         <div className={styles.buttons}>
-          <button className={styles.modal_button}>Yes</button>
+          <button className={styles.modal_button} onClick={props.action}>
+            Yes
+          </button>
           <button onClick={props.toggle} className={styles.modal_button}>
             No
           </button>

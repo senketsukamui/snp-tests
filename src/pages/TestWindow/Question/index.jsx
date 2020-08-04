@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { answersListSelector } from '../../../models/answers/selectors';
+import { answersListSelector } from 'models/answers/selectors';
 import Answer from './Answer';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
 import { actions as answersActions } from 'models/answers/slice';
 import useAction from 'hooks/useAction';
 import PropTypes from 'prop-types';
-import Modal from '../../../components/Modal';
+import Modal from 'components/Modal';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
@@ -110,9 +110,9 @@ const Question = props => {
           <button>Save</button>
         </div>
       )}
-      <button onClick={handleDeleteButtonClick}>Delete question</button>
+      <button onClick={toggleModal}>Delete question</button>
       {modalState && (
-        <Modal toggle={toggleModal}>
+        <Modal toggle={toggleModal} action={handleDeleteButtonClick}>
           <Modal.Header>Are you sure?</Modal.Header>
         </Modal>
       )}

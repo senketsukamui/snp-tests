@@ -8,10 +8,12 @@ import { actions as answersActions } from 'models/answers/slice';
 import LoadingButton from 'components/LoadingButton';
 import { useSelector } from 'react-redux';
 import { answersLoadingSelector } from '../../../../models/answers/selectors';
+import Modal from 'components/Modal';
 
 const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
   const isLoading = useSelector(answersLoadingSelector);
+  const [modalState, changeModalState] = React.useState(false);
 
   const handleDeleteClick = () => {
     onAnswerDelete({
@@ -19,6 +21,11 @@ const Answer = props => {
       questionId: props.questionId,
     });
   };
+
+  const toggleModal = () => {
+    changeModalState(!modalState);
+  };
+
   return (
     <div className={styles.answer}>
       <div className={styles.info}>
@@ -31,9 +38,14 @@ const Answer = props => {
         <div className={styles.text}>{props.text}</div>
       </div>
       <div className={styles.buttons}>
-        <LoadingButton loading={isLoading} action={handleDeleteClick}>
+        <button onClick={toggleModal}>
           <img src={trash} alt="" />
-        </LoadingButton>
+        </button>
+        {modalState && (
+          <Modal toggle={toggleModal} action={handleDeleteClick}>
+            <Modal.Header>Delete this answer?</Modal.Header>
+          </Modal>
+        )}
       </div>
     </div>
   );
