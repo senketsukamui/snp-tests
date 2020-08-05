@@ -35,7 +35,7 @@ const testsSlice = createSlice({
     },
     createTestSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state[payload.id] = payload;
+      state.tests[payload.id] = payload;
     },
     editTest: state => {
       state.testsLoading = true;
@@ -51,7 +51,6 @@ const testsSlice = createSlice({
       state.testsLoading = false;
       delete state.tests[payload.id];
     },
-  
   },
   extraReducers: {
     [actionCreateQuestionSuccess]: (state, { payload }) => {

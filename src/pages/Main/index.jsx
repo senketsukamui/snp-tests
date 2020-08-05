@@ -60,6 +60,7 @@ const Main = () => {
         currentSearch={currentSearch}
         changeCurrentSearch={handleSearchChange}
         changeCurrentSort={handleSortChange}
+        currentSort={currentSort}
       />
     </div>
   );

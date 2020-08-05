@@ -9,7 +9,7 @@ const METHODS = ['GET', 'DELETE', 'HEAD', 'POST', 'PUT', 'PATCH'];
 
 const sidedRequest = opts => {
   const headers = {
-    'scope-key': "_v6ds5LLB(^&Q'}y",
+    'scope-key': 'tn2BAFqzzX*H3nY2',
     'Content-Type': 'application/json',
   };
 
