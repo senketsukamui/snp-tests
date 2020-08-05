@@ -30,3 +30,9 @@ export const deleteTest = ({ id }) => {
     url: `/tests/${id}`,
   });
 };
+
+export const getTestById = ({ id }) => {
+  return request.GET({
+    url: `/tests/${id}`,
+  });
+};

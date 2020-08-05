@@ -3,22 +3,24 @@ import * as api from 'api';
 import { actions } from './slice';
 import { normalize, schema } from 'normalizr';
 
+const normalizeData = data => {
+  const answer = new schema.Entity('answers');
+
+  const question = new schema.Entity('questions', {
+    answers: [answer],
+  });
+
+  const test = new schema.Entity('tests', {
+    questions: [question],
+  });
+  return normalize(data, [test]);
+};
+
 export function* getTests({ payload }) {
   try {
     const response = yield call(api.getTests, payload);
 
-    const answer = new schema.Entity('answers');
-
-    const question = new schema.Entity('questions', {
-      answers: [answer],
-    });
-
-    const test = new schema.Entity('tests', {
-      questions: [question],
-    });
-
-    const normalizedData = normalize(response.data.tests, [test]);
-    console.log(normalizedData);
+    const normalizedData = normalizeData(response.data.tests);
     yield put({
       type: actions.getTestsSuccess.type,
       payload: {
@@ -68,9 +70,29 @@ export function* deleteTest({ payload }) {
   }
 }
 
+export function* getTestById({ payload }) {
+  try {
+    const response = yield call(api.getTestById, payload);
+    const normalizedData = normalizeData([response.data]);
+    if (response.status === 200) {
+      yield put({
+        type: actions.getTestsSuccess.type,
+        payload: {
+          entities: normalizedData.entities,
+          meta: response.data.meta,
+          result: normalizedData.result,
+        },
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export default function*() {
   yield all([
     takeLatest(actions.getTests, getTests),
+    takeLatest(actions.getTestById, getTestById),
     takeLatest(actions.createTest, createTest),
     takeLatest(actions.editTest, editTest),
     takeLatest(actions.deleteTest, deleteTest),

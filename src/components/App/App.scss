@@ -1,9 +1,5 @@
 @use '~styles/variables' as *;
 
-body {
-  font-family: 'Merriweather', 'Helvetica-Light', Helvetica, Arial, sans-serif;
-}
-
 @font-face {
   font-family: 'Merriweather';
   font-weight: 400;
@@ -14,6 +10,22 @@ body {
   font-family: 'Merriweather';
   font-weight: 700;
   src: url('../../assets/fonts/Merriweather-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Recursive';
+  font-weight: 400;
+  src: url('../../assets/fonts/RecursiveSansLnrSt-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Recursive';
+  font-weight: 700;
+  src: url('../../assets/fonts/RecursiveSansLnrSt-Bold.ttf');
+}
+
+body {
+  font-family: 'Merriweather', 'Helvetica-Light', Helvetica, Arial, sans-serif;
 }
 
 .app {

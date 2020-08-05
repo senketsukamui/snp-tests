@@ -6,24 +6,39 @@ import PropTypes from 'prop-types';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
 import { actions as testsActions } from 'models/testsq/slice';
+import { actions as usersActions } from 'models/users/slice';
 import useAction from 'hooks/useAction';
-import { testsListSelectorById } from 'models/testsq/selectors';
+import {
+  testsListSelectorById,
+  testsLoadingSelector,
+} from 'models/testsq/selectors';
 import { isAdminSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 import edit from 'assets/images/edit.png';
 import { isAuthorizedSelector } from 'models/users/selectors';
+import Loader from '../../components/Loader';
 
 const TestWindowContainer = props => {
   const history = useHistory();
   const isAdmin = useSelector(isAdminSelector);
   const isAuthorized = useSelector(isAuthorizedSelector);
-
-  if (isAdmin || isAuthorized) {
-    return <TestWindow {...props} />;
-  } else {
-    history.push('/');
+  const testsLoading = useSelector(testsLoadingSelector);
+  const getTestById = useAction(testsActions.getTestById.type);
+  const testById = useSelector(testsListSelectorById(props.match.params.id));
+  if (!isAdmin || !isAuthorized) {
+    history.push('/auth');
   }
+  React.useEffect(() => {
+    if (!testById) {
+      getTestById({ id: props.match.params.id });
+    }
+  }, [testById, getTestById, props.match.params.id]);
+
+  if (testsLoading || !testById) {
+    return <Loader />;
+  }
+  return <TestWindow {...props} testsLoading={testsLoading} />;
 };
 
 const TestWindow = props => {

@@ -1,6 +1,8 @@
 import { connectRouter } from 'connected-react-router';
 import { all } from 'redux-saga/effects';
 
+import { currentSession } from './users/sagas';
+
 import usersReducer from './users/slice';
 
 import usersSagas from './users/sagas';
@@ -26,5 +28,11 @@ export const createRootReducer = history => ({
 });
 
 export const rootSaga = function* rootSaga() {
-  yield all([testsSagas(), usersSagas(), questionsSagas(), answersSagas()]);
+  yield all([
+    currentSession(),
+    testsSagas(),
+    usersSagas(),
+    questionsSagas(),
+    answersSagas(),
+  ]);
 };

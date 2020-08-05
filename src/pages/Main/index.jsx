@@ -25,11 +25,11 @@ const Main = () => {
   const [currentSearch, changeCurrentSearch] = React.useState('');
   const [currentSort, changeCurrentSort] = React.useState('created_at_desc');
 
-  React.useEffect(() => {
-    if (!isAuthorized) {
-      dispatch(currentSession());
-    }
-  }, [dispatch, isAuthorized]);
+  // React.useEffect(() => {
+  //   if (!isAuthorized) {
+  //     dispatch(currentSession());
+  //   }
+  // }, [dispatch, isAuthorized]);
 
   React.useEffect(() => {
     onGetTests({

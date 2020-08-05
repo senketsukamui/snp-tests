@@ -5,7 +5,7 @@ import { actionTypes } from 'utils/actionTypes';
 
 const initialState = {
   isAuthorized: false,
-  loading: false,
+  loading: true,
   isAdmin: null,
   username: '',
 };

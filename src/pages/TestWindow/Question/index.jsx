@@ -47,7 +47,6 @@ const Question = props => {
       (trueAnswers > 1 || props.answers.length < 2)
     ) {
       changeQuestionValidationState(true);
-      console.log(props.index, questionValidationState);
     } else if (props.question_type === 'multiple' && props.answers.length < 2) {
       changeQuestionValidationState(true);
     }

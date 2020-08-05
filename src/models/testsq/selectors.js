@@ -25,3 +25,8 @@ export const resultSelector = createSelector(
   testsSelector,
   ({ result }) => result
 );
+
+export const testsLoadingSelector = createSelector(
+  testsSelector,
+  ({ testsLoading }) => testsLoading
+);

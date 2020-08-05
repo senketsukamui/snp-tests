@@ -25,6 +25,9 @@ const testsSlice = createSlice({
     getTests: state => {
       state.testsLoading = true;
     },
+    getTestById: state => {
+      state.testsLoading = true;
+    },
     getTestsSuccess: (state, { payload }) => {
       state.testsLoading = false;
       state.tests = payload.entities.tests || {};
