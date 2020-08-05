@@ -24,15 +24,12 @@ const Main = () => {
   const [currentPage, changeCurrentPage] = React.useState(1);
   const [currentSearch, changeCurrentSearch] = React.useState('');
   const [currentSort, changeCurrentSort] = React.useState('created_at_desc');
+
   React.useEffect(() => {
     if (!isAuthorized) {
       dispatch(currentSession());
     }
   }, [dispatch, isAuthorized]);
-
-  if (!isAuthorized) {
-    history.push('/auth');
-  }
 
   React.useEffect(() => {
     onGetTests({
@@ -41,7 +38,10 @@ const Main = () => {
       search: currentSearch,
     });
   }, [onGetTests, currentPage, currentSearch, currentSort]);
-  
+
+  if (!isAuthorized) {
+    history.push('/auth');
+  }
   if (isLoading) {
     return <Loader />;
   }

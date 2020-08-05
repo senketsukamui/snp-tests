@@ -2,7 +2,8 @@ import request from './request';
 
 export const getTests = ({ page, order, search }) => {
   return request.GET({
-    url: `/tests?page=${page}&per=10&sort=${order}&search=${search || ''}`,
+    url: `/tests?page=${page}&per=10&sort=${order}&search=${search.toLowerCase() ||
+      ''}`,
   });
 };
 

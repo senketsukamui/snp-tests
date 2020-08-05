@@ -12,14 +12,22 @@ import { isAdminSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 import edit from 'assets/images/edit.png';
+import { isAuthorizedSelector } from 'models/users/selectors';
 
-const TestWindow = props => {
+const TestWindowContainer = props => {
   const history = useHistory();
-  const questionList = useSelector(questionsListSelector);
   const isAdmin = useSelector(isAdminSelector);
-  if (!isAdmin) {
+  const isAuthorized = useSelector(isAuthorizedSelector);
+
+  if (isAdmin || isAuthorized) {
+    return <TestWindow {...props} />;
+  } else {
     history.push('/');
   }
+};
+
+const TestWindow = props => {
+  const questionList = useSelector(questionsListSelector);
   const testId = props.match.params.id;
   const testById = useSelector(testsListSelectorById(testId));
   const testTitle = testById.title;
@@ -130,4 +138,4 @@ TestWindow.defaultProps = {
   match: {},
 };
 
-export default React.memo(TestWindow);
+export default React.memo(TestWindowContainer);

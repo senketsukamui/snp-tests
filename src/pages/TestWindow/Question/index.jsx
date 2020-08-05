@@ -35,24 +35,24 @@ const Question = props => {
     props.title
   );
   const [showTitleButton, changeShowTitleButton] = React.useState(false);
-  // React.useEffect(() => {
-  //   const trueAnswers = props.answers.reduce((acc, value) => {
-  //     if (answersList[value].is_right === true) {
-  //       return acc + 1;
-  //     }
-  //     return acc;
-  //   }, 0);
-  //   if (
-  //     props.question_type === 'single' &&
-  //     (trueAnswers > 1 || props.answers.length < 2)
-  //   ) {
-  //     changeQuestionValidationState(true);
-  //     console.log(props.index, questionValidationState);
-  //   } else if (props.question_type === 'multiple' && props.answers.length < 2) {
-  //     changeQuestionValidationState(true);
-  //   }
-  //   changeQuestionValidationState(false);
-  // });
+  React.useEffect(() => {
+    const trueAnswers = props.answers.reduce((acc, value) => {
+      if (answersList[value].is_right === true) {
+        return acc + 1;
+      }
+      return acc;
+    }, 0);
+    if (
+      props.question_type === 'single' &&
+      (trueAnswers > 1 || props.answers.length < 2)
+    ) {
+      changeQuestionValidationState(true);
+      console.log(props.index, questionValidationState);
+    } else if (props.question_type === 'multiple' && props.answers.length < 2) {
+      changeQuestionValidationState(true);
+    }
+    changeQuestionValidationState(false);
+  }, [props]);
 
   const handleAnswerInputChange = e => {
     changeAnswerState(e.target.value);
