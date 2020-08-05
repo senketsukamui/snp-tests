@@ -37,11 +37,10 @@ const answersSlice = createSlice({
       state.answersLoading = false;
       delete state.answers[payload.id];
     },
-
   },
   extraReducers: {
     [actionGetTestsSuccess]: (state, { payload }) => {
-      state.answers = payload.entities.answers;
+      state.answers = payload.entities.answers || {};
     },
   },
 });

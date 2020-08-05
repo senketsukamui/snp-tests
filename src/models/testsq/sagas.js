@@ -18,6 +18,7 @@ export function* getTests({ payload }) {
     });
 
     const normalizedData = normalize(response.data.tests, [test]);
+    console.log(normalizedData);
     yield put({
       type: actions.getTestsSuccess.type,
       payload: {

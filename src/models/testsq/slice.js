@@ -27,7 +27,7 @@ const testsSlice = createSlice({
     },
     getTestsSuccess: (state, { payload }) => {
       state.testsLoading = false;
-      state.tests = payload.entities.tests;
+      state.tests = payload.entities.tests || {};
       state.meta = payload.meta;
       state.result = payload.result;
     },
@@ -37,6 +37,7 @@ const testsSlice = createSlice({
     createTestSuccess: (state, { payload }) => {
       state.testsLoading = false;
       state.tests[payload.id] = payload;
+      state.result.push(payload.id);
     },
     editTest: state => {
       state.testsLoading = true;
@@ -51,6 +52,9 @@ const testsSlice = createSlice({
     deleteTestSuccess: (state, { payload }) => {
       state.testsLoading = false;
       delete state.tests[payload.id];
+      state.result = state.result.filter(id => {
+        return id !== payload.id;
+      });
     },
   },
   extraReducers: {

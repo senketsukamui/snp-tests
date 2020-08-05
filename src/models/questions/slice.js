@@ -59,7 +59,7 @@ const questionsSlice = createSlice({
   },
   extraReducers: {
     [actionGetTestsSuccess]: (state, { payload }) => {
-      state.questions = payload.entities.questions;
+      state.questions = payload.entities.questions || {};
     },
     [actionCreateAnswerSuccess]: (state, { payload }) => {
       state.questions[payload.questionId].answers.push(payload.answer.id);
