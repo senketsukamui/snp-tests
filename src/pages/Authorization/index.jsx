@@ -2,8 +2,12 @@ import React from 'react';
 import styles from './index.scss';
 import { actions } from 'models/users/slice';
 import { useDispatch, useSelector } from 'react-redux';
-import { isAuthorizedSelector } from '../../models/users/selectors';
+import {
+  isAuthorizedSelector,
+  isLoadingSelector,
+} from '../../models/users/selectors';
 import { useHistory } from 'react-router-dom';
+import Loader from 'components/Loader';
 
 const { userLogin } = actions;
 
@@ -13,6 +17,7 @@ const Authorization = () => {
   const history = useHistory();
 
   const isAuthorized = useSelector(isAuthorizedSelector);
+  const isLoading = useSelector(isLoadingSelector);
 
   const [formState, setFormState] = React.useState({
     username: '',
@@ -26,6 +31,10 @@ const Authorization = () => {
   const handleFormSubmit = () => {
     dispatch(userLogin(formState));
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   if (isAuthorized) {
     history.push('/');

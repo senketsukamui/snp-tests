@@ -19,3 +19,8 @@ export const isAdminSelector = createSelector(
   usersSelector,
   ({ isAdmin }) => isAdmin
 );
+
+export const isLoadingSelector = createSelector(
+  usersSelector,
+  ({ loading }) => loading
+);
