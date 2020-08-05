@@ -29,6 +29,7 @@ const testsSlice = createSlice({
       state.testsLoading = false;
       state.tests = payload.entities.tests;
       state.meta = payload.meta;
+      state.result = payload.result;
     },
     createTest: state => {
       state.testsLoading = true;

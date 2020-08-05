@@ -5,6 +5,7 @@ import { actions } from 'models/testsq/slice';
 import {
   testsListSelector,
   metaSelector,
+  resultSelector,
 } from '../../../models/testsq/selectors';
 import TestListItem from './TestsListItem';
 import useAction from 'hooks/useAction';
@@ -19,21 +20,13 @@ const TestsList = props => {
   const onCreateTest = useAction(createTest.type);
 
   const tests = useSelector(testsListSelector);
+  const testsIds = useSelector(resultSelector);
 
-  const getSortedTests = (currentSort, array) => {
-    if (!array) {
-      return [];
-    }
-    const testsToRender = array.map(test => (
-      <TestListItem {...test} key={test.id} />
-    ));
-    if (currentSort === 'created_at_desc') {
-      return testsToRender.reverse();
-    }
-    return testsToRender;
-  };
-
-  const testsToRender = getSortedTests(props.currentSort, Object.values(tests));
+  const testsToRender = testsIds
+    ? testsIds.map(id => {
+        return <TestListItem {...tests[id]} key={id} />;
+      })
+    : [];
 
   const [testTitleState, changeTestTitleState] = React.useState('');
   const meta = useSelector(metaSelector);

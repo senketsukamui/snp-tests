@@ -20,7 +20,11 @@ export function* getTests({ payload }) {
     const normalizedData = normalize(response.data.tests, [test]);
     yield put({
       type: actions.getTestsSuccess.type,
-      payload: { entities: normalizedData.entities, meta: response.data.meta },
+      payload: {
+        entities: normalizedData.entities,
+        meta: response.data.meta,
+        result: normalizedData.result,
+      },
     });
   } catch (error) {
     console.error(error);

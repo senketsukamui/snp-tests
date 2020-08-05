@@ -20,3 +20,8 @@ export const metaSelector = createSelector(
   testsSelector,
   ({ meta }) => meta
 );
+
+export const resultSelector = createSelector(
+  testsSelector,
+  ({ result }) => result
+);
