@@ -12,12 +12,14 @@ import trash from 'assets/images/trash.png';
 import plus from 'assets/images/plus.png';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import edit from 'assets/images/edit.png';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
   const onQuestionDelete = useAction(questionsActions.deleteQuestion.type);
   const onAnswerCreate = useAction(answersActions.createAnswer.type);
   const onAnswerMove = useAction(questionsActions.swapAnswers.type);
+  const onQuestionEdit = useAction(questionsActions.editQuestion.type);
 
   const handleDeleteButtonClick = () => {
     onQuestionDelete({ questionId: props.id, testId: props.testId });
@@ -29,7 +31,10 @@ const Question = props => {
     changeQuestionValidationState,
   ] = React.useState(false);
   const [modalState, changeModalState] = React.useState(false);
-
+  const [questionTitleState, changeQuestioneTitleState] = React.useState(
+    props.title
+  );
+  const [showTitleButton, changeShowTitleButton] = React.useState(false);
   // React.useEffect(() => {
   //   const trueAnswers = props.answers.reduce((acc, value) => {
   //     if (answersList[value].is_right === true) {
@@ -64,6 +69,22 @@ const Question = props => {
     });
   };
 
+  const handleQuestionTitleChange = e => {
+    changeQuestioneTitleState(e.target.value);
+  };
+
+  const handleTitleButtonChange = () => {
+    changeShowTitleButton(!showTitleButton);
+  };
+
+  const handleQuestionEdit = () => {
+    onQuestionEdit({
+      title: questionTitleState,
+      questionId: props.id,
+      question_type: props.question_type,
+    });
+  };
+
   const swapAnswer = (dragIndex, hoverIndex, firstId, secondId) => {
     onAnswerMove({
       questionId: props.id,
@@ -90,9 +111,21 @@ const Question = props => {
       <div className={styles.question}>
         <div className={styles.question_header}>
           <div className={styles.question_info}>
-            <div className={styles.title}>{`${props.index + 1}. ${
-              props.title
-            }`}</div>
+            <div>{props.index + 1}</div>
+            <input
+              className={styles.title}
+              value={questionTitleState}
+              onChange={handleQuestionTitleChange}
+              disabled={!showTitleButton}
+            />
+            {!showTitleButton ? (
+              <button onClick={handleTitleButtonChange}>
+                <img src={edit} alt="" />
+              </button>
+            ) : (
+              <button onClick={handleQuestionEdit}>Save</button>
+            )}
+
             {questionValidationState ? <div>Error</div> : ''}
           </div>
           <div className={styles.type}>{props.question_type}</div>
