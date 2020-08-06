@@ -15,7 +15,10 @@ const TestPass = props => {
   const [correctQuestionsState, changeCorrectQuestionsState] = React.useState(
     correctQuestions
   );
-  return (
+  const handleCorrectQuestionChange = (id, value) => {
+    changeCorrectQuestionsState({ ...correctQuestionsState, [id]: value });
+  };
+   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{testInfo.title}</h1>
       <div>
@@ -24,7 +27,7 @@ const TestPass = props => {
             {...questions[qst]}
             index={index}
             key={questions[qst].id}
-            changeCorrectQuestionsState={changeCorrectQuestionsState}
+            changeCorrectQuestionsState={handleCorrectQuestionChange}
           />
         ))}
       </div>
