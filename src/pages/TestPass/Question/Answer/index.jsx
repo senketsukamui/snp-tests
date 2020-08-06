@@ -9,11 +9,14 @@ const Answer = props => {
     changeCheckboxState(!checkboxState);
     props.changeCurrentAnswers(props.id, !checkboxState);
   };
+  const handleRadioChange = () => {
+    props.changeRadio(props.id);
+  };
   return (
     <div className={styles.answer}>
       {props.type === 'single' ? (
         <>
-          <Radio />
+          <Radio checked={props.radioChecked} onChange={handleRadioChange} />
           <div>{props.text}</div>
         </>
       ) : (

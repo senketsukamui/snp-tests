@@ -3,7 +3,6 @@ import styles from './index.scss';
 import { useSelector } from 'react-redux';
 import { answersListSelector } from 'models/answers/selectors';
 import Answer from './Answer';
-import { conforms } from 'lodash';
 
 const Question = props => {
   const answers = useSelector(answersListSelector);
@@ -13,11 +12,24 @@ const Question = props => {
     }
     return [...acc];
   }, []);
+
+  const radioAnswers = props.answers.reduce((acc, value) => {
+    return { ...acc, [value]: false };
+  }, {});
+
   const [currentAnswers, changeCurrentAnswers] = React.useState({});
+  const [radioState, changeRadioState] = React.useState(radioAnswers);
+  const [numberAnswerState, changeNumberAnswerState] = React.useState('');
   const handleChangeCurrentAnswers = (id, value) => {
     changeCurrentAnswers({ ...currentAnswers, [id]: value });
   };
-  console.log(currentAnswers);
+  const handleRadioStateChange = id => {
+    changeRadioState({ ...radioAnswers, [id]: true });
+  };
+  const handleNumberInputChange = e => {
+    changeNumberAnswerState(e.target.value);
+  };
+  console.log(radioState);
   return (
     <div className={styles.question}>
       <div className={styles.title}>
@@ -25,7 +37,7 @@ const Question = props => {
       </div>
       <div className={styles.answers}>
         {props.question_type === 'number' ? (
-          <input />
+          <input onChange={handleNumberInputChange} value={numberAnswerState} />
         ) : (
           props.answers.map(id => (
             <Answer
@@ -34,6 +46,8 @@ const Question = props => {
               numericAnswer={props.answer}
               key={id}
               changeCurrentAnswers={handleChangeCurrentAnswers}
+              changeRadio={handleRadioStateChange}
+              radioChecked={radioState[id]}
             />
           ))
         )}
