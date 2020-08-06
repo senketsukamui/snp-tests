@@ -5,24 +5,32 @@ import { useHistory } from 'react-router-dom';
 import { format } from 'date-fns';
 import useAction from 'hooks/useAction';
 import { actions as testsActions } from 'models/testsq/slice';
+import Modal from 'components/Modal';
 import edit from 'assets/images/edit.png';
 import trash from 'assets/images/trash.png';
 
 const TestListItem = props => {
   const history = useHistory();
   const onTestDelete = useAction(testsActions.deleteTest.type);
+  const [modalOpen, changeModalOpen] = React.useState(false);
   const handleEditClick = () => {
     history.push({
       pathname: `/test/${props.id}`,
       state: { questions: props.questions, title: props.title },
     });
   };
+  const toggleModal = () => {
+    changeModalOpen(!modalOpen);
+  };
   const handleDeleteClick = () => {
     onTestDelete({ id: props.id });
   };
+  const handlePassingTest = () => {
+    history.push(`/pass/${props.id}`);
+  };
   return (
     <div className={styles.item}>
-      <div className={styles.item_info}>
+      <div className={styles.item_info} onClick={toggleModal}>
         <h1 className={styles.title}>{props.title}</h1>
         <label className={styles.date}>
           {format(new Date(props.created_at), 'Pp')}
@@ -36,6 +44,11 @@ const TestListItem = props => {
           <img src={trash} alt="" />
         </button>
       </div>
+      {modalOpen && (
+        <Modal toggle={toggleModal} action={handlePassingTest}>
+          <Modal.Header>Start passing the test?</Modal.Header>
+        </Modal>
+      )}
     </div>
   );
 };

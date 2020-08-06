@@ -1,6 +1,7 @@
 import Main from 'pages/Main';
 import Authorization from 'pages/Authorization';
 import TestWindow from 'pages/TestWindow';
+import TestPass from 'pages/TestPass';
 
 export default [
   {
@@ -26,5 +27,13 @@ export default [
     component: TestWindow,
     sagasToRun: [],
     title: 'Test Window',
+  },
+  {
+    path: '/pass/:id',
+    exact: false,
+    cache: false,
+    component: TestPass,
+    sagasToRun: [],
+    title: 'Test Pass',
   },
 ];
