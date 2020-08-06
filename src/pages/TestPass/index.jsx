@@ -8,12 +8,24 @@ import Question from './Question';
 const TestPass = props => {
   const testInfo = useSelector(testsListSelectorById(props.match.params.id));
   const questions = useSelector(questionsListSelector);
+  const correctQuestions = testInfo.questions.reduce((acc, value) => {
+    acc[value] = false;
+    return acc;
+  }, {});
+  const [correctQuestionsState, changeCorrectQuestionsState] = React.useState(
+    correctQuestions
+  );
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{testInfo.title}</h1>
       <div>
         {testInfo.questions.map((qst, index) => (
-          <Question {...questions[qst]} index={index} />
+          <Question
+            {...questions[qst]}
+            index={index}
+            key={questions[qst].id}
+            changeCorrectQuestionsState={changeCorrectQuestionsState}
+          />
         ))}
       </div>
     </div>

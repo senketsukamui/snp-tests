@@ -7,25 +7,26 @@ import empty_checkbox from 'assets/images/empty-checkbox.png';
 
 const Checkbox = props => {
   const { id, text } = props;
-  const [checkedState, changeCheckedState] = React.useState(props.checked);
   const onEditAnswerStatus = useAction(answersActions.editAnswer.type);
 
   const handleCheckboxClick = () => {
-    changeCheckedState(!checkedState);
-    onEditAnswerStatus({
-      is_right: !checkedState,
-      id,
-      text,
-    });
+    props.change();
+    if (!props.pass) {
+      onEditAnswerStatus({
+        is_right: !props.checked,
+        id,
+        text,
+      });
+    }
   };
 
   return (
     <div className={styles.checkbox}>
       <img
-        src={checkedState ? checkbox : empty_checkbox}
+        src={props.checked ? checkbox : empty_checkbox}
         className={styles.checkbox_image}
         type="checkbox"
-        checked={checkedState}
+        checked={props.checked}
         onClick={handleCheckboxClick}
         {...props}
       />

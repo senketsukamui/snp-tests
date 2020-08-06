@@ -5,9 +5,8 @@ import PropTypes from 'prop-types';
 import trash from 'assets/images/trash.png';
 import useAction from 'hooks/useAction';
 import { actions as answersActions } from 'models/answers/slice';
-import LoadingButton from 'components/LoadingButton';
 import { useSelector } from 'react-redux';
-import { answersLoadingSelector } from '../../../../models/answers/selectors';
+import { answersLoadingSelector } from 'models/answers/selectors';
 import Modal from 'components/Modal';
 import { useDrop, useDrag } from 'react-dnd';
 
@@ -15,6 +14,7 @@ const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
   const isLoading = useSelector(answersLoadingSelector);
   const [modalState, changeModalState] = React.useState(false);
+  const [checkboxState, changeCheckboxState] = React.useState(props.is_right);
   const ref = React.useRef(null);
 
   const handleDeleteClick = () => {
@@ -22,6 +22,10 @@ const Answer = props => {
       id: props.id,
       questionId: props.questionId,
     });
+  };
+
+  const handleCheckboxChange = () => {
+    changeCheckboxState(!checkboxState);
   };
 
   const toggleModal = () => {
@@ -80,10 +84,11 @@ const Answer = props => {
     <div className={styles.answer} ref={ref} style={{ opacity }}>
       <div className={styles.info}>
         <Checkbox
-          checked={props.is_right}
+          checked={checkboxState}
           className={styles.answer_checkbox}
           id={props.id}
           text={props.text}
+          change={handleCheckboxChange}
         />
         <div className={styles.text}>{props.text}</div>
       </div>
