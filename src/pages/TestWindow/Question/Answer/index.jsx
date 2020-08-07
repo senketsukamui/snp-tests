@@ -12,7 +12,6 @@ import { useDrop, useDrag } from 'react-dnd';
 
 const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
-  const isLoading = useSelector(answersLoadingSelector);
   const [modalState, changeModalState] = React.useState(false);
   const [checkboxState, changeCheckboxState] = React.useState(props.is_right);
   const ref = React.useRef(null);
@@ -97,8 +96,12 @@ const Answer = props => {
           <img src={trash} alt="" />
         </button>
         {modalState && (
-          <Modal toggle={toggleModal} action={handleDeleteClick}>
+          <Modal>
             <Modal.Header>Delete this answer?</Modal.Header>
+            <Modal.Buttons>
+              <Modal.Button action={handleDeleteClick}>Yes</Modal.Button>
+              <Modal.Button action={toggleModal}>No</Modal.Button>
+            </Modal.Buttons>
           </Modal>
         )}
       </div>

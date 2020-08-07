@@ -164,8 +164,12 @@ const Question = props => {
         )}
 
         {modalState && (
-          <Modal toggle={toggleModal} action={handleDeleteButtonClick}>
-            <Modal.Header>Are you sure?</Modal.Header>
+          <Modal>
+            <Modal.Header>Delete this question?</Modal.Header>
+            <Modal.Buttons>
+              <Modal.Button action={handleDeleteButtonClick}>Yes</Modal.Button>
+              <Modal.Button action={toggleModal}>No</Modal.Button>
+            </Modal.Buttons>
           </Modal>
         )}
       </div>

@@ -14,19 +14,17 @@ const Modal = props => {
 
   return createPortal(
     <div className={styles.wrapper}>
-      <div className={styles.modal}>
-        {props.children}
-        <div className={styles.buttons}>
-          <button className={styles.modal_button} onClick={props.action}>
-            Yes
-          </button>
-          <button onClick={props.toggle} className={styles.modal_button}>
-            No
-          </button>
-        </div>
-      </div>
+      <div className={styles.modal}>{props.children}</div>
     </div>,
     document.querySelector('#modal')
+  );
+};
+
+Modal.Content = props => {
+  return (
+    <>
+      <div className={styles.content}>{props.children}</div>
+    </>
   );
 };
 
@@ -38,4 +36,17 @@ Modal.Header = props => {
   );
 };
 
+Modal.Button = props => {
+  return (
+    <>
+      <button className={styles.modal_button} onClick={props.action}>
+        {props.children}
+      </button>
+    </>
+  );
+};
+
+Modal.Buttons = props => {
+  return <div className={styles.buttons}>{props.children}</div>;
+};
 export default Modal;

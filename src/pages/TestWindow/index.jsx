@@ -62,7 +62,6 @@ const TestWindow = props => {
   const handleDropdownChange = select => {
     changeDropdownState(select);
   };
-
   const handleQuestionInputChange = e => {
     changeQuestionState(e.target.value);
   };

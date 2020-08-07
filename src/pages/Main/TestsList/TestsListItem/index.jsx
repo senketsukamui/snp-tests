@@ -45,8 +45,12 @@ const TestListItem = props => {
         </button>
       </div>
       {modalOpen && (
-        <Modal toggle={toggleModal} action={handlePassingTest}>
-          <Modal.Header>Start passing the test?</Modal.Header>
+        <Modal>
+          <Modal.Header>Do you want to pass this test?</Modal.Header>
+          <Modal.Buttons>
+            <Modal.Button action={handlePassingTest}>Yes</Modal.Button>
+            <Modal.Button action={toggleModal}>No</Modal.Button>
+          </Modal.Buttons>
         </Modal>
       )}
     </div>
