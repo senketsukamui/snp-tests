@@ -9,16 +9,21 @@ const Modal = props => {
   const ref = React.useRef(null);
   React.useEffect(() => {
     const handleKeyDown = event => {
-      if (event.keyCode === 27) {
+      if (!props.isResultModal && event.keyCode === 27) {
         props.toggle();
       }
     };
 
     const handleClickOutside = e => {
-      if (ref.current && !ref.current.contains(event.target)) {
+      if (
+        !props.isResultModal &&
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
         props.toggle();
       }
     };
+
     disableBodyScroll(body);
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleKeyDown);
@@ -32,12 +37,16 @@ const Modal = props => {
   return createPortal(
     <div className={styles.wrapper}>
       <div className={styles.modal} ref={ref}>
-        <img
-          src={close}
-          alt=""
-          className={styles.close}
-          onClick={props.toggle}
-        />
+        {!props.isResultModal ? (
+          <img
+            src={close}
+            alt=""
+            className={styles.close}
+            onClick={props.toggle}
+          />
+        ) : (
+          ''
+        )}
         {props.children}
       </div>
     </div>,

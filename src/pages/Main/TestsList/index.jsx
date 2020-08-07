@@ -41,7 +41,6 @@ const TestsList = props => {
     acc.push(value);
     return acc;
   }, []);
-  console.log(validIds);
   const testsToRender = validIds
     ? validIds.map(id => {
         return <TestListItem {...tests[id]} key={id} />;
