@@ -45,7 +45,7 @@ const TestListItem = props => {
         </button>
       </div>
       {modalOpen && (
-        <Modal>
+        <Modal toggle={toggleModal}>
           <Modal.Header>Do you want to pass this test?</Modal.Header>
           <Modal.Buttons>
             <Modal.Button action={handlePassingTest}>Yes</Modal.Button>

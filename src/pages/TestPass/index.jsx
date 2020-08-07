@@ -52,7 +52,7 @@ const TestPass = props => {
           Submit test
         </button>
         {modalOpen && (
-          <Modal>
+          <Modal toggle={toggleModal}>
             <Modal.Header>Your results for test {props.title}:</Modal.Header>
             <Modal.Content>
               {Object.keys(correctQuestionsState).map((qst, index) => (

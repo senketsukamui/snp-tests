@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.scss';
 import { createPortal } from 'react-dom';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import close from 'assets/images/close.png';
 
 const Modal = props => {
   const body = document.querySelector('body');
@@ -14,7 +15,15 @@ const Modal = props => {
 
   return createPortal(
     <div className={styles.wrapper}>
-      <div className={styles.modal}>{props.children}</div>
+      <div className={styles.modal}>
+        <img
+          src={close}
+          alt=""
+          className={styles.close}
+          onClick={props.toggle}
+        />
+        {props.children}
+      </div>
     </div>,
     document.querySelector('#modal')
   );

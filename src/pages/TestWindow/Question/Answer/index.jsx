@@ -96,7 +96,7 @@ const Answer = props => {
           <img src={trash} alt="" />
         </button>
         {modalState && (
-          <Modal>
+          <Modal toggle={toggleModal}>
             <Modal.Header>Delete this answer?</Modal.Header>
             <Modal.Buttons>
               <Modal.Button action={handleDeleteClick}>Yes</Modal.Button>
