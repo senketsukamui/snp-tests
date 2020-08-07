@@ -6,16 +6,32 @@ import close from 'assets/images/close.png';
 
 const Modal = props => {
   const body = document.querySelector('body');
+  const ref = React.useRef(null);
   React.useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.keyCode === 27) {
+        props.toggle();
+      }
+    };
+
+    const handleClickOutside = e => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        props.toggle();
+      }
+    };
     disableBodyScroll(body);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
       enableBodyScroll(body);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   });
 
   return createPortal(
     <div className={styles.wrapper}>
-      <div className={styles.modal}>
+      <div className={styles.modal} ref={ref}>
         <img
           src={close}
           alt=""
