@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { answersListSelector } from 'models/answers/selectors';
+import { questionsListSelector } from 'models/questions/selectors';
 import Answer from './Answer';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
@@ -13,9 +14,11 @@ import plus from 'assets/images/plus.png';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import edit from 'assets/images/edit.png';
+import { validateQuestion } from 'utils/validate';
 
 const Question = props => {
   const answersList = useSelector(answersListSelector);
+  const questionsList = useSelector(questionsListSelector);
   const onQuestionDelete = useAction(questionsActions.deleteQuestion.type);
   const onAnswerCreate = useAction(answersActions.createAnswer.type);
   const onAnswerMove = useAction(questionsActions.swapAnswers.type);
@@ -36,22 +39,10 @@ const Question = props => {
   );
   const [showTitleButton, changeShowTitleButton] = React.useState(false);
   React.useEffect(() => {
-    const trueAnswers = props.answers.reduce((acc, value) => {
-      if (answersList[value].is_right === true) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-    if (
-      props.question_type === 'single' &&
-      (trueAnswers > 1 || props.answers.length < 2)
-    ) {
-      changeQuestionValidationState(true);
-    } else if (props.question_type === 'multiple' && props.answers.length < 2) {
-      changeQuestionValidationState(true);
-    }
-    changeQuestionValidationState(false);
-  }, [props]);
+    changeQuestionValidationState(
+      !validateQuestion(props.id, questionsList, answersList)
+    );
+  }, [props.id, questionsList, answersList]);
 
   const handleAnswerInputChange = e => {
     changeAnswerState(e.target.value);
@@ -164,8 +155,8 @@ const Question = props => {
         )}
 
         {modalState && (
-          <Modal toggle={toggleModal}>
-            <Modal.Header>Delete this question?</Modal.Header>
+          <Modal>
+            <Modal.Header>Delete this answer?</Modal.Header>
             <Modal.Buttons>
               <Modal.Button action={handleDeleteButtonClick}>Yes</Modal.Button>
               <Modal.Button action={toggleModal}>No</Modal.Button>
@@ -197,4 +188,4 @@ Question.defaultProps = {
   answer: 1,
 };
 
-export default Question;
+export default React.memo(Question);

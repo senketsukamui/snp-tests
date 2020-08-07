@@ -37,7 +37,8 @@ const questionsSlice = createSlice({
     },
     editQuestionSuccess: (state, { payload }) => {
       state.questionsLoading = false;
-      state.questions[payload.id] = payload;
+      state.questions[payload.id].title = payload.title;
+      state.questions[payload.id].answer = payload.answer;
     },
     deleteQuestion: state => {
       state.questionsLoading = true;

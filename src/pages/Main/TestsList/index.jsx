@@ -6,24 +6,44 @@ import {
   testsListSelector,
   metaSelector,
   resultSelector,
-} from '../../../models/testsq/selectors';
+} from 'models/testsq/selectors';
+import { isAdminSelector } from 'models/users/selectors';
+import { questionsListSelector } from 'models/questions/selectors';
+import { answersListSelector } from 'models/answers/selectors';
 import TestListItem from './TestsListItem';
 import useAction from 'hooks/useAction';
 import left_arrow from 'assets/images/left_arrow.png';
 import right_arrow from 'assets/images/right_arrow.png';
 import asc from 'assets/images/asc.png';
 import desc from 'assets/images/desc.png';
+import { validateTest } from 'utils/validate';
 
 const { createTest } = actions;
 
 const TestsList = props => {
   const onCreateTest = useAction(createTest.type);
-
+  const isAdmin = useSelector(isAdminSelector);
   const tests = useSelector(testsListSelector);
-  const testsIds = useSelector(resultSelector);
-
-  const testsToRender = testsIds
-    ? testsIds.map(id => {
+  const questions = useSelector(questionsListSelector);
+  const answers = useSelector(answersListSelector);
+  const testsIds = useSelector(resultSelector) || [];
+  const validIds = testsIds.reduce((acc, value) => {
+    if (!isAdmin) {
+      if (
+        validateTest(tests[value].questions, questions, answers) &&
+        tests[value].questions.length
+      ) {
+        acc.push(value);
+        return acc;
+      }
+      return acc;
+    }
+    acc.push(value);
+    return acc;
+  }, []);
+  console.log(validIds);
+  const testsToRender = validIds
+    ? validIds.map(id => {
         return <TestListItem {...tests[id]} key={id} />;
       })
     : [];

@@ -65,7 +65,6 @@ const Question = props => {
   };
   const handleNumberInputChange = e => {
     changeNumberAnswerState(e.target.value);
-    console.log(e.target.value);
     checkCorrectness(e.target.value);
   };
 
