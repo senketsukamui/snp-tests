@@ -17,7 +17,7 @@ import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 import edit from 'assets/images/edit.png';
 import { isAuthorizedSelector } from 'models/users/selectors';
-import Loader from '../../components/Loader';
+import Loader from 'components/Loader';
 
 const TestWindowContainer = props => {
   const history = useHistory();

@@ -1,11 +1,42 @@
 import React from 'react';
 import styles from './index.scss';
 import { useSelector } from 'react-redux';
-import { testsListSelectorById } from 'models/testsq/selectors';
+import {
+  testsListSelectorById,
+  testsLoadingSelector,
+} from 'models/testsq/selectors';
+
 import { questionsListSelector } from 'models/questions/selectors';
+import { isAuthorizedSelector } from 'models/users/selectors';
 import Question from './Question';
 import Modal from '../../components/Modal';
 import { useHistory } from 'react-router-dom';
+import useAction from 'hooks/useAction';
+import { actions as testsActions } from 'models/testsq/slice';
+import Loader from 'components/Loader';
+
+const TestPassContainer = props => {
+  const history = useHistory();
+  const isAuthorized = useSelector(isAuthorizedSelector);
+  if (!isAuthorized) {
+    history.push('/auth');
+  }
+
+  const testsLoading = useSelector(testsLoadingSelector);
+  const testById = useSelector(testsListSelectorById(props.match.params.id));
+  const getTestById = useAction(testsActions.getTestById.type);
+
+  React.useEffect(() => {
+    if (!testById) {
+      getTestById({ id: props.match.params.id });
+    }
+  }, [testById, getTestById, props.match.params.id]);
+
+  if (testsLoading || !testById) {
+    return <Loader />;
+  }
+  return <TestPass {...props} testsLoading={testsLoading} />;
+};
 
 const TestPass = props => {
   const history = useHistory();
@@ -73,4 +104,4 @@ const TestPass = props => {
   );
 };
 
-export default TestPass;
+export default TestPassContainer;
