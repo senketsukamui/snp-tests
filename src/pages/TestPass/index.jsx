@@ -66,7 +66,6 @@ const TestPass = props => {
   const handleRedirectToMain = () => {
     history.push('/');
   };
-  console.log(correctQuestionsState);
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{testInfo.title}</h1>

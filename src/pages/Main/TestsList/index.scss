@@ -11,6 +11,8 @@
 .create {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  align-self: center;
   padding: 5px;
   width: 100%;
 }
@@ -18,17 +20,22 @@
 .input {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  align-self: center;
+  padding: 10px;
 
   &_label {
     font-size: 0.9rem;
+    margin-bottom: 5px;
   }
 }
 
 .submit_button {
   background-color: #457b9d;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 .pagination {
@@ -55,7 +62,6 @@
 
 .search {
   display: flex;
-  flex-direction: column;
   align-self: center;
 }
 

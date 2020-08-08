@@ -16,6 +16,7 @@ import left_arrow from 'assets/images/left_arrow.png';
 import right_arrow from 'assets/images/right_arrow.png';
 import asc from 'assets/images/asc.png';
 import desc from 'assets/images/desc.png';
+import search from 'assets/images/search.png';
 import { validateTest } from 'utils/validate';
 
 const { createTest } = actions;
@@ -63,14 +64,18 @@ const TestsList = props => {
         <div className={styles.header}>
           <form className={styles.test_create} onSubmit={handleCreateTest}>
             <div className={styles.input}>
-              <label className={styles.input_label}>Enter the test title</label>
-              <input value={testTitleState} onChange={handleTestTitleChange} />
+              <input
+                value={testTitleState}
+                onChange={handleTestTitleChange}
+                placeholder="Enter the test title"
+              />
             </div>
             <button type="submit" className={styles.submit_button}>
               Create
             </button>
           </form>
           <div className={styles.search}>
+            <img src={search} alt="" />
             <input
               type="text"
               value={props.currentSearch}

@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { actions } from 'models/users/slice';
+import { useSelector } from 'react-redux';
 import {
   isAuthorizedSelector,
   isLoadingSelector,
@@ -13,11 +12,8 @@ import useAction from 'hooks/useAction';
 import { getTests } from 'models/testsq/slice';
 import Loader from 'components/Loader';
 
-const { currentSession } = actions;
-
 const Main = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const isAuthorized = useSelector(isAuthorizedSelector);
   const isLoading = useSelector(isLoadingSelector);
   const onGetTests = useAction(getTests.type);
@@ -25,19 +21,13 @@ const Main = () => {
   const [currentSearch, changeCurrentSearch] = React.useState('');
   const [currentSort, changeCurrentSort] = React.useState('created_at_desc');
 
-  // React.useEffect(() => {
-  //   if (!isAuthorized) {
-  //     dispatch(currentSession());
-  //   }
-  // }, [dispatch, isAuthorized]);
-
   React.useEffect(() => {
     onGetTests({
       page: currentPage,
       order: currentSort,
       search: currentSearch,
     });
-  }, [onGetTests, currentPage, currentSearch, currentSort]);
+  }, [onGetTests, currentSort, currentPage, currentSearch]);
 
   if (!isAuthorized) {
     history.push('/auth');
@@ -61,6 +51,7 @@ const Main = () => {
   const handleSortChange = sort => () => {
     changeCurrentSort(sort);
   };
+
   return (
     <div className={styles.main}>
       <Header />
