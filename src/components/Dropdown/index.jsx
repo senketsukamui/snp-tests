@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './index.scss';
 import down_arrow from 'assets/images/down_arrow.png';
+import { handleClickOutside } from 'utils/handleClickOutside';
 
 const Dropdown = props => {
   const [open, setOpen] = React.useState(false);
@@ -16,20 +17,24 @@ const Dropdown = props => {
     setOpen(!open);
   };
   React.useEffect(() => {
-    const handleClickOutside = e => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setOpen(false);
-      }
+    const closeDropdown = () => {
+      setOpen(false);
     };
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener(
+      'mousedown',
+      handleClickOutside(ref, closeDropdown)
+    );
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside(ref, closeDropdown)
+      );
     };
   });
   return (
     <div className={styles.wrapper} ref={ref}>
       <div className={styles.selection} onClick={handleDropdownClick}>
-        {selected}
+        <div className={styles.selected}>{selected}</div>
         {!open && <img src={down_arrow} alt="" className={styles.down_arrow} />}
       </div>
       <ul className={styles.items}>

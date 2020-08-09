@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './index.scss';
 import { createPortal } from 'react-dom';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { handleClickOutside } from 'utils/handleClickOutside';
+
 import close from 'assets/images/close.png';
 
 const Modal = props => {
@@ -13,23 +15,24 @@ const Modal = props => {
         props.toggle();
       }
     };
-
-    const handleClickOutside = e => {
-      if (
-        !props.isResultModal &&
-        ref.current &&
-        !ref.current.contains(event.target)
-      ) {
+    const closeModalOutside = () => {
+      if (!props.isResultModal) {
         props.toggle();
       }
     };
 
     disableBodyScroll(body);
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener(
+      'mousedown',
+      handleClickOutside(ref, closeModalOutside)
+    );
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       enableBodyScroll(body);
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener(
+        'mousedown',
+        handleClickOutside(ref, closeModalOutside)
+      );
       document.removeEventListener('keydown', handleKeyDown);
     };
   });

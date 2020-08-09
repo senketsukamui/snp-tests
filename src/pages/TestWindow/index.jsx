@@ -6,17 +6,15 @@ import PropTypes from 'prop-types';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
 import { actions as testsActions } from 'models/testsq/slice';
-import { actions as usersActions } from 'models/users/slice';
 import useAction from 'hooks/useAction';
 import {
   testsListSelectorById,
   testsLoadingSelector,
 } from 'models/testsq/selectors';
-import { isAdminSelector } from 'models/users/selectors';
+import { isAdminSelector, isAuthorizedSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 import edit from 'assets/images/edit.png';
-import { isAuthorizedSelector } from 'models/users/selectors';
 import Loader from 'components/Loader';
 
 const TestWindowContainer = props => {
@@ -66,7 +64,8 @@ const TestWindow = props => {
     changeQuestionState(e.target.value);
   };
 
-  const handleQuestionCreate = () => {
+  const handleQuestionCreate = e => {
+    e.preventDefault();
     onQuestionCreate({
       testId,
       questionTitle: questionState,
@@ -123,17 +122,33 @@ const TestWindow = props => {
             )}
           </div>
         </div>
-        <div className={styles.question_create}>
-          <div>Question title:</div>
-          <input type="text" onChange={handleQuestionInputChange} />
+        <form
+          className={styles.question_create}
+          onSubmit={handleQuestionCreate}
+        >
+          <input
+            type="text"
+            onChange={handleQuestionInputChange}
+            placeholder="Question title"
+            className={styles.question_input}
+            required
+          />
           {dropdownState === 'number' ? (
-            <input type="text" onChange={handleNumberAnswerState} />
+            <input
+              className={styles.question_input}
+              type="text"
+              onChange={handleNumberAnswerState}
+              placeholder="Enter number"
+              required
+            />
           ) : (
             ''
           )}
-          <button onClick={handleQuestionCreate}>Create</button>
           <Dropdown items={answerTypes} handleChange={handleDropdownChange} />
-        </div>
+          <button className={styles.question_createbutton} type="submit">
+            Create
+          </button>
+        </form>
         {renderedQuestions.length ? (
           renderedQuestions
         ) : (

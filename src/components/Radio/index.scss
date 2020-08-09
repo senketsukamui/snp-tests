@@ -1,0 +1,7 @@
+.image {
+  background-image: url('assets/images/empty-checkbox.png');
+}
+
+.input:checked + .image {
+  background-image: url('assets/images/checkbox.png');
+}

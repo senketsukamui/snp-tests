@@ -73,9 +73,10 @@ const Question = props => {
       questionId: props.id,
       question_type: props.question_type,
     });
+    handleTitleButtonChange();
   };
 
-  const swapAnswer = (dragIndex, hoverIndex, firstId, secondId) => {
+  const swapAnswer = (dragIndex, hoverIndex, firstId) => {
     onAnswerMove({
       questionId: props.id,
       dragIndex,
@@ -90,8 +91,11 @@ const Question = props => {
 
   const newAnswerInput = (
     <div>
-      <div>Answer title:</div>
-      <input type="text" onChange={handleAnswerInputChange} />
+      <input
+        type="text"
+        onChange={handleAnswerInputChange}
+        placeholder="Answer title"
+      />
       <button onClick={handleAnswerCreate}>Create</button>
     </div>
   );
@@ -101,27 +105,30 @@ const Question = props => {
       <div className={styles.question}>
         <div className={styles.question_header}>
           <div className={styles.question_info}>
-            <div>{props.index + 1}</div>
+            <div className={styles.index}>{props.index + 1}.</div>
             <input
               className={styles.title}
               value={questionTitleState}
               onChange={handleQuestionTitleChange}
               disabled={!showTitleButton}
             />
+          </div>
+          <div className={styles.buttons}>
             {!showTitleButton ? (
               <button onClick={handleTitleButtonChange}>
                 <img src={edit} alt="" />
               </button>
             ) : (
-              <button onClick={handleQuestionEdit}>Save</button>
+              <button onClick={handleQuestionEdit} className={styles.save}>
+                save
+              </button>
             )}
-
             {questionValidationState ? <div>Error</div> : ''}
+            <button onClick={toggleModal}>
+              <img src={trash} alt="" />
+            </button>
+            <div className={styles.type}>{props.question_type}</div>
           </div>
-          <div className={styles.type}>{props.question_type}</div>
-          <button onClick={toggleModal}>
-            <img src={trash} alt="" />
-          </button>
         </div>
         {props.question_type === 'single' ||
         props.question_type === 'multiple' ? (
