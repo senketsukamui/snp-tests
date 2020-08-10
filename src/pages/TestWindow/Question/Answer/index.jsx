@@ -6,14 +6,15 @@ import trash from 'assets/images/trash.png';
 import useAction from 'hooks/useAction';
 import { actions as answersActions } from 'models/answers/slice';
 import { useSelector } from 'react-redux';
-import { answersLoadingSelector } from 'models/answers/selectors';
 import Modal from 'components/Modal';
 import { useDrop, useDrag } from 'react-dnd';
 
 const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
+  const onAnswerEdit = useAction(answersActions.editAnswer.type);
   const [modalState, changeModalState] = React.useState(false);
   const [checkboxState, changeCheckboxState] = React.useState(props.is_right);
+  const [answerState, changeAnswerState] = React.useState(props.text);
   const ref = React.useRef(null);
 
   const handleDeleteClick = () => {
@@ -21,6 +22,18 @@ const Answer = props => {
       id: props.id,
       questionId: props.questionId,
     });
+  };
+
+  const handleAnswerEdit = () => {
+    onAnswerEdit({
+      id: props.id,
+      text: answerState,
+      is_right: props.is_right,
+    });
+  };
+
+  const handleAnswerStateChange = e => {
+    changeAnswerState(e.target.value);
   };
 
   const handleCheckboxChange = () => {
@@ -89,7 +102,12 @@ const Answer = props => {
           text={props.text}
           change={handleCheckboxChange}
         />
-        <div className={styles.text}>{props.text}</div>
+        <input
+          className={styles.text}
+          value={answerState}
+          onChange={handleAnswerStateChange}
+        />
+        <button onClick={handleAnswerEdit}>Save</button>
       </div>
       <div className={styles.buttons}>
         <button onClick={toggleModal}>
