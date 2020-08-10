@@ -22,13 +22,15 @@
   align-self: center;
   flex-direction: column;
   padding: 10px;
+  border: 1px solid black;
 }
 
 .title {
   margin-bottom: 15px;
   display: flex;
   width: 100%;
-  background-color: #a8dadc;
+  border-radius: 10px;
+  border: 1px solid black;
   border-radius: 10px;
   margin-right: 10px;
   flex-direction: column;
@@ -56,7 +58,8 @@
 
 .save {
   font-size: 1.2rem;
-  background-color: #a8dadc;
+  border-radius: 10px;
+  border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
 }
@@ -64,4 +67,10 @@
 .create {
   margin: 0 auto;
   display: flex;
+}
+
+.answer_create {
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 5px;
 }

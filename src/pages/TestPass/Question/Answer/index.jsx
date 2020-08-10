@@ -17,7 +17,7 @@ const Answer = props => {
       {props.type === 'single' ? (
         <>
           <Radio checked={props.radioChecked} onChange={handleRadioChange} />
-          <div className={styles.text}>{props.text}</div>
+          <div className={styles.radio_text}>{props.text}</div>
         </>
       ) : (
         <>

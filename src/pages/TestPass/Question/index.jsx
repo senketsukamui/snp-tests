@@ -70,12 +70,19 @@ const Question = props => {
 
   return (
     <div className={styles.question}>
-      <div className={styles.title}>
-        {props.index + 1}. {props.title}
+      <div className={styles.info}>
+        <div className={styles.title}>
+          {props.index + 1}. {props.title}
+        </div>
+        <div className={styles.type}>{props.question_type}</div>
       </div>
       <div className={styles.answers}>
         {props.question_type === 'number' ? (
-          <input onChange={handleNumberInputChange} value={numberAnswerState} />
+          <input
+            onChange={handleNumberInputChange}
+            value={numberAnswerState}
+            className={styles.number_input}
+          />
         ) : (
           props.answers.map(id => (
             <Answer

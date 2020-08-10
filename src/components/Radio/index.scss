@@ -1,7 +1,22 @@
 .image {
-  background-image: url('assets/images/empty-checkbox.png');
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('images/empty-checkbox.png');
+  background-size: 100% 100%;
+}
+
+.input {
+  appearance: none;
 }
 
 .input:checked + .image {
-  background-image: url('assets/images/checkbox.png');
+  width: 20px;
+  height: 20px;
+  background-image: url('images/checkbox.png');
+  background-size: 100% 100%;
+}
+
+.radio {
+  position: relative;
 }

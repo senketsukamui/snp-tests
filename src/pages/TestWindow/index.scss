@@ -51,12 +51,13 @@
     padding: 10px;
   }
   &_createbutton {
-    background-color: #a8dadc;
     border-radius: 10px;
+    border: 1px solid black;
     padding: 10px;
   }
   &_input {
-    background-color: #a8dadc;
+    border-radius: 10px;
+    border: 1px solid black;
     border-radius: 10px;
     margin-right: 5px;
   }
@@ -66,4 +67,3 @@
   display: flex;
   justify-content: center;
 }
-

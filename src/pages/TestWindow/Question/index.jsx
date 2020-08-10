@@ -96,7 +96,9 @@ const Question = props => {
         onChange={handleAnswerInputChange}
         placeholder="Answer title"
       />
-      <button onClick={handleAnswerCreate}>Create</button>
+      <button onClick={handleAnswerCreate} className={styles.answer_create}>
+        Create
+      </button>
     </div>
   );
 
