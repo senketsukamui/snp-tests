@@ -22,7 +22,9 @@
   flex-direction: column;
   align-self: center;
   padding: 10px;
-
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-right: 5px;
   &_label {
     font-size: 0.9rem;
     margin-bottom: 5px;

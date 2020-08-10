@@ -14,6 +14,7 @@ import { useHistory } from 'react-router-dom';
 import useAction from 'hooks/useAction';
 import { actions as testsActions } from 'models/testsq/slice';
 import Loader from 'components/Loader';
+import left from 'assets/images/left.png';
 
 const TestPassContainer = props => {
   const history = useHistory();
@@ -66,6 +67,7 @@ const TestPass = props => {
   const handleRedirectToMain = () => {
     history.push('/');
   };
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>{testInfo.title}</h1>
@@ -98,6 +100,12 @@ const TestPass = props => {
             </Modal.Buttons>
           </Modal>
         )}
+        <img
+          src={left}
+          alt=""
+          onClick={handleRedirectToMain}
+          className={styles.back}
+        />
       </div>
     </div>
   );

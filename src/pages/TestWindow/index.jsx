@@ -15,6 +15,7 @@ import { isAdminSelector, isAuthorizedSelector } from 'models/users/selectors';
 import { useHistory } from 'react-router-dom';
 import Dropdown from 'components/Dropdown';
 import edit from 'assets/images/edit.png';
+import left from 'assets/images/left.png';
 import Loader from 'components/Loader';
 
 const TestWindowContainer = props => {
@@ -40,6 +41,7 @@ const TestWindowContainer = props => {
 };
 
 const TestWindow = props => {
+  const history = useHistory();
   const questionList = useSelector(questionsListSelector);
   const testId = props.match.params.id;
   const testById = useSelector(testsListSelectorById(testId));
@@ -96,6 +98,9 @@ const TestWindow = props => {
     changeShowTestEdit(!showTestEdit);
   };
 
+  const handleBackClick = () => {
+    history.push('/');
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.test}>
@@ -155,6 +160,12 @@ const TestWindow = props => {
           <div className={styles.no_questions}>No questions here</div>
         )}
       </div>
+      <img
+        src={left}
+        alt=""
+        onClick={handleBackClick}
+        className={styles.back}
+      />
     </div>
   );
 };
