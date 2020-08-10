@@ -59,48 +59,51 @@ const TestWindow = props => {
   const [dropdownState, changeDropdownState] = React.useState(answerTypes[0]);
   const [numberAnswerState, changeNumberAnswerState] = React.useState('');
 
-  const handleDropdownChange = select => {
+  const handleDropdownChange = React.useCallback(select => {
     changeDropdownState(select);
-  };
-  const handleQuestionInputChange = e => {
+  }, []);
+  const handleQuestionInputChange = React.useCallback(e => {
     changeQuestionState(e.target.value);
-  };
+  }, []);
 
-  const handleQuestionCreate = e => {
-    e.preventDefault();
-    onQuestionCreate({
-      testId,
-      questionTitle: questionState,
-      question_type: dropdownState,
-      answer: numberAnswerState,
-    });
-    changeQuestionState('');
-    changeNumberAnswerState('');
-  };
+  const handleQuestionCreate = React.useCallback(
+    e => {
+      e.preventDefault();
+      onQuestionCreate({
+        testId,
+        questionTitle: questionState,
+        question_type: dropdownState,
+        answer: numberAnswerState,
+      });
+      changeQuestionState('');
+      changeNumberAnswerState('');
+    },
+    [onQuestionCreate, questionState, dropdownState, numberAnswerState, testId]
+  );
 
-  const handleTestEdit = () => {
+  const handleTestEdit = React.useCallback(() => {
     onTestTitleEdit({
       id: testId,
       title: testTitleState,
     });
     changeShowTestEdit(false);
-  };
+  }, [testId, testTitleState, onTestTitleEdit]);
 
-  const handleTestTitleChange = e => {
+  const handleTestTitleChange = React.useCallback(e => {
     changeTestTitleState(e.target.value);
-  };
+  }, []);
 
-  const handleNumberAnswerState = e => {
+  const handleNumberAnswerState = React.useCallback(e => {
     changeNumberAnswerState(e.target.value);
-  };
+  }, []);
 
-  const handleEditTestClick = () => {
+  const handleEditTestClick = React.useCallback(() => {
     changeShowTestEdit(!showTestEdit);
-  };
+  }, [showTestEdit]);
 
-  const handleBackClick = () => {
+  const handleBackClick = React.useCallback(() => {
     history.push('/');
-  };
+  }, [history]);
   return (
     <div className={styles.wrapper}>
       <div className={styles.test}>
@@ -160,18 +163,23 @@ const TestWindow = props => {
           <div className={styles.no_questions}>No questions here</div>
         )}
       </div>
-      <img
-        src={left}
-        alt=""
-        onClick={handleBackClick}
-        className={styles.back}
-      />
+      <div className={styles.back} onClick={handleBackClick}>
+        <img src={left} alt="" />
+      </div>
     </div>
   );
 };
 
+TestWindowContainer.propTypes = {
+  match: PropTypes.any,
+};
+
+TestWindowContainer.defaultProps = {
+  match: {},
+};
+
 TestWindow.propTypes = {
-  match: PropTypes.object,
+  match: PropTypes.any,
 };
 
 TestWindow.defaultProps = {

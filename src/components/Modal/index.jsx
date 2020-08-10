@@ -3,20 +3,21 @@ import styles from './index.scss';
 import { createPortal } from 'react-dom';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { handleClickOutside } from 'utils/handleClickOutside';
-
 import close from 'assets/images/close.png';
+import PropTypes from 'prop-types';
 
 const Modal = props => {
   const body = document.querySelector('body');
   const ref = React.useRef(null);
+  const closeModalOutside = React.useCallback(() => {
+    if (!props.isResultModal) {
+      props.toggle();
+    }
+  }, [props]);
+
   React.useEffect(() => {
     const handleKeyDown = event => {
       if (!props.isResultModal && event.keyCode === 27) {
-        props.toggle();
-      }
-    };
-    const closeModalOutside = () => {
-      if (!props.isResultModal) {
         props.toggle();
       }
     };
@@ -86,4 +87,17 @@ Modal.Button = props => {
 Modal.Buttons = props => {
   return <div className={styles.buttons}>{props.children}</div>;
 };
+
+Modal.propTypes = {
+  toggle: PropTypes.func,
+  children: PropTypes.array,
+  action: PropTypes.func,
+};
+
+Modal.defaultProps = {
+  toggle: () => {},
+  children: [],
+  action: () => {},
+};
+
 export default Modal;

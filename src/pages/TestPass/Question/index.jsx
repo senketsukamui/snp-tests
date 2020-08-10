@@ -4,13 +4,18 @@ import { useSelector } from 'react-redux';
 import { answersListSelector } from 'models/answers/selectors';
 import Answer from './Answer';
 import { isEqual, sortBy } from 'lodash';
+import PropTypes from 'prop-types';
 
 const Question = props => {
   const answers = useSelector(answersListSelector);
 
-  const radioAnswers = props.answers.reduce((acc, value) => {
-    return { ...acc, [value]: false };
-  }, {});
+  const radioAnswers = React.useMemo(
+    () =>
+      props.answers.reduce((acc, value) => {
+        return { ...acc, [value]: false };
+      }, {}),
+    [props.answers]
+  );
 
   const [currentAnswers, changeCurrentAnswers] = React.useState({});
   const [radioState, changeRadioState] = React.useState(radioAnswers);
@@ -23,50 +28,63 @@ const Question = props => {
     return [...acc];
   }, []);
 
-  const choiceIds = object => {
+  const choiceIds = React.useCallback(object => {
     return Object.keys(object).reduce((acc, value) => {
       if (object[value]) {
         return [...acc, Number(value)];
       }
       return [...acc];
     }, []);
-  };
+  }, []);
 
-  const compareArrays = (a, b) => {
+  const compareArrays = React.useCallback((a, b) => {
     return a.length === b.length && isEqual(sortBy(a), sortBy(b));
-  };
+  }, []);
 
-  const checkCorrectness = answers => {
-    if (
-      props.question_type === 'single' ||
-      props.question_type === 'multiple'
-    ) {
-      if (compareArrays(choiceIds(answers), rightAnswers)) {
-        props.changeCorrectQuestionsState(props.id, true);
-      } else {
-        props.changeCorrectQuestionsState(props.id, false);
+  const checkCorrectness = React.useCallback(
+    ids => {
+      if (
+        props.question_type === 'single' ||
+        props.question_type === 'multiple'
+      ) {
+        if (compareArrays(choiceIds(ids), rightAnswers)) {
+          props.changeCorrectQuestionsState(props.id, true);
+        } else {
+          props.changeCorrectQuestionsState(props.id, false);
+        }
+      } else if (props.question_type === 'number') {
+        if (ids === props.answer) {
+          props.changeCorrectQuestionsState(props.id, true);
+        } else {
+          props.changeCorrectQuestionsState(props.id, false);
+        }
       }
-    } else if (props.question_type === 'number') {
-      if (answers === props.answer) {
-        props.changeCorrectQuestionsState(props.id, true);
-      } else {
-        props.changeCorrectQuestionsState(props.id, false);
-      }
-    }
-  };
+    },
+    [choiceIds, compareArrays, props, rightAnswers]
+  );
 
-  const handleChangeCurrentAnswers = (id, value) => {
-    changeCurrentAnswers({ ...currentAnswers, [id]: value });
-    checkCorrectness({ ...currentAnswers, [id]: value });
-  };
-  const handleRadioStateChange = id => {
-    changeRadioState({ ...radioAnswers, [id]: true });
-    checkCorrectness({ ...radioAnswers, [id]: true });
-  };
-  const handleNumberInputChange = e => {
-    changeNumberAnswerState(e.target.value);
-    checkCorrectness(e.target.value);
-  };
+  const handleChangeCurrentAnswers = React.useCallback(
+    (id, value) => {
+      changeCurrentAnswers({ ...currentAnswers, [id]: value });
+      checkCorrectness({ ...currentAnswers, [id]: value });
+    },
+    [checkCorrectness, currentAnswers]
+  );
+  const handleRadioStateChange = React.useCallback(
+    id => {
+      changeRadioState({ ...radioAnswers, [id]: true });
+      checkCorrectness({ ...radioAnswers, [id]: true });
+    },
+    [changeRadioState, checkCorrectness, radioAnswers]
+  );
+
+  const handleNumberInputChange = React.useCallback(
+    e => {
+      changeNumberAnswerState(e.target.value);
+      checkCorrectness(e.target.value);
+    },
+    [changeNumberAnswerState, checkCorrectness]
+  );
 
   return (
     <div className={styles.question}>
@@ -101,4 +119,26 @@ const Question = props => {
   );
 };
 
-export default Question;
+Question.propTypes = {
+  answers: PropTypes.array,
+  question_type: PropTypes.string,
+  index: PropTypes.number,
+  title: PropTypes.string,
+  changeCorrectQuestionsState: PropTypes.func,
+  id: PropTypes.number,
+  answer: PropTypes.number,
+};
+
+Question.defaultProps = {
+  answers: [],
+  question_type: 'single',
+  index: 1,
+  title: 'default title',
+  changeCorrectQuestionsState: () => {
+    console.error('something bad happened');
+  },
+  id: 1,
+  answer: 0,
+};
+
+export default React.memo(Question);

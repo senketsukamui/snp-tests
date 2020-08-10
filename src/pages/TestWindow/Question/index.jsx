@@ -23,16 +23,11 @@ const Question = props => {
   const onAnswerCreate = useAction(answersActions.createAnswer.type);
   const onAnswerMove = useAction(questionsActions.swapAnswers.type);
   const onQuestionEdit = useAction(questionsActions.editQuestion.type);
-
-  const handleDeleteButtonClick = () => {
-    onQuestionDelete({ questionId: props.id, testId: props.testId });
-  };
   const [showInput, changeShowInputState] = React.useState(false);
   const [answerState, changeAnswerState] = React.useState('');
-  const [
-    questionValidationState,
-    changeQuestionValidationState,
-  ] = React.useState(false);
+  const handleDeleteButtonClick = React.useCallback(() => {
+    onQuestionDelete({ questionId: props.id, testId: props.testId });
+  }, [onQuestionDelete, props.id, props.testId]);
   const [numberAnswerState, changeNumberAnswerState] = React.useState(
     props.answer
   );
@@ -41,36 +36,41 @@ const Question = props => {
     props.title
   );
   const [showTitleButton, changeShowTitleButton] = React.useState(false);
+  const [
+    questionValidationState,
+    changeQuestionValidationState,
+  ] = React.useState(false);
+
   React.useEffect(() => {
     changeQuestionValidationState(
       !validateQuestion(props.id, questionsList, answersList)
     );
   }, [props.id, questionsList, answersList]);
 
-  const handleAnswerInputChange = e => {
+  const handleAnswerInputChange = React.useCallback(e => {
     changeAnswerState(e.target.value);
-  };
+  }, []);
 
-  const handleCreateInputShow = () => {
+  const handleCreateInputShow = React.useCallback(() => {
     changeShowInputState(!showInput);
-  };
+  }, [showInput]);
 
-  const handleAnswerCreate = () => {
+  const handleAnswerCreate = React.useCallback(() => {
     onAnswerCreate({
       questionId: props.id,
       answer: answerState,
     });
-  };
+  }, [props.id, answerState, onAnswerCreate]);
 
-  const handleQuestionTitleChange = e => {
+  const handleQuestionTitleChange = React.useCallback(e => {
     changeQuestioneTitleState(e.target.value);
-  };
+  }, []);
 
-  const handleTitleButtonChange = () => {
+  const handleTitleButtonChange = React.useCallback(() => {
     changeShowTitleButton(!showTitleButton);
-  };
+  }, [showTitleButton]);
 
-  const handleQuestionEdit = () => {
+  const handleQuestionEdit = React.useCallback(() => {
     onQuestionEdit({
       title: questionTitleState,
       questionId: props.id,
@@ -78,24 +78,34 @@ const Question = props => {
       answer: numberAnswerState,
     });
     handleTitleButtonChange();
-  };
+  }, [
+    onQuestionEdit,
+    questionTitleState,
+    props.id,
+    props.question_type,
+    numberAnswerState,
+    handleTitleButtonChange,
+  ]);
 
-  const handleNumberAnswerChange = e => {
+  const handleNumberAnswerChange = React.useCallback(e => {
     changeNumberAnswerState(e.target.value);
-  };
+  }, []);
 
-  const swapAnswer = (dragIndex, hoverIndex, firstId) => {
-    onAnswerMove({
-      questionId: props.id,
-      dragIndex,
-      hoverIndex,
-      firstId,
-    });
-  };
+  const swapAnswer = React.useCallback(
+    (dragIndex, hoverIndex, firstId) => {
+      onAnswerMove({
+        questionId: props.id,
+        dragIndex,
+        hoverIndex,
+        firstId,
+      });
+    },
+    [onAnswerMove, props.id]
+  );
 
-  const toggleModal = () => {
+  const toggleModal = React.useCallback(() => {
     changeModalState(!modalState);
-  };
+  }, [modalState]);
 
   const newAnswerInput = (
     <div>
@@ -133,13 +143,20 @@ const Question = props => {
                 save
               </button>
             )}
-            {questionValidationState ? <div>Error</div> : ''}
             <button onClick={toggleModal}>
               <img src={trash} alt="" />
             </button>
             <div className={styles.type}>{props.question_type}</div>
           </div>
         </div>
+        {questionValidationState ? (
+          <div className={styles.error}>
+            Validation error. This question will not be displayed during
+            passing.
+          </div>
+        ) : (
+          ''
+        )}
         {props.question_type === 'single' ||
         props.question_type === 'multiple' ? (
           <div className={styles.answers}>
@@ -171,7 +188,12 @@ const Question = props => {
               value={numberAnswerState}
               onChange={handleNumberAnswerChange}
             />
-            <button onClick={handleQuestionEdit}>Save</button>
+            <button
+              onClick={handleQuestionEdit}
+              className={styles.number_button}
+            >
+              Save
+            </button>
           </div>
         )}
 

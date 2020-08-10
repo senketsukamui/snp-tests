@@ -19,7 +19,6 @@ const App = ({ routes }) => {
     console.info('browser', browser);
   }
 
-
   if (isUserLoading) {
     return <Loader />;
   }

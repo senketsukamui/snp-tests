@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './index.scss';
-import down_arrow from 'assets/images/down_arrow.png';
+import downArrow from 'assets/images/down_arrow.png';
 import { handleClickOutside } from 'utils/handleClickOutside';
+import PropTypes from 'prop-types';
 
 const Dropdown = props => {
   const [open, setOpen] = React.useState(false);
@@ -35,7 +36,7 @@ const Dropdown = props => {
     <div className={styles.wrapper} ref={ref}>
       <div className={styles.selection} onClick={handleDropdownClick}>
         <div className={styles.selected}>{selected}</div>
-        {!open && <img src={down_arrow} alt="" className={styles.down_arrow} />}
+        {!open && <img src={downArrow} alt="" className={styles.down_arrow} />}
       </div>
       <ul className={styles.items}>
         {open &&
@@ -53,4 +54,13 @@ const Dropdown = props => {
   );
 };
 
+Dropdown.propTypes = {
+  items: PropTypes.array,
+  handleChange: PropTypes.func,
+};
+
+Dropdown.defaultProps = {
+  items: [],
+  handleChange: () => {},
+};
 export default Dropdown;

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import trash from 'assets/images/trash.png';
 import useAction from 'hooks/useAction';
 import { actions as answersActions } from 'models/answers/slice';
-import { useSelector } from 'react-redux';
 import Modal from 'components/Modal';
 import { useDrop, useDrag } from 'react-dnd';
 
@@ -17,32 +16,32 @@ const Answer = props => {
   const [answerState, changeAnswerState] = React.useState(props.text);
   const ref = React.useRef(null);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = React.useCallback(() => {
     onAnswerDelete({
       id: props.id,
       questionId: props.questionId,
     });
-  };
+  }, [onAnswerDelete, props.id, props.questionId]);
 
-  const handleAnswerEdit = () => {
+  const handleAnswerEdit = React.useCallback(() => {
     onAnswerEdit({
       id: props.id,
       text: answerState,
       is_right: props.is_right,
     });
-  };
+  }, [onAnswerEdit, props.id, answerState, props.is_right]);
 
-  const handleAnswerStateChange = e => {
+  const handleAnswerStateChange = React.useCallback(e => {
     changeAnswerState(e.target.value);
-  };
+  }, []);
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = React.useCallback(() => {
     changeCheckboxState(!checkboxState);
-  };
+  }, [checkboxState]);
 
-  const toggleModal = () => {
+  const toggleModal = React.useCallback(() => {
     changeModalState(!modalState);
-  };
+  }, [modalState]);
 
   const [, drop] = useDrop({
     accept: props.questionId.toString(),
@@ -73,6 +72,7 @@ const Answer = props => {
         return;
       }
       props.swapAnswer(dragIndex, hoverIndex, item.answer);
+      /* eslint-disable no-param-reassign */
       item.index = hoverIndex;
     },
   });
@@ -107,7 +107,9 @@ const Answer = props => {
           value={answerState}
           onChange={handleAnswerStateChange}
         />
-        <button onClick={handleAnswerEdit}>Save</button>
+        <button onClick={handleAnswerEdit} className={styles.save}>
+          Save
+        </button>
       </div>
       <div className={styles.buttons}>
         <button onClick={toggleModal}>
@@ -130,11 +132,21 @@ const Answer = props => {
 Answer.propTypes = {
   is_right: PropTypes.bool,
   text: PropTypes.string,
+  id: PropTypes.number,
+  questionId: PropTypes.number,
+  index: PropTypes.number,
+  swapAnswer: PropTypes.func,
 };
 
 Answer.defaultProps = {
   is_right: false,
   text: '',
+  id: 1,
+  questionId: 1,
+  index: 1,
+  swapAnswer: () => {
+    console.error('something bad happened');
+  },
 };
 
-export default Answer;
+export default React.memo(Answer);

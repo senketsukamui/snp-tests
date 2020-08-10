@@ -12,12 +12,13 @@ import { questionsListSelector } from 'models/questions/selectors';
 import { answersListSelector } from 'models/answers/selectors';
 import TestListItem from './TestsListItem';
 import useAction from 'hooks/useAction';
-import left_arrow from 'assets/images/left_arrow.png';
-import right_arrow from 'assets/images/right_arrow.png';
+import leftArrow from 'assets/images/left_arrow.png';
+import rightArrow from 'assets/images/right_arrow.png';
 import asc from 'assets/images/asc.png';
 import desc from 'assets/images/desc.png';
 import search from 'assets/images/search.png';
 import { validateTest } from 'utils/validate';
+import PropTypes from 'prop-types';
 
 const { createTest } = actions;
 
@@ -28,20 +29,24 @@ const TestsList = props => {
   const questions = useSelector(questionsListSelector);
   const answers = useSelector(answersListSelector);
   const testsIds = useSelector(resultSelector) || [];
-  const validIds = testsIds.reduce((acc, value) => {
-    if (!isAdmin) {
-      if (
-        validateTest(tests[value].questions, questions, answers) &&
-        tests[value].questions.length
-      ) {
+  const validIds = React.useMemo(
+    () =>
+      testsIds.reduce((acc, value) => {
+        if (!isAdmin) {
+          if (
+            validateTest(tests[value].questions, questions, answers) &&
+            tests[value].questions.length
+          ) {
+            acc.push(value);
+            return acc;
+          }
+          return acc;
+        }
         acc.push(value);
         return acc;
-      }
-      return acc;
-    }
-    acc.push(value);
-    return acc;
-  }, []);
+      }, []),
+    [answers, isAdmin, questions, tests, testsIds]
+  );
   const testsToRender = validIds
     ? validIds.map(id => {
         return <TestListItem {...tests[id]} key={id} />;
@@ -51,13 +56,16 @@ const TestsList = props => {
   const [testTitleState, changeTestTitleState] = React.useState('');
   const meta = useSelector(metaSelector);
   const totalPages = meta.total_pages;
-  const handleTestTitleChange = e => {
+  const handleTestTitleChange = React.useCallback(e => {
     changeTestTitleState(e.target.value);
-  };
-  const handleCreateTest = e => {
-    e.preventDefault();
-    onCreateTest({ title: testTitleState });
-  };
+  }, []);
+  const handleCreateTest = React.useCallback(
+    e => {
+      e.preventDefault();
+      onCreateTest({ title: testTitleState });
+    },
+    [onCreateTest, testTitleState]
+  );
   return (
     <div className={styles.list}>
       <div className={styles.create}>
@@ -99,7 +107,7 @@ const TestsList = props => {
           ''
         ) : (
           <button onClick={props.changeCurrentPage('left')}>
-            <img src={left_arrow} alt="" />
+            <img src={leftArrow} alt="" />
           </button>
         )}
         <div className={styles.page}>{props.currentPage}</div>
@@ -107,7 +115,7 @@ const TestsList = props => {
           ''
         ) : (
           <button onClick={props.changeCurrentPage('right')}>
-            <img src={right_arrow} alt="" />
+            <img src={rightArrow} alt="" />
           </button>
         )}
       </div>
@@ -115,4 +123,20 @@ const TestsList = props => {
   );
 };
 
-export default TestsList;
+TestsList.propTypes = {
+  changeCurrentPage: PropTypes.func,
+  currentPage: PropTypes.number,
+  changeCurrentSort: PropTypes.func,
+  changeCurrentSearch: PropTypes.func,
+  currentSearch: PropTypes.string,
+};
+
+TestsList.defaultProps = {
+  changeCurrentPage: () => {},
+  currentPage: 1,
+  changeCurrentSort: () => {},
+  changeCurrentSearch: () => {},
+  currentSearch: '',
+};
+
+export default React.memo(TestsList);

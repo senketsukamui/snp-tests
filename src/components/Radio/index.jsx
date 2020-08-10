@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.scss';
+import PropTypes from 'prop-types';
 
 const Radio = props => {
   return (
@@ -13,6 +14,16 @@ const Radio = props => {
       <span className={styles.image} />
     </label>
   );
+};
+
+Radio.propTypes = {
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
+};
+
+Radio.defaultProps = {
+  checked: false,
+  onChange: () => {},
 };
 
 export default Radio;

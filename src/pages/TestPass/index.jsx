@@ -15,6 +15,7 @@ import useAction from 'hooks/useAction';
 import { actions as testsActions } from 'models/testsq/slice';
 import Loader from 'components/Loader';
 import left from 'assets/images/left.png';
+import PropTypes from 'prop-types';
 
 const TestPassContainer = props => {
   const history = useHistory();
@@ -84,7 +85,7 @@ const TestPass = props => {
           Submit test
         </button>
         {modalOpen && (
-          <Modal toggle={toggleModal} isResultModal={true}>
+          <Modal toggle={toggleModal} isResultModal>
             <Modal.Header>Your results for test {testInfo.title}:</Modal.Header>
             <Modal.Content>
               {
@@ -111,17 +112,28 @@ const TestPass = props => {
             </Modal.Buttons>
           </Modal>
         )}
-        <>
-          <img
-            src={left}
-            alt=""
-            onClick={handleRedirectToMain}
-            className={styles.back}
-          />
-        </>
+        <div onClick={handleRedirectToMain} className={styles.back}>
+          <img src={left} alt="" />
+        </div>
       </div>
     </div>
   );
 };
 
-export default TestPassContainer;
+TestPass.propTypes = {
+  match: PropTypes.any,
+};
+
+TestPass.defaultProps = {
+  match: {},
+};
+
+TestPassContainer.propTypes = {
+  match: PropTypes.any,
+};
+
+TestPassContainer.defaultProps = {
+  match: {},
+};
+
+export default React.memo(TestPassContainer);

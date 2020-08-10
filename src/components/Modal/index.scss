@@ -14,7 +14,6 @@
 }
 
 .modal {
-  position: relative;
   margin: auto;
   width: 400px;
   background-color: #1d3557;
@@ -24,6 +23,7 @@
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+
   &_button {
     background-color: #a8dadc;
     border-radius: 10px;

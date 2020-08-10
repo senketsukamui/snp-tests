@@ -29,28 +29,34 @@ const Main = () => {
     });
   }, [onGetTests, currentSort, currentPage, currentSearch]);
 
+  const handlePageChange = React.useCallback(
+    direction => () => {
+      if (direction === 'left') {
+        changeCurrentPage(currentPage - 1);
+      } else if (direction === 'right') {
+        changeCurrentPage(currentPage + 1);
+      }
+    },
+    [currentPage]
+  );
+
+  const handleSearchChange = React.useCallback(e => {
+    changeCurrentSearch(e.target.value);
+  }, []);
+
+  const handleSortChange = React.useCallback(
+    sort => () => {
+      changeCurrentSort(sort);
+    },
+    []
+  );
+
   if (!isAuthorized) {
     history.push('/auth');
   }
   if (isLoading) {
     return <Loader />;
   }
-
-  const handlePageChange = direction => e => {
-    if (direction === 'left') {
-      changeCurrentPage(currentPage - 1);
-    } else if (direction === 'right') {
-      changeCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handleSearchChange = e => {
-    changeCurrentSearch(e.target.value);
-  };
-
-  const handleSortChange = sort => () => {
-    changeCurrentSort(sort);
-  };
 
   return (
     <div className={styles.main}>
@@ -67,4 +73,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default React.memo(Main);

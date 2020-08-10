@@ -1,11 +1,9 @@
 import { connectRouter } from 'connected-react-router';
 import { all } from 'redux-saga/effects';
 
-import { currentSession } from './users/sagas';
+import usersSagas, { currentSession } from './users/sagas';
 
 import usersReducer from './users/slice';
-
-import usersSagas from './users/sagas';
 
 import testsReducer from './testsq/slice';
 
