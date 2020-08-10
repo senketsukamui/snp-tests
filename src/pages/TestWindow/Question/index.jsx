@@ -33,6 +33,9 @@ const Question = props => {
     questionValidationState,
     changeQuestionValidationState,
   ] = React.useState(false);
+  const [numberAnswerState, changeNumberAnswerState] = React.useState(
+    props.answer
+  );
   const [modalState, changeModalState] = React.useState(false);
   const [questionTitleState, changeQuestioneTitleState] = React.useState(
     props.title
@@ -72,8 +75,13 @@ const Question = props => {
       title: questionTitleState,
       questionId: props.id,
       question_type: props.question_type,
+      answer: numberAnswerState,
     });
     handleTitleButtonChange();
+  };
+
+  const handleNumberAnswerChange = e => {
+    changeNumberAnswerState(e.target.value);
   };
 
   const swapAnswer = (dragIndex, hoverIndex, firstId) => {
@@ -158,8 +166,12 @@ const Question = props => {
           </div>
         ) : (
           <div className={styles.number_input}>
-            <input type="text" value={props.answer} />
-            <button>Save</button>
+            <input
+              type="text"
+              value={numberAnswerState}
+              onChange={handleNumberAnswerChange}
+            />
+            <button onClick={handleQuestionEdit}>Save</button>
           </div>
         )}
 

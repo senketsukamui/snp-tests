@@ -85,13 +85,24 @@ const TestPass = props => {
         </button>
         {modalOpen && (
           <Modal toggle={toggleModal} isResultModal={true}>
-            <Modal.Header>Your results for test {props.title}:</Modal.Header>
+            <Modal.Header>Your results for test {testInfo.title}:</Modal.Header>
             <Modal.Content>
-              {Object.keys(correctQuestionsState).map((qst, index) => (
-                <div className={styles.result}>
-                  {index + 1}. {correctQuestionsState[qst] ? 'yes' : 'no'}
-                </div>
-              ))}
+              {
+                <>
+                  <div>
+                    {Object.keys(correctQuestionsState).map((qst, index) => (
+                      <div className={styles.result}>
+                        {index + 1}. {correctQuestionsState[qst] ? 'yes' : 'no'}
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    Your result:{' '}
+                    {Object.values(correctQuestionsState).filter(q => q).length}
+                    /{Object.values(correctQuestionsState).length}{' '}
+                  </div>
+                </>
+              }
             </Modal.Content>
             <Modal.Buttons>
               <Modal.Button action={handleRedirectToMain}>
@@ -100,12 +111,14 @@ const TestPass = props => {
             </Modal.Buttons>
           </Modal>
         )}
-        <img
-          src={left}
-          alt=""
-          onClick={handleRedirectToMain}
-          className={styles.back}
-        />
+        <>
+          <img
+            src={left}
+            alt=""
+            onClick={handleRedirectToMain}
+            className={styles.back}
+          />
+        </>
       </div>
     </div>
   );
