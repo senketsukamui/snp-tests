@@ -137,6 +137,7 @@ const TestWindow = props => {
           <input
             type="text"
             onChange={handleQuestionInputChange}
+            value={questionState}
             placeholder="Question title"
             className={styles.question_input}
             required
@@ -146,6 +147,7 @@ const TestWindow = props => {
               className={styles.question_input}
               type="text"
               onChange={handleNumberAnswerState}
+              value={numberAnswerState}
               placeholder="Enter number"
               required
             />
