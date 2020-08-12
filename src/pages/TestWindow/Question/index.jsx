@@ -60,6 +60,7 @@ const Question = props => {
       questionId: props.id,
       answer: answerState,
     });
+    changeAnswerState('');
   }, [props.id, answerState, onAnswerCreate]);
 
   const handleQuestionTitleChange = React.useCallback(e => {
@@ -112,6 +113,7 @@ const Question = props => {
       <input
         type="text"
         onChange={handleAnswerInputChange}
+        value={answerState}
         placeholder="Answer title"
       />
       <button onClick={handleAnswerCreate} className={styles.answer_create}>
