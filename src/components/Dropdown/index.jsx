@@ -45,7 +45,7 @@ const Dropdown = props => {
               className={styles.item}
               data-type={item}
               onClick={handleItemClick}
-              key={index}
+              key={Date.now()}
             >
               {item}
             </li>
