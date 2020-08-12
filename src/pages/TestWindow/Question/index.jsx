@@ -151,8 +151,8 @@ const Question = props => {
         </div>
         {questionValidationState ? (
           <div className={styles.error}>
-            Validation error. This question will not be displayed during
-            passing.
+            Validation error. This question does not fit question creation rules
+            and will not be displayed during passing.
           </div>
         ) : (
           ''
