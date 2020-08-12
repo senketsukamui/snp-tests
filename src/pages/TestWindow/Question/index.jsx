@@ -213,7 +213,7 @@ const Question = props => {
 
 Question.propTypes = {
   id: PropTypes.number,
-  testId: PropTypes.number,
+  testId: PropTypes.string,
   index: PropTypes.number,
   title: PropTypes.string,
   question_type: PropTypes.string,
@@ -223,7 +223,7 @@ Question.propTypes = {
 
 Question.defaultProps = {
   id: 1,
-  testId: 1,
+  testId: '1',
   index: 1,
   title: 'something went wrong',
   question_type: 'single',
