@@ -40,11 +40,12 @@ const Dropdown = props => {
       </div>
       <ul className={styles.items}>
         {open &&
-          props.items.map(item => (
+          props.items.map((item, index) => (
             <li
               className={styles.item}
               data-type={item}
               onClick={handleItemClick}
+              key={index}
             >
               {item}
             </li>
