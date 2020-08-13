@@ -1,5 +1,4 @@
 .question {
-  position: relative;
   padding: 1rem;
   margin: 10px;
   font-family: 'Recursive', 'Merriweather', sans-serif;
@@ -83,8 +82,7 @@
 }
 
 .error {
-  position: absolute;
-  bottom: 0;
   color: #e63946;
   font-size: 1rem;
+  margin-bottom: 10px;
 }
