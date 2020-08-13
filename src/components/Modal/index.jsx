@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 const Modal = props => {
   const body = document.querySelector('body');
   const ref = React.useRef(null);
+  const enterKey = 27;
   const closeModalOutside = React.useCallback(() => {
     if (!props.isResultModal) {
       props.toggle();
@@ -17,7 +18,7 @@ const Modal = props => {
 
   React.useEffect(() => {
     const handleKeyDown = event => {
-      if (!props.isResultModal && event.keyCode === 27) {
+      if (!props.isResultModal && event.keyCode === enterKey) {
         props.toggle();
       }
     };
