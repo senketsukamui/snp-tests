@@ -9,14 +9,17 @@ const Dropdown = props => {
   const [selected, changeSelected] = React.useState(props.items[0]);
   const ref = React.useRef(null);
 
-  const handleItemClick = e => {
-    changeSelected(e.target.dataset.type);
-    props.handleChange(e.target.dataset.type);
-    setOpen(false);
-  };
-  const handleDropdownClick = () => {
+  const handleItemClick = React.useCallback(
+    e => {
+      changeSelected(e.target.dataset.type);
+      props.handleChange(e.target.dataset.type);
+      setOpen(false);
+    },
+    [props]
+  );
+  const handleDropdownClick = React.useCallback(() => {
     setOpen(!open);
-  };
+  }, [open]);
   React.useEffect(() => {
     const closeDropdown = () => {
       setOpen(false);
@@ -40,7 +43,7 @@ const Dropdown = props => {
       </div>
       <ul className={styles.items}>
         {open &&
-          props.items.map((item, index) => (
+          props.items.map(item => (
             <li
               className={styles.item}
               data-type={item}
