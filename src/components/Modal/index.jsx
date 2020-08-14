@@ -60,28 +60,18 @@ const Modal = props => {
 };
 
 Modal.Content = props => {
-  return (
-    <>
-      <div className={styles.content}>{props.children}</div>
-    </>
-  );
+  return <div className={styles.content}>{props.children}</div>;
 };
 
 Modal.Header = props => {
-  return (
-    <>
-      <div className={styles.header}>{props.children}</div>
-    </>
-  );
+  return <div className={styles.header}>{props.children}</div>;
 };
 
 Modal.Button = props => {
   return (
-    <>
-      <button className={styles.modal_button} onClick={props.action}>
-        {props.children}
-      </button>
-    </>
+    <button className={styles.modal_button} onClick={props.action}>
+      {props.children}
+    </button>
   );
 };
 
