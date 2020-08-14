@@ -7,7 +7,6 @@ import close from 'assets/images/close.png';
 import PropTypes from 'prop-types';
 
 const Modal = props => {
-  const body = document.querySelector('body');
   const ref = React.useRef(null);
   const enterKey = 27;
   const closeModalOutside = React.useCallback(() => {
@@ -23,14 +22,14 @@ const Modal = props => {
       }
     };
 
-    disableBodyScroll(body);
+    disableBodyScroll();
     document.addEventListener(
       'mousedown',
       handleClickOutside(ref, closeModalOutside)
     );
     document.addEventListener('keydown', handleKeyDown);
     return () => {
-      enableBodyScroll(body);
+      enableBodyScroll();
       document.removeEventListener(
         'mousedown',
         handleClickOutside(ref, closeModalOutside)
