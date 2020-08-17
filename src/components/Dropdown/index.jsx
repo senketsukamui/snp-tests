@@ -44,13 +44,10 @@ const Dropdown = props => {
       <ul className={styles.items}>
         {open &&
           props.items.map(item => (
-            <li
-              className={styles.item}
-              data-type={item}
-              onClick={handleItemClick}
-              key={Date.now()}
-            >
-              {item}
+            <li className={styles.item} key={Date.now()}>
+              <div onClick={handleItemClick} data-type={item}>
+                {item}
+              </div>
             </li>
           ))}
       </ul>

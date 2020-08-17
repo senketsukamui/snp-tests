@@ -3,14 +3,14 @@ import request from './request';
 export const createQuestion = ({
   testId,
   questionTitle,
-  question_type,
+  questionType,
   answer,
 }) => {
   return request.POST({
     url: `/tests/${testId}/questions`,
     data: {
       title: questionTitle,
-      question_type,
+      question_type: questionType,
       answer: answer || 0,
     },
   });

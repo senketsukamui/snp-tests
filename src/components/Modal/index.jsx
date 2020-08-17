@@ -42,12 +42,9 @@ const Modal = props => {
     <div className={styles.wrapper}>
       <div className={styles.modal} ref={ref}>
         {!props.isResultModal ? (
-          <img
-            src={close}
-            alt=""
-            className={styles.close}
-            onClick={props.toggle}
-          />
+          <div className={styles.close} onClick={props.toggle}>
+            <img src={close} alt="" />
+          </div>
         ) : (
           ''
         )}
@@ -88,6 +85,40 @@ Modal.defaultProps = {
   toggle: () => {},
   children: [],
   action: () => {},
+};
+
+Modal.Content.propTypes = {
+  children: PropTypes.array,
+};
+
+Modal.Content.defaultProps = {
+  children: [],
+};
+
+Modal.Header.propTypes = {
+  children: PropTypes.array,
+};
+
+Modal.Header.defaultProps = {
+  children: [],
+};
+
+Modal.Button.propTypes = {
+  children: PropTypes.array,
+  action: PropTypes.func,
+};
+
+Modal.Button.defaultProps = {
+  children: [],
+  action: () => {},
+};
+
+Modal.Buttons.propTypes = {
+  children: PropTypes.array,
+};
+
+Modal.Buttons.defaultProps = {
+  children: [],
 };
 
 export default Modal;
