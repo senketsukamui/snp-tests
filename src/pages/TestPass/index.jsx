@@ -10,7 +10,7 @@ import { questionsListSelector } from 'models/questions/selectors';
 import { isAuthorizedSelector } from 'models/users/selectors';
 import Question from './Question';
 import Modal from '../../components/Modal';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import useAction from 'hooks/useAction';
 import { actions as testsActions } from 'models/testsq/slice';
 import Loader from 'components/Loader';
@@ -112,9 +112,11 @@ const TestPass = props => {
             </Modal.Buttons>
           </Modal>
         )}
-        <div onClick={handleRedirectToMain} className={styles.back}>
-          <img src={left} alt="" />
-        </div>
+        <Link to="/">
+          <div className={styles.back}>
+            <img src={left} alt="" />
+          </div>
+        </Link>
       </div>
     </div>
   );
