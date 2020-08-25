@@ -9,3 +9,8 @@ export const questionsListSelector = createSelector(
   questionsSelector,
   ({ questions }) => questions
 );
+
+export const questionsLoadingSelector = createSelector(
+  questionsSelector,
+  ({ questionsLoading }) => questionsLoading
+);

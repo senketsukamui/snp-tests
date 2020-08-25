@@ -7,6 +7,8 @@ import useAction from 'hooks/useAction';
 import { actions as answersActions } from 'models/answers/slice';
 import Modal from 'components/Modal';
 import { useDrop, useDrag } from 'react-dnd';
+import { useSelector } from 'react-redux';
+import { answersLoadingSelector } from 'models/answers/selectors';
 
 const Answer = props => {
   const onAnswerDelete = useAction(answersActions.deleteAnswer.type);
@@ -14,6 +16,7 @@ const Answer = props => {
   const [modalState, changeModalState] = React.useState(false);
   const [checkboxState, changeCheckboxState] = React.useState(props.is_right);
   const [answerState, changeAnswerState] = React.useState(props.text);
+  const answersLoading = useSelector(answersLoadingSelector);
   const ref = React.useRef(null);
 
   const handleDeleteClick = React.useCallback(() => {
@@ -119,7 +122,9 @@ const Answer = props => {
           <Modal toggle={toggleModal}>
             <Modal.Header>Delete this answer?</Modal.Header>
             <Modal.Buttons>
-              <Modal.Button action={handleDeleteClick}>Yes</Modal.Button>
+              <Modal.Button action={handleDeleteClick} loading={answersLoading}>
+                Yes
+              </Modal.Button>
               <Modal.Button action={toggleModal}>No</Modal.Button>
             </Modal.Buttons>
           </Modal>

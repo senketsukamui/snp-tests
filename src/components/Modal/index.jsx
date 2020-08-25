@@ -65,7 +65,11 @@ Modal.Header = props => {
 
 Modal.Button = props => {
   return (
-    <button className={styles.modal_button} onClick={props.action}>
+    <button
+      className={styles.modal_button}
+      onClick={props.action}
+      disabled={props.loading}
+    >
       {props.children}
     </button>
   );
@@ -106,11 +110,13 @@ Modal.Header.defaultProps = {
 Modal.Button.propTypes = {
   children: PropTypes.array,
   action: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 Modal.Button.defaultProps = {
   children: [],
   action: () => {},
+  loading: false,
 };
 
 Modal.Buttons.propTypes = {

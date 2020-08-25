@@ -1,7 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { answersListSelector } from 'models/answers/selectors';
-import { questionsListSelector } from 'models/questions/selectors';
+import {
+  questionsListSelector,
+  questionsLoadingSelector,
+} from 'models/questions/selectors';
 import Answer from './Answer';
 import styles from './index.scss';
 import { actions as questionsActions } from 'models/questions/slice';
@@ -19,6 +22,7 @@ import { validateQuestion } from 'utils/validate';
 const Question = props => {
   const answersList = useSelector(answersListSelector);
   const questionsList = useSelector(questionsListSelector);
+  const questionsLoading = useSelector(questionsLoadingSelector);
   const onQuestionDelete = useAction(questionsActions.deleteQuestion.type);
   const onAnswerCreate = useAction(answersActions.createAnswer.type);
   const onAnswerMove = useAction(questionsActions.swapAnswers.type);
@@ -203,7 +207,12 @@ const Question = props => {
           <Modal>
             <Modal.Header>Delete this answer?</Modal.Header>
             <Modal.Buttons>
-              <Modal.Button action={handleDeleteButtonClick}>Yes</Modal.Button>
+              <Modal.Button
+                action={handleDeleteButtonClick}
+                loading={questionsLoading}
+              >
+                Yes
+              </Modal.Button>
               <Modal.Button action={toggleModal}>No</Modal.Button>
             </Modal.Buttons>
           </Modal>
